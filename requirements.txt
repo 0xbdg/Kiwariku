@@ -1,0 +1,7 @@
+django
+django-phonenumber-field[phonenumbers]
+django-tailwind
+django-browser-reload
+Pillow
+whitenoise
+psycopg2
