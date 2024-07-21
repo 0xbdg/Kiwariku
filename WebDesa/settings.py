@@ -154,3 +154,6 @@ NPM_BIN_PATH = '/usr/local/bin/npm'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
+PHONENUMBER_DEFAULT_REGION = 'ID'
