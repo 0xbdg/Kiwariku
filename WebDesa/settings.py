@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import datetime
+from shutil import which
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,11 +152,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Tailwind
 
 TAILWIND_APP_NAME = 'theme'
-NPM_BIN_PATH = '/usr/local/bin/npm'
+
+NPM_BIN_PATH = which("npm")
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-
+#phonenumber
 PHONENUMBER_DEFAULT_REGION = 'ID'
+
+#auth
+AUTH_USER_MODELS = 'tbl_account'
+LOGIN_REDIRECT_URL = 'index'
+
+#jazzmin
+
+JAZZMIN_SETTINGS = {
+    'site_header': "Kiwariku Admin",
+    'site_brand': 'Kiwariku',
+    'site_logo' : "",
+    "welcome_sign": "Administrator Panel",
+    "copyright": f"Kiwariku"
+}

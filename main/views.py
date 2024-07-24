@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView
-from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect, render
+from django.views.generic import TemplateView, FormView, View
+from django.contrib.auth import login,logout
 from .forms import *
 
 # Create your views here.
@@ -11,13 +12,22 @@ class IndexView(TemplateView):
     def get(self, request):
         pass
 
-class SignInView(LoginView):
+class SignInView(View):
     form_class = LoginForm
     template_name = 'registration/signin.html'
-    success_url = reverse_lazy('index')
 
-    def form_valid(self, form):
-        return super().form_valid(form)
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, context={'form': form})
+
+    def post(self,request):
+        form = self.form_class(data=request.POST)
+
+        if form.is_valid():
+            user = self.form_class.get_user()
+            login(request, user)
+            return redirect("index")
+        return render(request, self.template_name, context={"forms":form})
 
     
 class RegisterView(FormView):

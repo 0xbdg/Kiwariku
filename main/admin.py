@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Group
 from .models import *
 
 # Register your models here.
@@ -22,4 +23,5 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'username', 'firstname', 'lastname', 'phonenumber')
     ordering = ('email',)
 
+admin.site.unregister(Group)
 admin.site.register(tbl_account, CustomUserAdmin)

@@ -2,6 +2,6 @@ django
 django-phonenumber-field[phonenumbers]
 django-tailwind
 django-browser-reload
+django-jazzmin
 Pillow
 whitenoise
-psycopg2
