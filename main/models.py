@@ -6,8 +6,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 GENDER = (
-    ("Laki-Laki","Laki-Laki"),
-    ("Perempuan", "Perempuan")
+    ("M","Laki-Laki"),
+    ("F", "Perempuan")
 )
 
 class UserManager(BaseUserManager):
@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, username, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
         return self.create_user(username, email, password, **extra_fields)
 
 
@@ -29,8 +30,8 @@ class tbl_account(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
     phonenumber = PhoneNumberField()
-    gender = models.CharField(max_length=50,choices=GENDER, editable=False)
-    birth_date = models.DateField()
+    gender = models.CharField(max_length=1,choices=GENDER, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
     date_joined = models.DateTimeField(default=datetime.now)
 
     is_active = models.BooleanField(default=True)
@@ -40,6 +41,7 @@ class tbl_account(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = ['email']
 
     # Specify unique related names for groups and user_permissions
     groups = models.ManyToManyField(

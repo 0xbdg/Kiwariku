@@ -11,17 +11,17 @@
             <hr class="mt-3">
             <div class="mt-3">
                 <label for="Username" class="block text-base mb-2">Username</label>
-                <input type="text" name="username" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Username" >
+                {{ form.username }}
             </div>
             <div class="mt-3">
                 <label for="password" class="block text-base mb-2">password</label>
-                <input type="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Password" >
+                {{ form.password }}
             </div>
             <div class="mt-5">
                 <button class="borde-2 bg-login text-white py-1 w-full border-0">Login</button>
             </div>
             <div>
-                <label class="text-akun">Belum memiliki akun? <a class="text-hijau " href="#">Silahkan buat akun</a></label>
+                <label class="text-akun">Belum memiliki akun? <a class="text-hijau " href="{% url 'signup' %}">Silahkan buat akun</a></label>
             </div>
         </form>
     </div>

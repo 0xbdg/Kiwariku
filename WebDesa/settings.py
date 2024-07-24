@@ -163,7 +163,7 @@ INTERNAL_IPS = [
 PHONENUMBER_DEFAULT_REGION = 'ID'
 
 #auth
-AUTH_USER_MODELS = 'tbl_account'
+AUTH_USER_MODEL = 'main.tbl_account'
 LOGIN_REDIRECT_URL = 'index'
 
 #jazzmin

@@ -19,8 +19,8 @@ class RegisterForm(UserCreationForm):
         fields = ["username","first_name","last_name","email","phonenumber", "password1", "password2"]
 
 class LoginForm(AuthenticationForm):
-  username = forms.CharField(widget=TextInput(attrs={'class':'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600','placeholder':'Username'}))
-  password = forms.CharField(widget=PasswordInput(attrs={'class':'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600','id':'password','placeholder':'Password'}))
+  username = forms.CharField(widget=TextInput(attrs={'class':'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600','placeholder':'Username'}), required=True)
+  password = forms.CharField(widget=PasswordInput(attrs={'class':'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600','placeholder':'Password'}), required=True)
   class Meta:
     model = tbl_account
     fields = ["username","password"]
