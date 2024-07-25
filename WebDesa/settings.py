@@ -140,8 +140,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR,"static/")
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
 ]
 
 # Default primary key field type
@@ -169,9 +169,9 @@ LOGIN_REDIRECT_URL = 'index'
 #jazzmin
 
 JAZZMIN_SETTINGS = {
-    'site_header': "Kiwariku Admin",
-    'site_brand': 'Kiwariku',
-    'site_logo' : "",
+    'site_header': "Kiwariku Situsari",
+    'site_brand': 'Kiwariku Admin',
+    'site_logo' : "img/logo.png",
     "welcome_sign": "Administrator Panel",
-    "copyright": f"Kiwariku"
+    "copyright": "Kiwariku"
 }

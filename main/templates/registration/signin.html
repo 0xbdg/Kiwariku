@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %} Login {% endblock %}
+
 {% block contents %}
 <div class="flex justify-center items-center h-screen">
-    <div class="flex flex-col gap-10 items-center justify-center">
-        <img src="../public/asset/logo.png" class="flex size-40 ">
-    
+    <div class="flex flex-col gap-10 items-center justify-center bg-color1 rounded-md">
         <form method="post" action="{% url 'signin'%}" class="w-96 p-6 shadow-lg bg-bebas rounded-md">
             {% csrf_token %}
             <h5 class="mt-3 block text-center text-2xl"></i>Masuk</h5>
@@ -21,7 +21,7 @@
                 <button class="borde-2 bg-login text-white py-1 w-full border-0">Login</button>
             </div>
             <div>
-                <label class="text-akun">Belum memiliki akun? <a class="text-hijau " href="{% url 'signup' %}">Silahkan buat akun</a></label>
+                <p>Belum memiliki akun? <a class="text-blue" href="{% url 'signup' %}">Silahkan buat akun</a></p>
             </div>
         </form>
     </div>

@@ -6,7 +6,7 @@ from phonenumber_field.formfields import PhoneNumberField
 from .models import *
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(widget=TextInput())
+    username = forms.CharField(required=True,widget=TextInput(attrs={'class':'border w-full text-base px-2  focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md', "placeholder":"Username"}))
     first_name = forms.CharField(max_length=100, required=True)
     last_name = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(widget=EmailInput())
