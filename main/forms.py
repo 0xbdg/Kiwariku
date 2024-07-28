@@ -6,17 +6,14 @@ from phonenumber_field.formfields import PhoneNumberField
 from .models import *
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(required=True,widget=TextInput(attrs={'class':'border w-full text-base px-2  focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md', "placeholder":"Username"}))
-    first_name = forms.CharField(max_length=100, required=True)
-    last_name = forms.CharField(max_length=100, required=True)
-    email = forms.EmailField(widget=EmailInput())
-    phonenumber = PhoneNumberField(region="ID")
-    password1 = forms.CharField(widget=PasswordInput())
-    password2 = forms.CharField(widget=PasswordInput())
+    username = forms.CharField(required=True,widget=TextInput(attrs={'class':'border w-full text-base px-2  focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md', "placeholder":"Ex: John"}))
+    email = forms.EmailField(required=True,widget=EmailInput(attrs={'class':'border w-full text-base px-2  focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md', 'placeholder':"Ex: example@mail.com"}))
+    password1 = forms.CharField(required=True,widget=PasswordInput(attrs={'class':'border w-full text-base px-2  focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md', 'placeholder':'Ex: 1234'}))
+    password2 = forms.CharField(required=True,widget=PasswordInput(attrs={'class':'border w-full text-base px-2  focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md', 'placeholder':'Ex: 1234'}))
 
     class Meta:
         model = tbl_account
-        fields = ["username","first_name","last_name","email","phonenumber", "password1", "password2"]
+        fields = ["username","email","password1", "password2"]
 
 class LoginForm(AuthenticationForm):
   username = forms.CharField(widget=TextInput(attrs={'class':'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600','placeholder':'Username'}), required=True)
@@ -25,4 +22,4 @@ class LoginForm(AuthenticationForm):
     model = tbl_account
     fields = ["username","password"]
 
-class UpdateForm(): pass
+class ProfileForm(): pass
