@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y$4f_ybo@8^ib8q-^mdgtq&wjgj%#k&3-)%1ousr9@%t)p_2%c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,14 +84,6 @@ WSGI_APPLICATION = 'WebDesa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
-'''
 if DEBUG:
     DATABASES = {
         'default': {
@@ -111,7 +103,6 @@ else:
             'PORT': '5432',
         }
     }
-'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -149,9 +140,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if DEBUG:
+if not DEBUG:
   STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-else:
   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/' 
@@ -184,9 +174,8 @@ LOGIN_REDIRECT_URL = 'main.index'
 #jazzmin
 
 JAZZMIN_SETTINGS = {
-    'site_header': "Kiwariku Situsari",
+    'site_header': "Website Situsari",
     'site_brand': 'Kiwariku Admin',
-    'site_logo' : "img/logo.png",
     "welcome_sign": "Administrator Panel",
     "copyright": "Kiwariku"
 }
