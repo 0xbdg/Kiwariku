@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     "phonenumber_field",
+    'login_history',
     "tailwind",
     "theme",
     'django_browser_reload'
@@ -169,7 +170,7 @@ PHONENUMBER_DEFAULT_REGION = 'ID'
 
 #auth
 AUTH_USER_MODEL = 'main.tbl_account'
-LOGIN_REDIRECT_URL = 'main.index'
+LOGIN_REDIRECT_URL = 'index'
 
 #jazzmin
 
@@ -179,3 +180,13 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Administrator Panel",
     "copyright": "Kiwariku"
 }
+# security
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_HSTS_SECONDS = 86400
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

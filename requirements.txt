@@ -3,6 +3,7 @@ django-phonenumber-field[phonenumbers]
 django-tailwind
 django-browser-reload
 django-jazzmin
-psycopg2
 Pillow
 whitenoise
+django-ckeditor 
+dj-user-login-history
