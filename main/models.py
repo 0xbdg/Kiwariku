@@ -24,7 +24,7 @@ class UserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 
-class tbl_account(AbstractBaseUser, PermissionsMixin):
+class Account(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
@@ -66,4 +66,4 @@ class tbl_account(AbstractBaseUser, PermissionsMixin):
        return self.username
 
     class Meta:
-        db_table = 'tbl_account'
+        db_table = 'Account'

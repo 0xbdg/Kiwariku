@@ -6,7 +6,7 @@ from .models import *
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
-    model = tbl_account
+    model = Account
     list_display = ['username', 'email','phonenumber','gender', 'is_staff', 'is_superuser', 'date_joined']
     fieldsets = (
         ('Account', {'fields': ('email', 'username', 'password')}),
@@ -24,4 +24,4 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 admin.site.unregister(Group)
-admin.site.register(tbl_account, CustomUserAdmin)
+admin.site.register(Account, CustomUserAdmin)

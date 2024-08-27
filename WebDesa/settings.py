@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y$4f_ybo@8^ib8q-^mdgtq&wjgj%#k&3-)%1ousr9@%t)p_2%c'
+SECRET_KEY = 'r^rzb$fk5zzxqi)w_@w3f4#(!tv)tfbirg3f$8y_q&#$$*7(pl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -169,7 +169,7 @@ INTERNAL_IPS = [
 PHONENUMBER_DEFAULT_REGION = 'ID'
 
 #auth
-AUTH_USER_MODEL = 'main.tbl_account'
+AUTH_USER_MODEL = 'main.Account'
 LOGIN_REDIRECT_URL = 'index'
 
 #jazzmin
