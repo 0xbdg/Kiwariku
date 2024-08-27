@@ -7,3 +7,4 @@ Pillow
 whitenoise
 django-ckeditor 
 dj-user-login-history
+python-dotenv
