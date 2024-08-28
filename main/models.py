@@ -67,3 +67,11 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         db_table = 'Account'
+
+class Blog(models.Model) : pass
+
+class Layanan_KTP(models.Model) : pass
+
+class Layanan_Cerai(models.Model) : pass
+
+class Layanan_Nikah(models.Model) : pass
