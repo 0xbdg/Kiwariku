@@ -43,13 +43,14 @@ module.exports = {
     ],
     theme: {
         extend: {
+            translate: {
+                "-1/2": "-50%",
+            },
             colors : {
-                background: '#336f6c',
-                color1: '#69BCB8',
-                white: '#F5F5F5',
-                login: '#336F6C',
-                hover: '#16403e',
-              },
+                nav_hover: '#336f6c',
+                navbar: '#69BCB8',
+                button_hover: '#468585',
+            },
         },
     },
     plugins: [

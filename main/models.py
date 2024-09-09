@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
+from ckeditor.fields import RichTextField
+
+import uuid
 
 # Create your models here.
 
@@ -9,6 +12,7 @@ GENDER = (
     ("M","Laki-Laki"),
     ("F", "Perempuan")
 )
+
 
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
@@ -25,6 +29,7 @@ class UserManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
+    nik = models.IntegerField(blank=True, null=True)
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
@@ -68,7 +73,15 @@ class Account(AbstractBaseUser, PermissionsMixin):
     class Meta:
         db_table = 'Account'
 
-class Blog(models.Model) : pass
+class Blog(models.Model):
+    id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
+    thumbnail = models.ImageField(upload_to="thumbnail/")
+    title = models.CharField(max_length=255, null=False, unique=True)
+    content = RichTextField()
+    upload_date = models.DateTimeField(auto_now_add=datetime.now(), editable=False)
+
+    def __str__(self):
+        return self.title
 
 class Layanan_KTP(models.Model) : pass
 

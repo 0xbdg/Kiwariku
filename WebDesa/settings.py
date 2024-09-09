@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
 
 ALLOWED_HOSTS = ['*']
 
@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'ckeditor',
     "phonenumber_field",
     'login_history',
     "tailwind",
     "theme",
-    'django_browser_reload'
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -99,11 +100,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'db_name',                      
-            'USER': 'db_user',
-            'PASSWORD': 'db_pass',
-            'HOST': 'localhost',
-            'PORT': '5432',
+            'NAME': os.environ.get("POSTGRES_DB_NAME"),                      
+            'USER': os.environ.get("POSTGRES_DB_USER"),
+            'PASSWORD': os.environ.get("POSTGRES_DB_PASS"),
+            'HOST': os.environ.get("POSTGRES_DB_HOST"),
+            'PORT': os.environ.get("POSTGRES_DB_PORT"),
         }
     }
 
@@ -129,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'id'
 
 TIME_ZONE = 'Asia/Jakarta'
 
@@ -149,8 +150,6 @@ if not DEBUG:
 
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -178,7 +177,7 @@ LOGIN_REDIRECT_URL = 'index'
 
 JAZZMIN_SETTINGS = {
     'site_header': "Website Situsari",
-    'site_brand': 'Kiwariku Admin',
+    'site_brand': 'Admin Panel',
     "welcome_sign": "Administrator Panel",
     "copyright": "Kiwariku"
 }

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %} {% include "components/navbar.html" %}{% endblock %}
+
+{% block contents %}
+<!-- Header -->
+<h1 class="text-center text-lg text-white font-semibold my-6">Berita</h1>
+
+<!-- News List Container -->
+<div class="flex justify-center px-4 py-6 max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Large Image on the Left -->
+    <div class="relative lg:col-span-2 lg:max-h-96">
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <!-- Image -->
+        <img
+          src="../asset/contoh.png"
+          alt="Berita Image"
+          class="block w-full h-auto"
+        />
+
+        <!-- Text that follows the image shape -->
+        <p
+          class="absolute bottom-0 left-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full p-2 md:text-xl lg:text-2xl"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Reprehenderit
+        </p>
+      </div>
+    </div>
+
+    <!-- Smaller Images on the Right in Vertical Layout -->
+    <div class="flex flex-col space-y-6">
+      <!-- News Item 1 -->
+      <div class="relative">
+        <img
+          src="../asset/contoh.png"
+          alt="Berita Image"
+          class="block w-full h-auto rounded-lg shadow-lg"
+        />
+        <p
+          class="absolute bottom-0 left-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full p-2"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Reprehenderit
+        </p>
+      </div>
+
+      <!-- News Item 2 -->
+      <div class="relative">
+        <img
+          src="../asset/contoh.png"
+          alt="Berita Image"
+          class="block w-full h-auto rounded-lg shadow-lg"
+        />
+        <p
+          class="absolute bottom-0 left-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full p-2"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Reprehenderit
+        </p>
+      </div>
+
+      <div class="relative">
+        <img
+          src="../asset/contoh.png"
+          alt="Berita Image"
+          class="block w-full h-auto rounded-lg shadow-lg"
+        />
+        <p
+          class="absolute bottom-0 left-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full p-2"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Reprehenderit
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% include "components/footer.html" %}{% endblock %}

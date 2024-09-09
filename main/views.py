@@ -15,7 +15,7 @@ class IndexView(View):
 
 class SignInView(View):
     form_class = LoginForm
-    template_name = 'registration/signin.html'
+    template_name = 'auth/signin.html'
 
     def get(self, request):
         form = self.form_class()
@@ -32,7 +32,7 @@ class SignInView(View):
 
     
 class RegisterView(View):
-    template_name = "registration/signup.html"
+    template_name = "auth/signup.html"
     form_class = RegisterForm
     
     def get(self, request):
@@ -45,3 +45,12 @@ class RegisterView(View):
             form.save()
             return redirect("signin")
         return render(request, self.template_name, context={'form':form})
+    
+def HistoryPage(request):
+    return render(request,"pages/sejarah.html")
+
+def StructurePage(request):
+    return render(request, "pages/struktur.html")
+
+def NewsPage(request):
+    return render(request, "pages/berita.html")

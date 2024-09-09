@@ -1,7 +1,104 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title%} Home | Desa Situsari{% endblock %}
 
-{% block title%} Home {% endblock %}
+{% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents%}
-<h1 class="color-red">test</h1>
+<div
+      id="Home-Page"
+      class="w-full h-full bg-cover min-h-96"
+      style="background-image: url({% static 'img/Background.png' %})"
+    >
+    <div class="text-md inset-0">
+        <h1
+          class="text-white min-h-80 flex items-center justify-center font-semibold md:text-2xl"
+        >
+          Selamat datang di DESA SITUSARI
+        </h1>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center flex-col">
+      <div
+        class="w-full max-w-sm mx-auto overflow-hidden relative md:max-w-md lg:max-w-lg xl:max-w-3xl"
+      >
+        <!-- Slides -->
+        <div
+          id=""
+          class="slides-container flex transition-transform duration-700 mt-10"
+        >
+          <div class="w-full flex-shrink-0">
+            <a href="#">
+              <img src="../asset/contoh.png" class="w-full" />
+              <p
+                class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reprehenderit
+              </p>
+            </a>
+          </div>
+          <div class="w-full flex-shrink-0">
+            <a href="ktp.html">
+              <img src="../asset/contoh.png" class="w-full" />
+              <p
+                class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reprehenderit
+              </p>
+            </a>
+          </div>
+          <div class="w-full flex-shrink-0">
+            <a href="#">
+              <img src="../asset/contoh.png" class="w-full" />
+              <p
+                class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reprehenderit
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Indicators -->
+      </div>
+      <div class="flex justify-center space-x-2 mt-4">
+        <button
+          class="w-3 h-3 rounded-full bg-gray-400"
+          onclick="goToSlide(0)"
+        ></button>
+        <button
+          class="w-3 h-3 rounded-full bg-gray-400"
+          onclick="goToSlide(1)"
+        ></button>
+        <button
+          class="w-3 h-3 rounded-full bg-gray-400"
+          onclick="goToSlide(2)"
+        ></button>
+      </div>
+    </div>
+    <div id="info" class="flex justify-center items-center py-10">
+      <div
+        class="bg-navbar flex flex-col-reverse justify-center items-center shadow-lg py-10 mx-5 gap-10 rounded-lg duration-200 md:flex-row md:px-10 lg:gap-20 lg:p-20"
+      >
+        <p class="text-center text-sm text-white font-semibold px-2 md:text-lg">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br />
+          Quis quas quam nemo, dolorum architecto sequi quod officiis <br />
+          nostrum possimus nisi expedita accusantium quaerat fugiat atque<br />
+          vero, odio perspiciatis ducimus quo?
+        </p>
+
+        <img
+          src="{% static 'img/logo.png'%}"
+          class="w-40 h-40 float-right lg:w-56 lg:h-56 lg:ml-36"
+        />
+    </div>
+</div>
+<script src="{% static 'js/main.js'%}"></script>
+
 {% endblock %}
+
+{% block footer %} {% include "components/footer.html" %} {% endblock %}
