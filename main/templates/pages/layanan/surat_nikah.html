@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %} {% include "components/navbar.html" %} {% endblock %}
+
+{% block contents %}
+<div class="container object-cover">
+    <form class="flex justify-center items-center" method="POST" action="">
+        <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md lg:w-3/6">
+            <h1 class="text-center text-white text-2xl">Surat Nikah</h1>
+            <div class="md:flex">
+                <div class="w-full">
+                    <label for="Username" class="block text-base mb-1 text-white">NIK</label>
+                    <input type="text" id="text"class="rounded-md p-1 w-full md:w-10/12"placeholder="NIK"/>
+                    <label for="Username" class="block text-base mb-1 text-white">Nama Lengkap</label>
+                    <input type="text" id="text"class="rounded-md p-1 w-full md:w-10/12"placeholder="Nama Lengkap"/>
+                    <label for="Username" class="block text-base mb-1 text-white">Tempat Tanggal Lahir</label>
+                    <input type="text" id="text" class="rounded-md p-1 w-full md:w-10/12"placeholder="Tempat Tanggal Lahir"/>
+                    <label for="countries"class="block mb-1 text-white dark:text-white">Jenis Kelamin</label>
+                    <select id="countries" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-g dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="Laki-Laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                    <label for="Username" class="block text-base mb-1 text-white">Alamat</label>
+                    <input type="text" id="text" class="rounded-md p-5 w-full md:w-10/12"placeholder="Alamat"/>
+                </div>
+                <div class="relative">
+                    <div class="flex flex-col">
+                        <h5 class="text-white mb-2">Berkas-berkas yang di butuhkan :</h5>
+                    </div>
+                    <div>
+                        <input id="default-checkbox"type="checkbox"value=""class="mb-2 w-4 h-4 border-gray-50"/>
+                        <label for="default-checkbox"class="ms-2 text-white font-medium">Surat pengatar RT/RW</label>
+                    </div>
+
+                    <div>
+                        <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 border-gray-50 mb-2"/>
+                        <label for="default-checkbox" class="ms-2 text-white font-medium">Fotocopy KTP</label>
+                    </div>
+
+                    <div>
+                        <input id="default-checkbox" type="checkbox"value=""class="w-4 h-4 border-gray-50 mb-2"/>
+                        <label for="default-checkbox"class="ms-2 text-white font-medium">Fotocopy Kartu Keluaga (KK)</label>
+                    </div>
+                    <div class="mt-5 flex justify-center items-center">
+                        <button class="bg-navbar md:bg-nav_hover hover:bg-nav_hover text-white p-2.5 w-44 border-0 rounded-md shadow-md cursor-pointer md:absolute md:bottom-0">Ajukan</button>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %} {% include "components/footer.html" %} {% endblock %}

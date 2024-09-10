@@ -177,7 +177,7 @@ LOGIN_REDIRECT_URL = 'index'
 
 JAZZMIN_SETTINGS = {
     'site_header': "Website Situsari",
-    'site_brand': 'Admin Panel',
+    'site_brand': 'Kiwariku Panel',
     "welcome_sign": "Administrator Panel",
     "copyright": "Kiwariku"
 }

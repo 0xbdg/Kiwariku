@@ -13,7 +13,7 @@
     </div>
 
     <!-- Menu Utama -->
-    <ul id="andi-kontol" class="md:flex md:items-center bg-navbar md:bg-transparent w-full md:w-auto md:py-0 py-4 md:pl-0 pl-7 transition-all ease-in duration-500 md:static absolute top-[-400px] left-0 md:z-auto z-[-1] md:opacity-100 opacity-0">
+    <ul id="tttttt" class="md:flex md:items-center bg-navbar md:bg-transparent w-full md:w-auto md:py-0 py-4 md:pl-0 pl-7 transition-all ease-in duration-500 md:static absolute top-[-400px] left-0 md:z-auto z-[-1] md:opacity-100 opacity-0">
         <!-- Link Menu Beranda -->
         <li class="my-6 md:my-0">
           <a
@@ -35,22 +35,22 @@
             class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out md:group-hover:opacity-100 md:group-hover:visible"
           >
             <li>
-              <a href="ktp.html" class="block px-4 py-2 hover:bg-gray-200"
+              <a href="{% url 'ktp'%}" class="block px-4 py-2 hover:bg-gray-200"
                 >KTP</a
               >
             </li>
             <li>
-              <a href="domisili.html" class="block px-4 py-2 hover:bg-gray-200"
+              <a href="{% url 'domisili'%}" class="block px-4 py-2 hover:bg-gray-200"
                 >Surat Domisili</a
               >
             </li>
             <li>
-              <a href="nikah.html" class="block px-4 py-2 hover:bg-gray-200"
+              <a href="{% url 'nikah'%}" class="block px-4 py-2 hover:bg-gray-200"
                 >Surat Nikah</a
               >
             </li>
             <li>
-              <a href="cerai.html" class="block px-4 py-2 hover:bg-gray-200"
+              <a href="{% url 'cerai'%}" class="block px-4 py-2 hover:bg-gray-200"
                 >Surat Cerai</a
               >
             </li>
@@ -102,8 +102,7 @@
         <!-- Link Masuk -->
         <li class="my-6 md:my-0">
           <a
-            href="login.html"
-            target="_blank"
+            href="{% url 'signin'%}"
             class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200"
             >Masuk</a
           >

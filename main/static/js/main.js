@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function Menu(e) {
-  let list = document.getElementById("andi-kontol");
+  let list = document.getElementById("tttttt");
   e.name === "menu"
     ? ((e.name = "close"),
       list.classList.add("top-[42px]"),

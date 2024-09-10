@@ -54,3 +54,15 @@ def StructurePage(request):
 
 def NewsPage(request):
     return render(request, "pages/berita.html")
+
+def LayananKtpPage(request):
+    return render(request, "pages/layanan/ktp.html")
+
+def LayananDomisiliPage(request):
+    return render(request, "pages/layanan/domisili.html")
+
+def LayananSuratCeraiPage(request):
+    return render(request, "pages/layanan/surat_cerai.html")
+
+def LayananSuratNikahPage(request):
+    return render(request, "pages/layanan/surat_nikah.html")

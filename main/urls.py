@@ -7,5 +7,9 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name="signup"),
     path('sejarah/', HistoryPage, name="sejarah"),
     path('struktur/', StructurePage, name="struktur"),
-    path('berita/',NewsPage, name="berita")
+    path('berita/',NewsPage, name="berita"),
+    path('layanan/ktp/', LayananKtpPage, name="ktp"),
+    path('layanan/domisili/', LayananDomisiliPage, name="domisili"),
+    path('layanan/surat_cerai/', LayananSuratCeraiPage, name="cerai"),
+    path('layanan/surat_nikah/', LayananSuratNikahPage, name="nikah"),
 ]
