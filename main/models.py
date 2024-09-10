@@ -73,7 +73,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     class Meta:
         db_table = 'Account'
 
-class Blog(models.Model):
+class New(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255, null=False, unique=True)
@@ -83,8 +83,10 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
-class Layanan_KTP(models.Model) : pass
+class KTP(models.Model) : pass
 
-class Layanan_Cerai(models.Model) : pass
+class Domicile(models.Model) : pass
 
-class Layanan_Nikah(models.Model) : pass
+class Divorce_Paper(models.Model) : pass
+
+class Marriage_Paper(models.Model) : pass
