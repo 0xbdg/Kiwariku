@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
@@ -27,14 +29,13 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(username, email, password, **extra_fields)
 
-
 class Account(AbstractBaseUser, PermissionsMixin):
-    nik = models.IntegerField(blank=True, null=True)
+    nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
     username = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200, blank=True)
+    last_name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(unique=True)
-    phonenumber = PhoneNumberField()
+    phonenumber = PhoneNumberField(blank=True)
     gender = models.CharField(max_length=1,choices=GENDER, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     date_joined = models.DateTimeField(default=datetime.now)
@@ -66,6 +67,12 @@ class Account(AbstractBaseUser, PermissionsMixin):
         related_name='account_set',
         related_query_name='account',
     )
+
+    def clean(self):
+        # Validasi tambahan jika diperlukan
+        if not self.nik.isdigit():
+            raise ValidationError('NIK harus terdiri dari angka saja.')
+        super().clean()
 
     def __str__(self):
        return self.username

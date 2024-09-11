@@ -28,7 +28,7 @@ class SignInView(View):
             user = self.form_class.get_user()
             login(request, user)
             return redirect("index")
-        return render(request, self.template_name, context={"forms":form})
+        return render(request, self.template_name, context={"form":form})
 
     
 class RegisterView(View):

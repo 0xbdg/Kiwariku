@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contents %}
+<form
+      class="bg-navbar mt-5 py-6 px-4 rounded-md w-full max-w-sm mx-auto shadow-lg"
+    >
+      <!-- Profile Image -->
+      <div class="flex justify-center mb-6">
+        <img
+          src="../asset/profil.png"
+          class="w-24 h-24 rounded-full"
+          alt="Profile Image"
+        />
+      </div>
+
+      <!-- Form Fields -->
+      <div class="text-white space-y-4">
+        <div>
+          <h1 class="font-bold">NIK :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+        <div>
+          <h1 class="font-bold">Nama Lengkap :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+        <div>
+          <h1 class="font-bold">Alamat :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+        <div>
+          <h1 class="font-bold">Tempat Tanggal Lahir :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+        <div>
+          <h1 class="font-bold">Jenis Kelamin :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+        <div>
+          <h1 class="font-bold">Email :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+        <div>
+          <h1 class="font-bold">No Telepon :</h1>
+          <p class="text-sm text-gray-300">Silahkan di isi</p>
+          <p class="border-b-2 border-gray-500"></p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-between mt-6">
+        <button
+          class="bg-nav_hover text-white px-4 py-2 w-28 rounded-md shadow-md hover:bg-button_hover"
+        >
+          Keluar
+        </button>
+        <button
+          class="bg-nav_hover text-white px-4 py-2 w-28 rounded-md shadow-md hover:bg-button_hover"
+        >
+          Edit
+        </button>
+      </div>
+</form>
+{% endblock %}
