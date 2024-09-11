@@ -823,6 +823,10 @@ select {
   top: -400px;
 }
 
+.top-\[42px\] {
+  top: 42px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1349,6 +1353,10 @@ select {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .shadow {

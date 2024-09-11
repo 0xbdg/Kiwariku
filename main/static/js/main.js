@@ -45,45 +45,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Ambil semua elemen menu yang memiliki submenu
-  const menuItems = document.querySelectorAll(".group");
-
+  const menuItems = document.querySelectorAll(".submenu-toggle");
+  
   menuItems.forEach((menuItem) => {
-    const submenu = menuItem.querySelector(".submenu");
+      const submenu = menuItem.nextElementSibling; // Get the submenu associated with this menu item
 
-    // Tampilkan submenu saat menu dihover
-    menuItem.addEventListener("mouseenter", () => {
-      submenu.classList.remove("opacity-0", "invisible");
-      submenu.classList.add("opacity-100", "visible");
-      submenu.style.zIndex = "1000"; // Set higher z-index when visible
-    });
+      // Toggle submenu visibility on click
+      menuItem.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent default anchor behavior
 
-    // Tetap tampilkan submenu saat dihover
-    submenu.addEventListener("mouseenter", () => {
-      submenu.classList.remove("opacity-0", "invisible");
-      submenu.classList.add("opacity-100", "visible");
-      submenu.style.zIndex = "1000"; // Set higher z-index when visible
-    });
+          const isVisible = submenu.classList.contains("opacity-100");
+          
+          // Hide all other submenus
+          document.querySelectorAll(".submenu").forEach((sub) => {
+              if (sub !== submenu) {
+                  sub.classList.remove("opacity-100", "visible");
+                  sub.classList.add("opacity-0", "invisible");
+              }
+          });
 
-    // Sembunyikan submenu hanya saat mouse keluar dari kedua elemen (menu dan submenu)
-    menuItem.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        if (!submenu.matches(":hover")) {
-          submenu.classList.remove("opacity-100", "visible");
-          submenu.classList.add("opacity-0", "invisible");
-          submenu.style.zIndex = "1"; // Reset z-index when hidden
-        }
-      }, 200);
-    });
+          // Toggle visibility for the clicked submenu
+          if (isVisible) {
+              submenu.classList.remove("opacity-100", "visible");
+              submenu.classList.add("opacity-0", "invisible");
+          } else {
+              submenu.classList.remove("opacity-0", "invisible");
+              submenu.classList.add("opacity-100", "visible");
+              submenu.style.zIndex = "1000"; // Set higher z-index when visible
+          }
+      });
 
-    submenu.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        if (!menuItem.matches(":hover")) {
-          submenu.classList.remove("opacity-100", "visible");
-          submenu.classList.add("opacity-0", "invisible");
-          submenu.style.zIndex = "1"; // Reset z-index when hidden
-        }
-      }, 200);
-    });
+      // Keep submenu open if mouse is over it
+      submenu.addEventListener("mouseenter", () => {
+          submenu.classList.remove("opacity-0", "invisible");
+          submenu.classList.add("opacity-100", "visible");
+          submenu.style.zIndex = "1000"; // Set higher z-index when visible
+      });
+
+      // Hide submenu when mouse leaves both menu and submenu
+      menuItem.addEventListener("mouseleave", () => {
+          setTimeout(() => {
+              if (!submenu.matches(":hover")) {
+                  submenu.classList.remove("opacity-100", "visible");
+                  submenu.classList.add("opacity-0", "invisible");
+                  submenu.style.zIndex = "1"; // Reset z-index when hidden
+              }
+          }, 200);
+      });
+
+      submenu.addEventListener("mouseleave", () => {
+          setTimeout(() => {
+              if (!menuItem.matches(":hover")) {
+                  submenu.classList.remove("opacity-100", "visible");
+                  submenu.classList.add("opacity-0", "invisible");
+                  submenu.style.zIndex = "1"; // Reset z-index when hidden
+              }
+          }, 200);
+      });
   });
 });
 
@@ -91,13 +109,17 @@ function Menu(e) {
   let list = document.getElementById("tttttt");
   e.name === "menu"
     ? ((e.name = "close"),
+    list.classList.remove("top-[-400px]"),
       list.classList.add("top-[42px]"),
       list.classList.add("opacity-100"),
-      list.classList.add("z-[1]"))
+      list.classList.add("z-[1]"),
+      list.classList.remove("opacity-0"))
     : ((e.name = "menu"),
+    list.classList.add("top-[-400px]"),
       list.classList.remove("top-[42px]"),
       list.classList.remove("opacity-100"),
-      list.classList.remove("z-[1]"));
+      list.classList.remove("z-[1]"),
+      list.classList.remove("opacity-0"));
 }
 
 document.addEventListener("DOMContentLoaded", function () {

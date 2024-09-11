@@ -83,10 +83,14 @@ class New(models.Model):
     def __str__(self):
         return self.title
 
-class KTP(models.Model) : pass
+class KTP(models.Model):
+    nik = models.CharField(max_length=16)
+    full_name = models.CharField(max_length=255)
+    birth_date = models.DateField()
+    
 
-class Domicile(models.Model) : pass
+class Domicile(models.Model): pass
 
-class Divorce_Paper(models.Model) : pass
+class Divorce_Paper(models.Model): pass
 
-class Marriage_Paper(models.Model) : pass
+class Marriage_Paper(models.Model): pass

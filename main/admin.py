@@ -29,4 +29,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
-admin.site.register(Blog, BlogAdmin)
+admin.site.register(New, BlogAdmin)

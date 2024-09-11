@@ -23,3 +23,5 @@ class LoginForm(AuthenticationForm):
     fields = ["username","password"]
 
 class ProfileForm(): pass
+
+class KTPForm(): pass
