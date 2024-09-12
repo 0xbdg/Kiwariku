@@ -8,6 +8,7 @@ urlpatterns = [
     path('sejarah/', HistoryPage, name="sejarah"),
     path('struktur/', StructurePage, name="struktur"),
     path('berita/',NewsPage, name="berita"),
+    path('account/profile', ProfilePage, name="profil"),
     path('layanan/ktp/', LayananKtpPage, name="ktp"),
     path('layanan/domisili/', LayananDomisiliPage, name="domisili"),
     path('layanan/surat_cerai/', LayananSuratCeraiPage, name="cerai"),

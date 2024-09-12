@@ -46,6 +46,9 @@ class RegisterView(View):
             return redirect("signin")
         return render(request, self.template_name, context={'form':form})
     
+def ProfilePage(request):
+    return render(request,"pages/profil.html")
+    
 def HistoryPage(request):
     return render(request,"pages/sejarah.html")
 

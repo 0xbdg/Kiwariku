@@ -29,7 +29,7 @@ class ProfileForm(): pass
 class KTPForm(forms.ModelForm):
   nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12','maxlength':'16'}))
   full_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12'}))
-  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date'}))
+  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-1 w-full md:w-10/12'}))
   gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5'}))
   address = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-5 w-full md:w-10/12'}))
   surat_pengantar = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))

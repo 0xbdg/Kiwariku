@@ -4,7 +4,7 @@
   <div class="flex justify-between items-center py-2 px-4">
       <span class="flex items-center text-white text-md md:text-lg lg:text-2xl">
         <img class="h-10 inline" src="{%static 'img/logo.png'%}" alt="Logo" />
-        <span class="ml-2">Selamat Datang!</span>
+        <span class="ml-2">Desa Situsari</span>
       </span>
       <!-- Icon Hamburger untuk Ponsel -->
       <span class="text-3xl cursor-pointer md:hidden block text-white" onclick="Menu(this)">
@@ -84,6 +84,15 @@
       </li>
 
       <!-- Link Masuk -->
+      {% if user.is_authenticated %}
+      <li class="my-6 md:my-0">
+        <a
+          href="{% url 'profil'%}"
+          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200"
+          >Profile</a
+        >
+      </li>
+      {% else %}
       <li class="my-6 md:my-0">
         <a
           href="{% url 'signin'%}"
@@ -91,5 +100,6 @@
           >Masuk</a
         >
       </li>
+      {% endif %}
   </ul>
 </nav>
