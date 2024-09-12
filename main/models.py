@@ -30,6 +30,7 @@ class UserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 class Account(AbstractBaseUser, PermissionsMixin):
+    photo = models.ImageField(upload_to="profile")
     nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=200, blank=True)
@@ -91,9 +92,14 @@ class New(models.Model):
         return self.title
 
 class KTP(models.Model):
-    nik = models.CharField(max_length=16)
+    nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
     full_name = models.CharField(max_length=255)
-    birth_date = models.DateField()
+    birth_date = models.DateField(blank=False)
+    gender = models.CharField(max_length=20,choices=GENDER, blank=False)
+    address = models.CharField(max_length=255, blank=False)
+    surat_pengantar = models.BooleanField(default=False)
+    fotocopy_ktp = models.BooleanField(default=False)
+    fotocopy_kk = models.BooleanField(default=False)
     
 
 class Domicile(models.Model): pass

@@ -56,7 +56,15 @@ def NewsPage(request):
     return render(request, "pages/berita.html")
 
 def LayananKtpPage(request):
-    return render(request, "pages/layanan/ktp.html")
+
+    if request.method == "POST":
+        form = KTPForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+    else:
+        form = KTPForm()
+    return render(request, "pages/layanan/ktp.html", context={'form':form})
 
 def LayananDomisiliPage(request):
     return render(request, "pages/layanan/domisili.html")

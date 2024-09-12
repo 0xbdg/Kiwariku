@@ -11,7 +11,7 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['username', 'email','phonenumber','gender', 'is_staff', 'is_superuser', 'date_joined']
     fieldsets = (
         ('Account', {'fields': ('email', 'username', 'password')}),
-        ('Personal Info', {'fields': ('nik','first_name', 'last_name', 'phonenumber', 'gender', 'birth_date')}),
+        ('Personal Info', {'fields': ("photo",'nik','first_name', 'last_name', 'phonenumber', 'gender', 'birth_date')}),
         ('Permissions', {'fields': ( 'is_staff', 'is_superuser','is_active')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
@@ -27,6 +27,10 @@ class CustomUserAdmin(UserAdmin):
 class BlogAdmin(admin.ModelAdmin):
     list_display = ['thumbnail', 'title','content', 'upload_date']
 
+class KTPAdmin(admin.ModelAdmin):
+    list_display = ["nik","full_name","birth_date", "gender", "address", "surat_pengantar","fotocopy_ktp", "fotocopy_kk"]
+
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
 admin.site.register(New, BlogAdmin)
+admin.site.register(KTP, KTPAdmin)

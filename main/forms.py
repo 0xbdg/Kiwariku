@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import *
-from django.forms.widgets import TextInput, EmailInput, PasswordInput, NumberInput, DateInput
+from django.forms.widgets import TextInput, EmailInput, PasswordInput, CheckboxInput, DateInput
 from phonenumber_field.formfields import PhoneNumberField
 
 from .models import *
@@ -26,4 +26,16 @@ class LoginForm(AuthenticationForm):
 
 class ProfileForm(): pass
 
-class KTPForm(): pass
+class KTPForm(forms.ModelForm):
+  nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12','maxlength':'16'}))
+  full_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12'}))
+  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date'}))
+  gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5'}))
+  address = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-5 w-full md:w-10/12'}))
+  surat_pengantar = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))
+  fotocopy_ktp = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))
+  fotocopy_kk = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))
+
+  class Meta:
+     model = KTP
+     fields = ['nik', 'full_name', 'birth_date', 'gender', 'address', 'surat_pengantar', 'fotocopy_ktp', 'fotocopy_kk']

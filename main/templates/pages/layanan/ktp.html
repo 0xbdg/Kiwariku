@@ -5,46 +5,41 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<!-- Form KTP -->
 <div class="container">
-    <form class="flex justify-center items-center" method="POST" action="">
+    <form class="flex justify-center items-center" method="POST" action="{% url 'ktp'%}">
         {% csrf_token %}
         <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md lg:w-3/6">
             <h1 class="text-center text-white text-2xl">KTP</h1>
             <div class="md:flex">
-                <!-- Form Input -->
                 <div class="w-full">
                     <label for="nik" class="block text-base mb-1 text-white">NIK</label>
-                    <input type="text" id="nik" class="rounded-md p-1 w-full md:w-10/12" placeholder="NIK"/>
+                    {{ form.nik }}
                     <label for="name" class="block text-base mb-1 text-white">Nama Lengkap</label>
-                    <input type="text"id="nama" class="rounded-md p-1 w-full md:w-10/12" placeholder="Nama Lengkap"/>
+                    {{form.full_name}}
                     <label for="birthdate" class="block text-base mb-1 text-white">Tanggal Lahir</label>
-                    <input type="text" id="ttl" class="rounded-md p-1 w-full md:w-10/12"placeholder="Tempat Tanggal Lahir"/>
+                    {{form.birth_date}}
                     <label for="jenis_kelamin" class="block mb-1 text-white">Jenis Kelamin</label>
-                    <select id="jenis_kelamin" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5">
-                        <option value="Laki-Laki">Laki-Laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
+                    {{form.gender}}
                     <label for="alamat" class="block text-base mb-1 text-white">Alamat</label>
-                    <input type="text" id="alamat" class="rounded-md p-5 w-full md:w-10/12" placeholder="Alamat"/>
+                    {{ form.address}}
                 </div>
 
-                <!-- Daftar Persyaratan -->
                 <div class="relative">
                     <h5 class="text-white mb-2">Berkas-berkas yang dibutuhkan:</h5>
                     <div class="mb-2">
-                        <input id="surat-rt-rw"type="checkbox"class="w-4 h-4 border-gray-50"/><label for="surat-rt-rw" class="ms-2 text-white font-medium">Surat pengantar RT/RW</label>
+                        {{ form.surat_pengantar}}
+                        <label for="surat-rt-rw" class="ms-2 text-white font-medium">Surat pengantar RT/RW</label>
                     </div>
                     <div class="mb-2">
-                        <input id="fotocopy-ktp"type="checkbox"class="w-4 h-4 border-gray-50"/>
+                        {{form.fotocopy_ktp}}
                         <label for="fotocopy-ktp" class="ms-2 text-white font-medium">Fotocopy KTP</label>
                     </div>
                     <div class="mb-2">
-                        <input id="fotocopy-kk" type="checkbox" class="w-4 h-4 border-gray-50"/>
+                        {{form.fotocopy_kk}}
                         <label for="fotocopy-kk" class="ms-2 text-white font-medium">Fotocopy Kartu Keluarga (KK)</label>
                     </div>
                     <div class="mt-5 flex justify-center items-center">
-                        <button class="bg-navbar md:bg-nav_hover hover:bg-button_hover text-white p-2.5 w-44 border-0 rounded-md shadow-md cursor-pointer">Ajukan</button>
+                        <button type="submit" class="bg-navbar md:bg-nav_hover hover:bg-button_hover text-white p-2.5 w-44 border-0 rounded-md shadow-md cursor-pointer">Ajukan</button>
                     </div>
                 </div>
             </div>
