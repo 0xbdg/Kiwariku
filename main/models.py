@@ -31,10 +31,10 @@ class UserManager(BaseUserManager):
 
 class Account(AbstractBaseUser, PermissionsMixin):
     photo = models.ImageField(upload_to="profile")
-    nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    nik = models.CharField(max_length=16,unique=True,blank=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
     username = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=200, blank=True)
-    last_name = models.CharField(max_length=200, blank=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
     phonenumber = PhoneNumberField(blank=True)
     gender = models.CharField(max_length=1,choices=GENDER, blank=True)
