@@ -15,7 +15,6 @@ GENDER = (
     ("F", "Perempuan")
 )
 
-
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
         email = self.normalize_email(email)
@@ -30,7 +29,7 @@ class UserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 class Account(AbstractBaseUser, PermissionsMixin):
-    photo = models.ImageField(upload_to="profile")
+    photo = models.ImageField(upload_to="profile", blank=True)
     nik = models.CharField(max_length=16,unique=True,blank=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=200)

@@ -2,70 +2,102 @@
 
 {% load static %}
 
-{% block contents %}
-<form
-      class="bg-navbar mt-5 py-6 px-4 rounded-md w-full max-w-sm mx-auto shadow-lg"
-    >
-      <!-- Profile Image -->
-      <div class="flex justify-center mb-6">
-        <img
-          src="../asset/profil.png"
-          class="w-24 h-24 rounded-full"
-          alt="Profile Image"
-        />
-      </div>
-
-      <!-- Form Fields -->
-      <div class="text-white space-y-4">
-        <div>
-          <h1 class="font-bold">NIK :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-        <div>
-          <h1 class="font-bold">Nama Lengkap :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-        <div>
-          <h1 class="font-bold">Alamat :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-        <div>
-          <h1 class="font-bold">Tempat Tanggal Lahir :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-        <div>
-          <h1 class="font-bold">Jenis Kelamin :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-        <div>
-          <h1 class="font-bold">Email :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-        <div>
-          <h1 class="font-bold">No Telepon :</h1>
-          <p class="text-sm text-gray-300">Silahkan di isi</p>
-          <p class="border-b-2 border-gray-500"></p>
-        </div>
-      </div>
-
-      <!-- Buttons -->
-      <div class="flex justify-between mt-6">
-        <button
-          class="bg-nav_hover text-white px-4 py-2 w-28 rounded-md shadow-md hover:bg-button_hover"
-        >
-          Keluar
-        </button>
-        <button
-          class="bg-nav_hover text-white px-4 py-2 w-28 rounded-md shadow-md hover:bg-button_hover"
-        >
-          Edit
-        </button>
-      </div>
-</form>
+{% block bootstrap %}
+<link rel="stylesheet" href="{% static 'css/styles.css'%}">
 {% endblock %}
+
+{% block navbar %} {% include "components/navbar.html" %}{% endblock %}
+
+{% block contents %}
+<div class="form-container">
+  <form class="profile-form">
+    <h1 class="form-header">Profil</h1>
+
+    <div class="upload-section">
+      <label for="input-file" id="drop-area" style="cursor: pointer">
+        <!-- Use onclick to open file dialog -->
+        <input type="file" accept="image/*" id="input-file" hidden />
+        <div id="img-view">
+          <!-- Add CSS class to make image round -->
+          <img
+            src="{% static 'img/profil.png' %}"
+            alt=""
+            id="uploaded-image"
+            class="w-24 h-24 object-cover rounded-full"
+          />
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <p>NIK:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="form-group">
+      <p>Nama Lengkap:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="form-group">
+      <p>Alamat:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="form-group">
+      <p>Tempat Tanggal Lahir:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="form-group">
+      <p>Jenis Kelamin:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="form-group">
+      <p>Email:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="form-group">
+      <p>No Telepon:</p>
+      <input
+        class="input-field"
+        contenteditable="true"
+        placeholder="Silahkan di isi"
+      >
+    </div>
+
+    <div class="button-container">
+      <button type="button" class="button cursor-pointer">
+        Simpan Perubahan
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block footer %} {% include "components/footer.html" %}{% endblock %}
