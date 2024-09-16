@@ -5,22 +5,38 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<div class="container mx-auto p-6">
-  <!-- Card berita -->
-  <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-      <!-- Gambar berita -->
-      <img class="w-full h-48 object-cover" src="https://picsum.photos/200/300" alt="Gambar Berita">
+<div class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="https://via.placeholder.com/500" alt="Gambar Berita" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-xl font-semibold mb-2">Judul Berita 1</h2>
+                <p class="text-gray-700 mb-4">Deskripsi singkat mengenai berita ini. Informasi penting yang menarik perhatian pembaca.</p>
+                <a href="#" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
+            </div>
+        </div>
 
-      <!-- Konten berita -->
-      <div class="p-6">
-          <h1 class="text-3xl font-bold mb-2">Judul Berita yang Sangat Menarik</h1>
-          <p class="text-gray-600 mb-4">Tanggal: 13 September 2024</p>
-          <p class="text-gray-800 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </p>
-          <a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold">Baca selengkapnya</a>
-      </div>
-  </div>
+        <!-- Card 2 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="https://via.placeholder.com/500" alt="Gambar Berita" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-xl font-semibold mb-2">Judul Berita 2</h2>
+                <p class="text-gray-700 mb-4">Deskripsi singkat mengenai berita ini. Informasi penting yang menarik perhatian pembaca.</p>
+                <a href="#" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="https://via.placeholder.com/500" alt="Gambar Berita" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-xl font-semibold mb-2">Judul Berita 3</h2>
+                <p class="text-gray-700 mb-4">Deskripsi singkat mengenai berita ini. Informasi penting yang menarik perhatian pembaca.</p>
+                <a href="#" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

@@ -29,8 +29,7 @@ class UserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 class Account(AbstractBaseUser, PermissionsMixin):
-    photo = models.ImageField(upload_to="profile", blank=True)
-    nik = models.CharField(max_length=16,unique=True,blank=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    photo = models.ImageField(upload_to="profile/", blank=True)
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
@@ -68,17 +67,8 @@ class Account(AbstractBaseUser, PermissionsMixin):
         related_query_name='account',
     )
 
-    def clean(self):
-        # Validasi tambahan jika diperlukan
-        if not self.nik.isdigit():
-            raise ValidationError('NIK harus terdiri dari angka saja.')
-        super().clean()
-
     def __str__(self):
        return self.username
-
-    class Meta:
-        db_table = 'Account'
 
 class New(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)

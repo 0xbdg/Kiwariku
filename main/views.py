@@ -25,7 +25,7 @@ class SignInView(View):
         form = self.form_class(data=request.POST)
 
         if form.is_valid():
-            user = self.form_class.get_user()
+            user = form.get_user()
             login(request, user)
             return redirect("index")
         return render(request, self.template_name, context={"form":form})
@@ -40,7 +40,7 @@ class RegisterView(View):
         return render(request, self.template_name, context={'form':form})
     
     def post(self,request):
-        form = self.form_class(request.POST or None)
+        form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
             return redirect("signin")
