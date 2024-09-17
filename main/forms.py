@@ -43,10 +43,10 @@ class KTPForm(forms.ModelForm):
   birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
   gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full'}))
   address = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
-  surat_pengantar = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  surat_pengantar_rtrw = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
   fotocopy_ktp = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
   fotocopy_kk = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
 
   class Meta:
      model = KTP
-     fields = ['nik', 'full_name', 'birth_date', 'gender', 'address', 'surat_pengantar', 'fotocopy_ktp', 'fotocopy_kk']
+     fields = ['nik', 'full_name', 'birth_date', 'gender', 'address', 'surat_pengantar_rtrw', 'fotocopy_ktp', 'fotocopy_kk']

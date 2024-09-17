@@ -6,8 +6,8 @@
 
 {% block contents %}
 <!-- Form KTP -->
-<div class="container mx-auto p-4" method="post" action="{% url 'ktp'%}">
-    <form class="flex justify-center items-center">
+<div class="container mx-auto p-4">
+    <form class="flex justify-center items-center" method="post" action="{% url 'ktp'%}">
         {% csrf_token %}
       <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md w-full lg:w-3/6">
         <h1 class="text-center text-white text-2xl mb-6">Pengajuan KTP</h1>
@@ -53,7 +53,7 @@
         <div class="mt-8">
           <h5 class="text-white mb-4">Berkas-berkas yang dibutuhkan:</h5>
           <div class="flex items-center mb-2">
-            {{ form.surat_pengantar }}
+            {{ form.surat_pengantar_rtrw }}
             <label for="suratRT_RW" class="ml-2 text-white"
               >Surat pengantar RT/RW</label
             >

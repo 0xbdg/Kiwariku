@@ -86,12 +86,25 @@ class KTP(models.Model):
     birth_date = models.DateField(blank=False)
     gender = models.CharField(max_length=20,choices=GENDER, blank=False)
     address = models.CharField(max_length=255, blank=False)
-    surat_pengantar = models.BooleanField(default=False)
+    surat_pengantar_rtrw = models.BooleanField(default=False)
     fotocopy_ktp = models.BooleanField(default=False)
     fotocopy_kk = models.BooleanField(default=False)
     
 
-class Domicile(models.Model): pass
+class Domicile(models.Model):
+    nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    full_name = models.CharField(max_length=255)
+    birth_date = models.DateField(blank=False)
+    gender = models.CharField(max_length=20,choices=GENDER, blank=False)
+    address = models.CharField(max_length=255, blank=False)
+    alamat_domisili = models.CharField(max_length=255, blank=False)
+    tanggal_mulai = models.DateField(blank=False)
+    surat_pengantar_rtrw = models.BooleanField(default=False)
+    fotokopi_ktp = models.BooleanField(default=False)
+    bukti_kepemilikan = models.BooleanField(default=False)
+    surat_keterangan_rtrw = models.BooleanField(default=False)
+    surat_belum_nikah = models.BooleanField(default=False)
+    surat_izin_orangtua = models.BooleanField(default=False)
 
 class Divorce_Paper(models.Model): pass
 

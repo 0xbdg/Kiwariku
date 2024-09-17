@@ -25,10 +25,10 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ['thumbnail', 'title','description','content']
+    list_display = ['title','thumbnail','description','content']
 
 class KTPAdmin(admin.ModelAdmin):
-    list_display = ["nik","full_name","birth_date", "gender", "address", "surat_pengantar","fotocopy_ktp", "fotocopy_kk"]
+    list_display = ["nik","full_name","birth_date", "gender", "address", "surat_pengantar_rtrw","fotocopy_ktp", "fotocopy_kk"]
 
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
