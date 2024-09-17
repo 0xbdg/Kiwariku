@@ -32,5 +32,5 @@ class KTPAdmin(admin.ModelAdmin):
 
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
-admin.site.register(New, BlogAdmin)
+admin.site.register(Blog, BlogAdmin)
 admin.site.register(KTP, KTPAdmin)

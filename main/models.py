@@ -69,7 +69,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
        return self.username
 
-class New(models.Model):
+class Blog(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255, null=False, unique=True)
