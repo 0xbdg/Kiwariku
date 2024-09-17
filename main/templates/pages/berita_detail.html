@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %} {% include "components/navbar.html" %}{% endblock %}
+
+{% block contents %}
+<!-- Blog Detail -->
+<main class="container mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
+    <article>
+        <!-- Blog Title -->
+        <h2 class="text-3xl font-bold mb-2">Judul Blog Post</h2>
+        
+        <!-- Blog Meta -->
+        <div class="text-gray-600 text-sm mb-4">
+            <span>Diposting pada: 17 September 2024</span> •
+            <span>Oleh: Penulis Blog</span> •
+            <span>Kategori: Teknologi</span>
+        </div>
+
+        <!-- Blog Content -->
+        <div class="prose lg:prose-xl">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id nisl non nisi faucibus cursus. Integer vestibulum odio non nulla varius, at commodo odio blandit. Sed tincidunt interdum massa ut auctor. Curabitur maximus, risus nec convallis viverra, risus lorem facilisis turpis, ac dignissim nisi sapien vel risus.</p>
+            
+            <!-- Image with Caption -->
+            <figure class="mb-6">
+                <img src="https://via.placeholder.com/800x400" alt="Deskripsi gambar" class="w-full rounded-lg shadow-md">
+                <figcaption class="mt-2 text-center text-gray-600">Gambar ini menunjukkan contoh penggunaan Tailwind CSS dalam desain blog.</figcaption>
+            </figure>
+            
+            <p>Vivamus ac orci nec erat tincidunt auctor. Donec accumsan nulla ac turpis aliquet, at elementum justo tempus. Nullam varius turpis a nibh dictum, in dapibus odio vestibulum. Sed quis eros nec erat cursus aliquet nec eu risus. In nec urna et lorem pretium efficitur.</p>
+        </div>
+    </article>
+</main>
+{% endblock %}
+
+{% block footer %} {% include "components/footer.html" %}{% endblock %}

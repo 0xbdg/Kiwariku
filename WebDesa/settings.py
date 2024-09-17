@@ -172,6 +172,8 @@ PHONENUMBER_DEFAULT_REGION = 'ID'
 #auth
 AUTH_USER_MODEL = 'main.Account'
 LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'signin'
+LOGOUT_REDIRECT_URL = "signin"
 
 #jazzmin
 
@@ -191,3 +193,12 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+#email 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

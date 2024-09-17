@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.views.generic import TemplateView, FormView, View
 from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from .forms import *
 
 # Create your views here.
@@ -45,9 +46,33 @@ class RegisterView(View):
             form.save()
             return redirect("signin")
         return render(request, self.template_name, context={'form':form})
-    
+
+@login_required
+def signout(request):
+    logout(request)
+    return redirect("login")
+
+@login_required
 def ProfilePage(request):
-    return render(request,"pages/profil.html")
+    if request.method == 'POST':
+        form = ProfileForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+    else:
+        form = ProfileForm(instance=request.user)
+    return render(request,"pages/profil.html", context={'form':form})
+
+@login_required
+def ChangePasswordPage(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request, 'auth/change_password.html', context={'form':form})
     
 def HistoryPage(request):
     return render(request,"pages/sejarah.html")
@@ -58,6 +83,7 @@ def StructurePage(request):
 def NewsPage(request):
     return render(request, "pages/berita.html")
 
+@login_required
 def LayananKtpPage(request):
 
     if request.method == "POST":
@@ -69,11 +95,14 @@ def LayananKtpPage(request):
         form = KTPForm()
     return render(request, "pages/layanan/ktp.html", context={'form':form})
 
+@login_required
 def LayananDomisiliPage(request):
     return render(request, "pages/layanan/domisili.html")
 
+@login_required
 def LayananSuratCeraiPage(request):
     return render(request, "pages/layanan/surat_cerai.html")
 
+@login_required
 def LayananSuratNikahPage(request):
     return render(request, "pages/layanan/surat_nikah.html")

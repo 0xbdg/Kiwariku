@@ -24,7 +24,18 @@ class LoginForm(AuthenticationForm):
     model = Account
     fields = ["username","password"]
 
-class ProfileForm(): pass
+class ProfileForm(forms.ModelForm):
+  username = forms.CharField(required=True, widget=TextInput(attrs={'class':'input-field'}))
+  first_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'input-field'}))
+  last_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'input-field'}))
+  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'input-field'}))
+  gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'input-field'}))
+  email = forms.EmailField(required=True,widget=EmailInput(attrs={'class':'input-field'}))
+  phonenumber = PhoneNumberField()
+
+  class Meta:
+     model = Account
+     fields = ['username', 'first_name', 'last_name', 'birth_date', 'gender', 'email', 'phonenumber']
 
 class KTPForm(forms.ModelForm):
   nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12','maxlength':'16'}))
