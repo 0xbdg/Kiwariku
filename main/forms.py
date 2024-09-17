@@ -38,14 +38,14 @@ class ProfileForm(forms.ModelForm):
      fields = ['username', 'first_name', 'last_name', 'birth_date', 'gender', 'email', 'phonenumber']
 
 class KTPForm(forms.ModelForm):
-  nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12','maxlength':'16'}))
-  full_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-1 w-full md:w-10/12'}))
-  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-1 w-full md:w-10/12'}))
-  gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5'}))
-  address = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-5 w-full md:w-10/12'}))
-  surat_pengantar = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))
-  fotocopy_ktp = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))
-  fotocopy_kk = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 border-gray-50'}))
+  nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full','maxlength':'16'}))
+  full_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+  gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full'}))
+  address = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  surat_pengantar = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  fotocopy_ktp = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  fotocopy_kk = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
 
   class Meta:
      model = KTP

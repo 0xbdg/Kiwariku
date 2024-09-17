@@ -5,64 +5,226 @@
 {% block navbar %} {% include "components/navbar.html" %} {% endblock %}
 
 {% block contents %}
-<div class="container object-cover">
-    <form class="flex justify-center items-center" method="POST" action="">
-        {% csrf_token %}
-        <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md lg:w-3/6">
-            <h1 class="text-center text-white text-2xl">Surat Cerai</h1>
-            <div class="md:flex">
-                <div class="w-full">
-                    <label for="Username" class="block text-base mb-1 text-white">NIK</label>
-                    <input type="text"id="text"class="rounded-md p-1 w-full md:w-10/12"placeholder="NIK"/>
-                    <label for="Username" class="block text-base mb-1 text-white">Nama Lengkap</label>
-                    <input type="text" id="text" class="rounded-md p-1 w-full md:w-10/12"placeholder="Nama Lengkap"/>
-                    <label for="Username" class="block text-base mb-1 text-white">Tempat Tanggal Lahir</label>
-                    <input type="text" id="text" class="rounded-md p-1 w-full md:w-10/12"placeholder="Tempat Tanggal Lahir"/>
-                    <label for="countries" class="block mb-1 text-white dark:text-white">Jenis Kelamin</label>
-                    <select id="countries" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-g dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="Laki-Laki">Laki-Laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
-                    <label for="Username" class="block text-base mb-1 text-white">Alamat</label>
-                    <input type="text" id="text" class="rounded-md p-5 w-full md:w-10/12"placeholder="Alamat"/>
-                </div>
-                <div class="relative">
-                    <div class="flex flex-col">
-                        <h5 class="text-white mb-2">Berkas-berkas yang di <br />butuhkan :</h5>
-                    </div>
-                    <div>
-                        <input id="default-checkbox"type="checkbox"value=""class="mb-2 w-4 h-4 border-gray-50"/>
-                        <label for="default-checkbox" class="ms-2 text-white font-medium">Surat nikah asli</label>
-                    </div>
+<div class="container mx-auto p-4">
+    <form class="flex justify-center items-center">
+      <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md w-full lg:w-3/6">
+        <h1 class="text-center text-white text-2xl mb-6">Surat Cerai</h1>
+        <div class="flex flex-col md:flex-row gap-8">
+          <!-- Data Anda -->
+          <div class="w-full">
+            <p class="text-white text-xl font-semibold mb-5">Data Anda:</p>
 
-                    <div>
-                        <input id="default-checkbox"type="checkbox"value=""class="w-4 h-4 border-gray-50 mb-2"/>
-                        <label for="default-checkbox" class="ms-2 text-white font-medium">Salinan Surat Nikah sebanyak 2 lembar yang telah dilegalisir dan bermaterai</label>
-                    </div>
+            <label for="nik" class="block text-base mb-1 text-white"
+              >NIK</label
+            >
+            <input
+              type="text"
+              id="nik"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="NIK"
+            />
 
-                    <div>
-                        <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 border-gray-50 mb-2"/>
-                        <label for="default-checkbox"class="ms-2 text-white font-medium">Fotocopy Kartu Keluaga (KK)</label>
-                    </div>
+            <label for="namaLengkap" class="block text-base mb-1 text-white"
+              >Nama Lengkap</label
+            >
+            <input
+              type="text"
+              id="namaLengkap"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="Nama Lengkap"
+            />
 
-                    <div>
-                        <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 border-gray-50 mb-2"/>
-                        <label for="default-checkbox" class="ms-2 text-white font-medium">Fotocopy KTP</label>
-                    </div>
+            <label
+              for="tempatTanggalLahir"
+              class="block text-base mb-1 text-white"
+              >Tempat Tanggal Lahir</label
+            >
+            <input
+              type="text"
+              id="tempatTanggalLahir"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="Tempat Tanggal Lahir"
+            />
 
-                    <div>
-                        <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 border-gray-50 mb-2"/>
-                        <label for="default-checkbox" class="ms-2 text-white font-medium">Fotocopy Akta Kelahiran Anak (Jika memiliki anak)</label>
-                    </div>
+            <label for="jenisKelamin" class="block mb-1 text-white"
+              >Jenis Kelamin</label
+            >
+            <select
+              id="jenisKelamin"
+              class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full"
+            >
+              <option value="Laki-Laki">Laki-Laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
 
-                    <div class="mt-5 flex justify-center items-center">
-                        <button class="bg-navbar md:bg-nav_hover hover:bg-nav_hover text-white p-2.5 w-44 border-0 rounded-md shadow-md cursor-pointer md:absolute md:bottom-0">Ajukan</button>
-                    </div>
-                </div>
-            </div>
+            <label for="alamat" class="block text-base mb-1 text-white"
+              >Alamat</label
+            >
+            <input
+              type="text"
+              id="alamat"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="Alamat"
+            />
+          </div>
+
+          <!-- Data Pasangan -->
+          <div class="w-full">
+            <p class="text-white text-xl font-semibold mb-5">
+              Data Pasangan:
+            </p>
+
+            <label for="nikPasangan" class="block text-base mb-1 text-white"
+              >NIK</label
+            >
+            <input
+              type="text"
+              id="nikPasangan"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="NIK"
+            />
+
+            <label
+              for="namaLengkapPasangan"
+              class="block text-base mb-1 text-white"
+              >Nama Lengkap</label
+            >
+            <input
+              type="text"
+              id="namaLengkapPasangan"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="Nama Lengkap"
+            />
+
+            <label
+              for="tempatTanggalLahirPasangan"
+              class="block text-base mb-1 text-white"
+              >Tempat Tanggal Lahir</label
+            >
+            <input
+              type="text"
+              id="tempatTanggalLahirPasangan"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="Tempat Tanggal Lahir"
+            />
+            <label for="jenisKelamin" class="block mb-1 text-white"
+              >Jenis Kelamin</label
+            >
+            <select
+              id="jenisKelamin"
+              class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full"
+            >
+              <option value="Laki-Laki">Laki-Laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+
+            <label for="alamat" class="block text-base mb-1 text-white"
+              >Alamat</label
+            >
+            <input
+              type="text"
+              id="alamat"
+              class="rounded-md p-2 mb-4 w-full"
+              placeholder="Alamat"
+            />
+          </div>
         </div>
+
+        <!-- Informasi Pernikahan -->
+        <div class="mt-8">
+          <p class="text-white text-xl font-semibold mb-5">
+            Informasi Perceraian:
+          </p>
+
+          <label
+            for="tanggalTempatPernikahan"
+            class="block text-base mb-1 text-white"
+            >Tanggal dan Tempat Perceraian</label
+          >
+          <input
+            type="text"
+            id="tanggalTempatPernikahan"
+            class="rounded-md p-2 mb-4 w-full"
+            placeholder="Tanggal dan Tempat Perceraian"
+          />
+
+          <label for="namaSaksi" class="block text-base mb-1 text-white"
+            >Nomor dan tanggal akta cerai</label
+          >
+          <input
+            type="text"
+            id="namaSaksi"
+            class="rounded-md p-2 mb-4 w-full"
+            placeholder="Nomor dan tanggal akta cerai"
+          />
+        </div>
+
+        <!-- Berkas-berkas yang dibutuhkan -->
+        <div class="mt-8">
+          <h5 class="text-white mb-4">Berkas-berkas yang dibutuhkan:</h5>
+          <div class="flex items-center mb-2">
+            <input
+              id="suratRT_RW"
+              type="checkbox"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="suratRT_RW" class="ml-2 text-white"
+              >Surat pengantar RT/RW</label
+            >
+          </div>
+
+          <div class="flex items-center mb-2">
+            <input
+              id="fotocopyKTP"
+              type="checkbox"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="fotocopyKTP" class="ml-2 text-white"
+              >Fotocopy KTP</label
+            >
+          </div>
+          <div class="flex items-center mb-4">
+            <input
+              id="fotocopyKK"
+              type="checkbox"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="fotocopyKK" class="ml-2 text-white">
+              Kartu Keluarga (KK)</label
+            >
+          </div>
+
+          <div class="flex items-center mb-4">
+            <input
+              id="fotocopyKK"
+              type="checkbox"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="fotocopyKK" class="ml-2 text-white">Akta Cerai</label>
+          </div>
+          <div class="flex items-center mb-4">
+            <input
+              id="fotocopyKK"
+              type="checkbox"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="fotocopyKK" class="ml-2 text-white"
+              >Surat keterangan dari pengadilan (jika diperlukan)</label
+            >
+          </div>
+
+          <div class="flex justify-center">
+            <button
+              type="submit"
+              class="bg-nav_hover hover:bg-nav_hover text-white py-2 px-6 rounded-md shadow-md cursor-pointer"
+            >
+              Ajukan
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
-</div>
+  </div>
 {% endblock %}
 
 {% block footer %} {% include "components/footer.html" %}{% endblock %}

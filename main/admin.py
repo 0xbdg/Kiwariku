@@ -25,7 +25,7 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ['thumbnail', 'title','content', 'upload_date']
+    list_display = ['thumbnail', 'title','description','content']
 
 class KTPAdmin(admin.ModelAdmin):
     list_display = ["nik","full_name","birth_date", "gender", "address", "surat_pengantar","fotocopy_ktp", "fotocopy_kk"]

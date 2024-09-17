@@ -81,7 +81,11 @@ def StructurePage(request):
     return render(request, "pages/struktur.html")
 
 def NewsPage(request):
-    return render(request, "pages/berita.html")
+    return render(request, "pages/berita.html", context={'news':New.objects.all()})
+
+def NewsDetailPage(request, news_id):
+    news = New.objects.get(id=news_id)
+    return render(request, "pages/berita_detail.html", context={'blog':news})
 
 @login_required
 def LayananKtpPage(request):
