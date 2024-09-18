@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView, FormView, View
+from django.views.generic import View
 from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -112,7 +112,14 @@ def LayananDomisiliPage(request):
 
 @login_required
 def LayananSuratCeraiPage(request):
-    return render(request, "pages/layanan/surat_cerai.html")
+    if request.method == 'POST':
+        form = DomicileForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form=DomicileForm()
+    return render(request, "pages/layanan/surat_cerai.html", context={'form':form})
 
 @login_required
 def LayananSuratNikahPage(request):

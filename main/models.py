@@ -131,6 +131,9 @@ class Divorce_Paper(models.Model):
     akta_kelahiran = models.BooleanField(default=False)
     surat_keterangan_pengadilan = models.BooleanField(default=False)
 
+    def __str__(self):
+        pass
+
 class Marriage_Paper(models.Model):
     nik_pengantin_pria = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
     nama_lengkap_pengantin_pria = models.CharField(max_length=255)
@@ -148,4 +151,4 @@ class Marriage_Paper(models.Model):
     fotokopi_kk = models.BooleanField(default=False)
     akta_kelahiran = models.BooleanField(default=False)
     surat_keterangan_belum_nikah = models.BooleanField(default=False)
-    surat_izin_ortu = models.BooleanField(default=False)
+    surat_izin_orangtua = models.BooleanField(default=False)
