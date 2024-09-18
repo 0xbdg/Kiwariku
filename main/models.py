@@ -74,6 +74,7 @@ class Blog(models.Model):
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255, null=False, unique=True)
     description = models.CharField(max_length=255, null=False, unique=True, blank=False)
+    author = models.ForeignKey(Account, on_delete=models.CASCADE)
     content = RichTextField()
     upload_date = models.DateTimeField(auto_now_add=datetime.now(), editable=False)
 
@@ -82,21 +83,24 @@ class Blog(models.Model):
 
 class KTP(models.Model):
     nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
-    full_name = models.CharField(max_length=255)
-    birth_date = models.DateField(blank=False)
-    gender = models.CharField(max_length=20,choices=GENDER, blank=False)
-    address = models.CharField(max_length=255, blank=False)
+    nama_lengkap = models.CharField(max_length=255)
+    tanggal_lahir = models.DateField(blank=False)
+    jenis_kelamin = models.CharField(max_length=20,choices=GENDER, blank=False)
+    alamat = models.CharField(max_length=255, blank=False)
     surat_pengantar_rtrw = models.BooleanField(default=False)
     fotocopy_ktp = models.BooleanField(default=False)
     fotocopy_kk = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nama_lengkap
     
 
 class Domicile(models.Model):
     nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
-    full_name = models.CharField(max_length=255)
-    birth_date = models.DateField(blank=False)
-    gender = models.CharField(max_length=20,choices=GENDER, blank=False)
-    address = models.CharField(max_length=255, blank=False)
+    nama_lengkap = models.CharField(max_length=255)
+    tanggal_lahir = models.DateField(blank=False)
+    jenis_kelamin = models.CharField(max_length=20,choices=GENDER, blank=False)
+    alamat = models.CharField(max_length=255, blank=False)
     alamat_domisili = models.CharField(max_length=255, blank=False)
     tanggal_mulai = models.DateField(blank=False)
     surat_pengantar_rtrw = models.BooleanField(default=False)
@@ -106,6 +110,42 @@ class Domicile(models.Model):
     surat_belum_nikah = models.BooleanField(default=False)
     surat_izin_orangtua = models.BooleanField(default=False)
 
-class Divorce_Paper(models.Model): pass
+    def __str__(self):
+        return self.nama_lengkap
 
-class Marriage_Paper(models.Model): pass
+class Divorce_Paper(models.Model):
+    nik_suami = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    nama_lengkap_suami = models.CharField(max_length=255)
+    tanggal_lahir_suami = models.DateField(blank=False)
+    alamat_suami = models.CharField(max_length=255, blank=False)
+    nik_istri = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    nama_lengkap_istri = models.CharField(max_length=255)
+    tanggal_lahir_istri = models.DateField(blank=False)
+    alamat_istri = models.CharField(max_length=255, blank=False)
+    tanggal_cerai = models.DateField(blank=False)
+    tempat_cerai = models.CharField(max_length=255, blank=False)
+    nomor_tanggal_akta_cerai = models.CharField(max_length=255, blank=False)
+    surat_pengantar_rtrw = models.BooleanField(default=False)
+    fotokopi_ktp = models.BooleanField(default=False)
+    fotokopi_kk = models.BooleanField(default=False)
+    akta_kelahiran = models.BooleanField(default=False)
+    surat_keterangan_pengadilan = models.BooleanField(default=False)
+
+class Marriage_Paper(models.Model):
+    nik_pengantin_pria = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    nama_lengkap_pengantin_pria = models.CharField(max_length=255)
+    tanggal_lahir_pengantin_pria = models.DateField(blank=False)
+    alamat_pengantin_pria = models.CharField(max_length=255, blank=False)
+    nik_pengantin_wanita = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
+    nama_lengkap_pengantin_wanita = models.CharField(max_length=255)
+    tanggal_lahir_pengantin_wanita = models.DateField(blank=False)
+    alamat_pengantin_wanita = models.CharField(max_length=255, blank=False)
+    tanggal_pernikahan = models.DateField(blank=False)
+    tempat_pernikahan = models.CharField(max_length=255, blank=False)
+    nama_saksi_pernikahan = models.CharField(max_length=255, blank=False)
+    surat_pengantar_rtrw = models.BooleanField(default=False)
+    fotokopi_ktp = models.BooleanField(default=False)
+    fotokopi_kk = models.BooleanField(default=False)
+    akta_kelahiran = models.BooleanField(default=False)
+    surat_keterangan_belum_nikah = models.BooleanField(default=False)
+    surat_izin_ortu = models.BooleanField(default=False)

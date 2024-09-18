@@ -6,7 +6,8 @@
 
 {% block contents %}
 <div class="container mx-auto p-4">
-    <form class="flex justify-center items-center">
+    <form class="flex justify-center items-center" method="post" action="{% url 'domisili'%}">
+      {% csrf_token %}
       <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md w-full lg:w-3/6">
         <h1 class="text-center text-white text-2xl mb-6">Surat Domisili</h1>
         <div class="flex flex-col md:flex-row gap-8">
@@ -19,55 +20,29 @@
             <label for="nik" class="block text-base mb-1 text-white"
               >NIK</label
             >
-            <input
-              type="text"
-              id="nik"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="NIK"
-            />
+            {{ form.nik }}
 
             <label for="namaLengkap" class="block text-base mb-1 text-white"
               >Nama Lengkap</label
             >
-            <input
-              type="text"
-              id="namaLengkap"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Nama Lengkap"
-            />
+            {{ form.nama_lengkap}}
 
             <label
               for="tempatTanggalLahir"
               class="block text-base mb-1 text-white"
               >Tempat Tanggal Lahir</label
             >
-            <input
-              type="text"
-              id="tempatTanggalLahir"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Tempat Tanggal Lahir"
-            />
+            {{ form.tanggal_lahir}}
 
             <label for="jenisKelamin" class="block mb-1 text-white"
               >Jenis Kelamin</label
             >
-            <select
-              id="jenisKelamin"
-              class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full"
-            >
-              <option value="Laki-Laki">Laki-Laki</option>
-              <option value="Perempuan">Perempuan</option>
-            </select>
+            {{ form.jenis_kelamin }}
 
             <label for="alamat" class="block text-base mb-1 text-white"
               >Alamat</label
             >
-            <input
-              type="text"
-              id="alamat"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Alamat"
-            />
+            {{ form.alamat }}
           </div>
         </div>
 
@@ -82,56 +57,32 @@
           >
             Alamat domisili yang diinginkan
           </label>
-          <input
-            type="text"
-            id="tanggalTempatPernikahan"
-            class="rounded-md p-2 mb-4 w-full"
-            placeholder="Alamat domisili yang diinginkan
-            "
-          />
+          {{ form.alamat_domisili}}
 
           <label for="namaSaksi" class="block text-base mb-1 text-white">
             Tanggal mulai domisili
           </label>
-          <input
-            type="text"
-            id="namaSaksi"
-            class="rounded-md p-2 mb-4 w-full"
-            placeholder="Tanggal mulai domisili
-            "
-          />
+          {{ form.tanggal_mulai }}
         </div>
 
         <!-- Berkas-berkas yang dibutuhkan -->
         <div class="mt-8">
           <h5 class="text-white mb-4">Berkas-berkas yang dibutuhkan:</h5>
           <div class="flex items-center mb-2">
-            <input
-              id="suratRT_RW"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{ form.surat_pengantar_rtrw}}
             <label for="suratRT_RW" class="ml-2 text-white"
               >Surat pengantar RT/RW</label
             >
           </div>
 
           <div class="flex items-center mb-2">
-            <input
-              id="fotocopyKTP"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{form.fotokopi_ktp }}
             <label for="fotocopyKTP" class="ml-2 text-white"
               >Fotocopy KTP</label
             >
           </div>
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{ form.bukti_kepemilikan }}
             <label for="fotocopyKK" class="ml-2 text-white">
               Bukti kepemilikan atau sewa rumah (seperti sertifikat, kontrak
               sewa)</label
@@ -139,31 +90,19 @@
           </div>
 
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{ form.surat_keterangan_rtrw }}
             <label for="fotocopyKK" class="ml-2 text-white">
               Surat keterangan dari RT/RW (jika diperlukan)</label
             >
           </div>
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{ form.surat_belum_nikah }}
             <label for="fotocopyKK" class="ml-2 text-white"
               >Surat keterangan belum menikah (jika diperlukan)</label
             >
           </div>
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{ form.surat_izin_orangtua }}
             <label for="fotocopyKK" class="ml-2 text-white"
               >Surat izin dari orang tua (jika diperlukan)</label
             >

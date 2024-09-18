@@ -39,14 +39,55 @@ class ProfileForm(forms.ModelForm):
 
 class KTPForm(forms.ModelForm):
   nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full','maxlength':'16'}))
-  full_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
-  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
-  gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full'}))
-  address = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  nama_lengkap = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  tanggal_lahir = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+  jenis_kelamin = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full'}))
+  alamat = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
   surat_pengantar_rtrw = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
   fotocopy_ktp = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
   fotocopy_kk = forms.BooleanField(widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
 
   class Meta:
      model = KTP
-     fields = ['nik', 'full_name', 'birth_date', 'gender', 'address', 'surat_pengantar_rtrw', 'fotocopy_ktp', 'fotocopy_kk']
+     fields = ['nik', 'nama_lengkap', 'tanggal_lahir', 'jenis_kelamin', 'alamat', 'surat_pengantar_rtrw', 'fotocopy_ktp', 'fotocopy_kk']
+
+class DomicileForm(forms.ModelForm):
+  nik = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full','maxlength':'16'}))
+  nama_lengkap = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  tanggal_lahir = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+  jenis_kelamin = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-full'}))
+  alamat = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  alamat_domisili = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+  tanggal_mulai = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+  surat_pengantar_rtrw = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  fotokopi_ktp = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  bukti_kepemilikan = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  surat_keterangan_rtrw = forms.BooleanField(required=False,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  surat_belum_nikah = forms.BooleanField(required=False,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+  surat_izin_orangtua = forms.BooleanField(required=False,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+
+  class Meta:
+     model = Domicile
+     fields = ['nik', 'nama_lengkap', 'tanggal_lahir','jenis_kelamin', 'alamat', 'alamat_domisili', 'tanggal_mulai', 'surat_pengantar_rtrw', 'fotokopi_ktp','bukti_kepemilikan', 'surat_keterangan_rtrw', 'surat_belum_nikah', 'surat_izin_orangtua']
+
+class Divorce(forms.ModelForm):
+   nik_suami = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full','maxlength':'16'}))
+   nama_lengkap_suami = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+   tanggal_lahir_suami = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+   alamat_suami = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+   nik_istri = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full','maxlength':'16'}))
+   nama_lengkap_istri = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+   tanggal_lahir_istri = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+   alamat_istri = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+   tanggal_cerai = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'rounded-md p-2 mb-4 w-full'}))
+   tempat_cerai = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+   nomor_tanggal_akta_cerai = forms.CharField(required=True, widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full'}))
+   surat_pengantar_rtrw = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   fotokopi_ktp = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   fotokopi_kk = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   akta_kelahiran = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   surat_keterangan_pengadilan = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+
+   class Meta:
+      model = Divorce_Paper
+      fields = []

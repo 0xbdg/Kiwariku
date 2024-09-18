@@ -101,7 +101,14 @@ def LayananKtpPage(request):
 
 @login_required
 def LayananDomisiliPage(request):
-    return render(request, "pages/layanan/domisili.html")
+    if request.method == 'POST':
+        form = DomicileForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+    else:
+        form = DomicileForm()
+    return render(request, "pages/layanan/domisili.html", context={'form':form})
 
 @login_required
 def LayananSuratCeraiPage(request):

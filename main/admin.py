@@ -24,13 +24,10 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'username', 'firstname', 'lastname', 'phonenumber', 'gender', 'birth_date')
     ordering = ('email',)
 
-class BlogAdmin(admin.ModelAdmin):
-    list_display = ['title','thumbnail','description','content']
-
-class KTPAdmin(admin.ModelAdmin):
-    list_display = ["nik","full_name","birth_date", "gender", "address", "surat_pengantar_rtrw","fotocopy_ktp", "fotocopy_kk"]
-
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
-admin.site.register(Blog, BlogAdmin)
-admin.site.register(KTP, KTPAdmin)
+admin.site.register(Blog)
+admin.site.register(KTP)
+admin.site.register(Domicile)
+admin.site.register(Marriage_Paper)
+admin.site.register(Divorce_Paper)
