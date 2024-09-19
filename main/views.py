@@ -88,7 +88,6 @@ def NewsDetailPage(request, news_id):
 
 @login_required
 def LayananKtpPage(request):
-
     if request.method == "POST":
         form = KTPForm(data=request.POST)
         if form.is_valid():

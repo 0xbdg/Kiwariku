@@ -86,7 +86,7 @@ class DivorceForm(forms.ModelForm):
    fotokopi_ktp = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    fotokopi_kk = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    akta_cerai = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
-   surat_keterangan_pengadilan = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   surat_keterangan_pengadilan = forms.BooleanField(required=False,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
 
    class Meta:
       model = Divorce_Paper
@@ -108,8 +108,8 @@ class MarriageForm(forms.ModelForm):
    fotokopi_ktp = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    fotokopi_kk = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    akta_kelahiran = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
-   surat_keterangan_belum_nikah = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
-   surat_izin_orangtua = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   surat_keterangan_belum_nikah = forms.BooleanField(required=False,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   surat_izin_orangtua = forms.BooleanField(required=False,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
 
    class Meta:
       model = Marriage_Paper
