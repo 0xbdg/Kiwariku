@@ -28,7 +28,7 @@ class ProfileForm(forms.ModelForm):
   username = forms.CharField(required=True, widget=TextInput(attrs={'class':'input-field'}))
   first_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'input-field'}))
   last_name = forms.CharField(required=True, widget=TextInput(attrs={'class':'input-field'}))
-  birth_date = forms.DateField(required=True, widget=DateInput(attrs={'type':'date','class':'input-field'}))
+  birth_date = forms.DateField(required=False, widget=DateInput(attrs={'type':'date','class':'input-field'}))
   gender = forms.ChoiceField(required=True,choices=GENDER, widget=forms.Select(attrs={"class":'input-field'}))
   email = forms.EmailField(required=True,widget=EmailInput(attrs={'class':'input-field'}))
   phonenumber = PhoneNumberField()
@@ -85,12 +85,12 @@ class DivorceForm(forms.ModelForm):
    surat_pengantar_rtrw = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    fotokopi_ktp = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    fotokopi_kk = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
-   akta_kelahiran = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
+   akta_cerai = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
    surat_keterangan_pengadilan = forms.BooleanField(required=True,widget=CheckboxInput(attrs={'class':'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'}))
 
    class Meta:
       model = Divorce_Paper
-      fields = ['nik_suami', 'nama_lengkap_suami', 'tanggal_lahir_suami', 'alamat_suami', 'nik_istri', 'nama_lengkap_istri', 'tanggal_lahir_istri', 'alamat_istri', 'tanggal_cerai', 'tempat_cerai', 'nomor_tanggal_akta_cerai', 'surat_pengantar_rtrw', 'fotokopi_ktp', 'fotokopi_kk', 'akta_kelahiran', 'surat_keterangan_pengadilan']
+      fields = ['nik_suami', 'nama_lengkap_suami', 'tanggal_lahir_suami', 'alamat_suami', 'nik_istri', 'nama_lengkap_istri', 'tanggal_lahir_istri', 'alamat_istri', 'tanggal_cerai', 'tempat_cerai', 'nomor_tanggal_akta_cerai', 'surat_pengantar_rtrw', 'fotokopi_ktp', 'fotokopi_kk', 'akta_cerai', 'surat_keterangan_pengadilan']
 
 class MarriageForm(forms.ModelForm):
    nik_pengantin_pria = forms.CharField(required=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')], widget=TextInput(attrs={'class':'rounded-md p-2 mb-4 w-full','maxlength':'16'}))

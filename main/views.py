@@ -47,10 +47,9 @@ class RegisterView(View):
             return redirect("signin")
         return render(request, self.template_name, context={'form':form})
 
-@login_required
 def signout(request):
     logout(request)
-    return redirect("login")
+    return redirect("signin")
 
 @login_required
 def ProfilePage(request):
@@ -113,14 +112,21 @@ def LayananDomisiliPage(request):
 @login_required
 def LayananSuratCeraiPage(request):
     if request.method == 'POST':
-        form = DomicileForm(data=request.POST)
+        form = DivorceForm(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
     else:
-        form=DomicileForm()
+        form=DivorceForm()
     return render(request, "pages/layanan/surat_cerai.html", context={'form':form})
 
 @login_required
 def LayananSuratNikahPage(request):
-    return render(request, "pages/layanan/surat_nikah.html")
+    if request.method == 'POST':
+        form = MarriageForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = MarriageForm()
+    return render(request, "pages/layanan/surat_nikah.html",context={'form':form})

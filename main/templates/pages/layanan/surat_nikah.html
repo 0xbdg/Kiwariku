@@ -2,11 +2,14 @@
 
 {% load static %}
 
+{% block title %}Surat nikah | Desa Situsari{% endblock %}
+
 {% block navbar %} {% include "components/navbar.html" %} {% endblock %}
 
 {% block contents %}
 <div class="container mx-auto p-4">
-    <form class="flex justify-center items-center">
+    <form class="flex justify-center items-center" method="POST" action="{% url 'nikah'%}">
+      {% csrf_token%}
       <div class="md:bg-navbar mt-5 py-6 px-10 rounded-md w-full lg:w-3/6">
         <h1 class="text-center text-white text-2xl mb-6">Surat Nikah</h1>
         <div class="flex flex-col md:flex-row gap-8">
@@ -17,44 +20,24 @@
             <label for="nik" class="block text-base mb-1 text-white"
               >NIK</label
             >
-            <input
-              type="text"
-              id="nik"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="NIK"
-            />
+            {{form.nik_pengantin_pria}}
 
             <label for="namaLengkap" class="block text-base mb-1 text-white"
               >Nama Lengkap</label
             >
-            <input
-              type="text"
-              id="namaLengkap"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Nama Lengkap"
-            />
+            {{ form.nama_lengkap_pengantin_pria}}
 
             <label
               for="tempatTanggalLahir"
               class="block text-base mb-1 text-white"
-              >Tempat Tanggal Lahir</label
+              >Tanggal Lahir</label
             >
-            <input
-              type="text"
-              id="tempatTanggalLahir"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Tempat Tanggal Lahir"
-            />
+            {{ form.tanggal_lahir_pengantin_pria}}
 
             <label for="alamat" class="block text-base mb-1 text-white"
               >Alamat</label
             >
-            <input
-              type="text"
-              id="alamat"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Alamat"
-            />
+            {{ form.alamat_pengantin_pria}}
           </div>
 
           <!-- Data Pasangan -->
@@ -66,46 +49,26 @@
             <label for="nikPasangan" class="block text-base mb-1 text-white"
               >NIK</label
             >
-            <input
-              type="text"
-              id="nikPasangan"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="NIK"
-            />
+            {{ form.nik_pengantin_wanita}}
 
             <label
               for="namaLengkapPasangan"
               class="block text-base mb-1 text-white"
               >Nama Lengkap</label
             >
-            <input
-              type="text"
-              id="namaLengkapPasangan"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Nama Lengkap"
-            />
+            {{ form.nama_lengkap_pengantin_wanita}}
 
             <label
               for="tempatTanggalLahirPasangan"
               class="block text-base mb-1 text-white"
               >Tempat Tanggal Lahir</label
             >
-            <input
-              type="text"
-              id="tempatTanggalLahirPasangan"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Tempat Tanggal Lahir"
-            />
+            {{ form.tanggal_lahir_pengantin_wanita}}
 
             <label for="alamat" class="block text-base mb-1 text-white"
               >Alamat</label
             >
-            <input
-              type="text"
-              id="alamat"
-              class="rounded-md p-2 mb-4 w-full"
-              placeholder="Alamat"
-            />
+            {{ form.alamat_pengantin_wanita}}
           </div>
         </div>
 
@@ -120,97 +83,58 @@
             class="block text-base mb-1 text-white"
             >Tanggal pernikahan</label
           >
-          <input
-            type="text"
-            id="tanggalTempatPernikahan"
-            class="rounded-md p-2 mb-4 w-full"
-            placeholder="Tanggal dan Tempat Pernikahan"
-          />
+          {{form.tanggal_pernikahan}}
 
           <label
             for="tanggalTempatPernikahan"
             class="block text-base mb-1 text-white"
             >Tempat pernikahan</label
           >
-          <input
-            type="text"
-            id="tanggalTempatPernikahan"
-            class="rounded-md p-2 mb-4 w-full"
-            placeholder="Tanggal dan Tempat Pernikahan"
-          />
+          {{form.tempat_pernikahan }}
 
           <label for="namaSaksi" class="block text-base mb-1 text-white"
             >Nama Saksi Pernikahan</label
           >
-          <input
-            type="text"
-            id="namaSaksi"
-            class="rounded-md p-2 mb-4 w-full"
-            placeholder="Nama Saksi Pernikahan"
-          />
+          {{form.nama_saksi_pernikahan}}
         </div>
 
         <!-- Berkas-berkas yang dibutuhkan -->
         <div class="mt-8">
           <h5 class="text-white mb-4">Berkas-berkas yang dibutuhkan:</h5>
           <div class="flex items-center mb-2">
-            <input
-              id="suratRT_RW"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{ form.surat_pengantar_rtrw}}
             <label for="suratRT_RW" class="ml-2 text-white"
               >Surat pengantar RT/RW</label
             >
           </div>
 
           <div class="flex items-center mb-2">
-            <input
-              id="fotocopyKTP"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{form.fotokopi_ktp}}
             <label for="fotocopyKTP" class="ml-2 text-white"
               >Fotocopy KTP</label
             >
           </div>
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{form.fotokopi_kk}}
             <label for="fotocopyKK" class="ml-2 text-white"
               >Fotocopy Kartu Keluarga (KK)</label
             >
           </div>
 
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{form.akta_kelahiran}}
             <label for="fotocopyKK" class="ml-2 text-white"
               >Akta Kelahiran</label
             >
           </div>
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{form.surat_keterangan_belum_nikah}}
             <label for="fotocopyKK" class="ml-2 text-white"
               >Surat keterangan belum menikah (jika diperlukan)</label
             >
           </div>
           <div class="flex items-center mb-4">
-            <input
-              id="fotocopyKK"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-            />
+            {{form.surat_izin_orangtua}}
             <label for="fotocopyKK" class="ml-2 text-white"
               >Surat izin dari orang tua (jika diperlukan)</label
             >

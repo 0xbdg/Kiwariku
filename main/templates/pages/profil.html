@@ -70,9 +70,9 @@
       {{ form.phonenumber }}
     </div>
 
-    <a href="{% url 'signout'%}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Log out</a>
+    <a href="{% url 'logout'%}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Log out</a>
     <a href="{% url 'change'%}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Ubah password</a>
-    <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Reset password</a>
+    <a href="{% url 'password_reset' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Reset password</a>
 
     <div class="button-container">
       <button type="submit" class="button cursor-pointer">
