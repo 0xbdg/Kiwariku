@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -175,14 +176,15 @@ LOGIN_URL = 'signin'
 LOGOUT_REDIRECT_URL = "signin"
 
 #jazzmin
-'''
+
 JAZZMIN_SETTINGS = {
     'site_header': "Website Situsari",
-    'site_brand': 'Kiwariku Panel',
+    'site_brand': 'Kiwariku',
+    'site_logo':'img/logo-desa.png',
     "welcome_sign": "Administrator Panel",
     "copyright": "Kiwariku"
 }
-'''
+
 # security
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
