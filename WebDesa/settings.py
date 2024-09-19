@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'WebDesa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if DEBUG:
+if os.environ.get('DATABASES') == 'sqlite':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -96,7 +96,7 @@ if DEBUG:
         }
     }
 
-else:
+elif os.environ.get('DATABASES') == 'postgres':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -182,7 +182,8 @@ JAZZMIN_SETTINGS = {
     'site_brand': 'Kiwariku',
     'site_logo':'img/logo-desa.png',
     "welcome_sign": "Administrator Panel",
-    "copyright": "Kiwariku"
+    "copyright": "Kiwariku",
+    "show_ui_builder": True
 }
 
 # security
@@ -198,8 +199,12 @@ CSRF_COOKIE_SECURE = True
 
 #email 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = os.environ.get('EMAIL_HOST_USER')
+if DEBUG:
+   EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+   EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_HOST_PORT = os.environ.get('EMAIL_HOST_PORT')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
