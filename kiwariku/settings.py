@@ -36,17 +36,16 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'superuser',
     'main',
     'ckeditor',
     "phonenumber_field",
-    'login_history',
     "tailwind",
     "theme",
     'django_browser_reload',
@@ -64,7 +63,7 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
-ROOT_URLCONF = 'WebDesa.urls'
+ROOT_URLCONF = 'kiwariku.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'WebDesa.wsgi.application'
+WSGI_APPLICATION = 'kiwariku.wsgi.application'
 
 
 # Database
@@ -174,17 +173,6 @@ AUTH_USER_MODEL = 'main.Account'
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'signin'
 LOGOUT_REDIRECT_URL = "signin"
-
-#jazzmin
-
-JAZZMIN_SETTINGS = {
-    'site_header': "Website Situsari",
-    'site_brand': 'Kiwariku',
-    'site_logo':'img/logo-desa.png',
-    "welcome_sign": "Administrator Panel",
-    "copyright": "Kiwariku",
-    "show_ui_builder": True
-}
 
 # security
 SECURE_BROWSER_XSS_FILTER = True

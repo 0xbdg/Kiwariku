@@ -2,9 +2,7 @@ django
 django-phonenumber-field[phonenumbers]
 django-tailwind
 django-browser-reload
-django-jazzmin
 Pillow
 whitenoise
 django-ckeditor 
-dj-user-login-history
 python-dotenv
