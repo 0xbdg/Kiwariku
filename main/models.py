@@ -75,7 +75,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=255, null=False, unique=True)
     description = models.CharField(max_length=255, null=False, unique=True, blank=False)
     author = models.ForeignKey(Account, on_delete=models.CASCADE)
-    content = RichTextField()
+    content = models.TextField(unique=True, blank=False)
     upload_date = models.DateTimeField(auto_now_add=datetime.now(), editable=False)
 
     def __str__(self):
