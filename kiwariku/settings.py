@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cctv',
     'main',
-    'ckeditor',
     "phonenumber_field",
     "tailwind",
     "theme",
