@@ -1,0 +1,21 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Website Desa Situsari">
+        <meta name="keywords" content="Situsari, situsari, SituSari">
+        <meta charset="UTF-8">
+        <meta name="author" content="PT Tree Logika Dinamika">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="icon" type="image/x-icon" href="{% static 'img/logo-desa.png'%}">
+
+        {% tailwind_css %}    
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>
