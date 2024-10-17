@@ -11,7 +11,7 @@
 <main class="container mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
     <article>
         <!-- Blog Title -->
-        <h2 class="text-3xl font-bold mb-2">{{ blog.title}}</h2>
+        <h2 class="text-3xl font-bold mb-2 break-words">{{ blog.title}}</h2>
         
         <!-- Blog Meta -->
         <div class="text-gray-600 text-sm mb-4">
@@ -21,7 +21,7 @@
 
         <!-- Blog Content -->
         <div class="prose lg:prose-xl">
-            <p>{{ blog.description}}</p>
+            <p class="break-words">{{ blog.description}}</p>
             
             <!-- Image with Caption -->
             <figure class="mb-6">
@@ -29,7 +29,7 @@
                 <figcaption class="mt-2 text-center text-gray-600">Gambar ini menunjukkan contoh penggunaan Tailwind CSS dalam desain blog.</figcaption>
             </figure>
             
-            <p>{{ blog.content | safe }}</p>
+            <p class="break-words">{{blog.content}}</p>
         </div>
     </article>
 </main>
