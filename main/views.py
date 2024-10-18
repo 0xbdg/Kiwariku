@@ -86,7 +86,13 @@ def NewsDetailPage(request, news_id):
     return render(request, "pages/berita_detail.html", context={'blog':news})
 
 def ReportPage(request):
-    return render(request, "pages/pengaduan.html", context={})
+    return render(request, "pages/layanan/pengaduan.html", context={})
+
+def AnnouncementPage(request):
+    return render(request, "pages/informasi/pengumuman.html", context={})
+
+def ActivitiesPage(request):
+    return render(request, "pages/informasi/kegiatan.html", context={})
 
 @login_required
 def LayananKtpPage(request):
