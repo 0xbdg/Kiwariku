@@ -1,4 +1,3 @@
-from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from django.contrib.auth import login,logout
@@ -85,6 +84,9 @@ def NewsPage(request):
 def NewsDetailPage(request, news_id):
     news = Blog.objects.get(id=news_id)
     return render(request, "pages/berita_detail.html", context={'blog':news})
+
+def ReportPage(request):
+    return render(request, "pages/pengaduan.html", context={})
 
 @login_required
 def LayananKtpPage(request):

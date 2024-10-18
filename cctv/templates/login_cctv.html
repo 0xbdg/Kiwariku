@@ -7,7 +7,7 @@
     <div class="h-screen flex justify-center items-center">
         <div class="bg-white mx-4 p-8 rounded shadow-md w-full md:w-1/2 lg:w-1/3">
             <h1 class="text-3xl font-bold mb-8 text-center">Login</h1>
-            <form method="post" action='login_cctv'>
+            <form method="post" action="{% url 'login_cctv'%}">
                 {% csrf_token %}
                 {% if  form.errors%}
                 {% for inp, value in form.errors.items %}

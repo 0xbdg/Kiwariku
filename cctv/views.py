@@ -22,6 +22,6 @@ def signin(request):
         form = LoginForm()
     return render(request, 'login_cctv.html', {'form': form})
 
-@login_required(login_url="/cctv/login")
+@login_required(login_url="/cctv/login_cctv")
 def index(request):
     return render(request, 'index_cctv.html')

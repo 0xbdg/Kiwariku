@@ -17,6 +17,7 @@ urlpatterns = [
     path('layanan/domisili/', LayananDomisiliPage, name="domisili"),
     path('layanan/surat_cerai/', LayananSuratCeraiPage, name="cerai"),
     path('layanan/surat_nikah/', LayananSuratNikahPage, name="nikah"),
+    path('layanan/pengaduan', ReportPage, name="pengaduan"),
     path("password_reset/",reset_view.PasswordResetView.as_view(), name="password_reset"),
     path("password_reset/done/",reset_view.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password_reset/<uidb64>/<token>/', reset_view.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
