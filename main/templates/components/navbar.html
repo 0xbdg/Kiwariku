@@ -2,10 +2,10 @@
 <nav class="bg-navbar shadow md:flex md:items-center md:justify-between sticky top-0 z-10">
   <!-- Logo dan Hamburger Menu -->
   <div class="flex justify-between items-center py-2 px-4">
-      <span class="flex items-center text-white text-md md:text-lg lg:text-2xl">
-        <img class="h-10 inline" src="{%static 'img/logo.png'%}" alt="Logo" />
+      <a class="flex items-center text-white text-md md:text-lg lg:text-2xl" href="{% url 'index'%}">
+        <img class="h-10 inline" src="{% static 'img/logo.png' %}" alt="Logo" />
         <span class="ml-2">Desa Situsari</span>
-      </span>
+      </a>
       <!-- Icon Hamburger untuk Ponsel -->
       <span class="text-3xl cursor-pointer md:hidden block text-white" onclick="Menu(this)">
         <ion-icon name="menu"></ion-icon>
@@ -14,13 +14,22 @@
 
   <!-- Menu Utama -->
   <ul id="tttttt" class="top-[-400px] opacity-100 md:flex md:items-center bg-navbar md:bg-transparent w-full md:w-auto md:py-0 py-4 md:pl-0 pl-7 transition-all ease-in duration-500 md:static absolute left-0 md:z-auto z-[-1] md:opacity-100 ">
-      <!-- Link Menu Beranda -->
-      <li class="my-6 md:my-0">
+      <!-- Link Menu Informasi -->
+      <li class="relative group my-6 md:my-0">
         <a
-          href="{% url 'index' %}"
-          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200"
-          >Beranda</a
+          href="#"
+          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200 submenu-toggle"
+          >Informasi</a
         >
+        <!-- Submenu -->
+        <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
+          <li>
+            <a href="{% url 'pengumuman'%}" class="block px-4 py-2 hover:bg-gray-200">Pengumuman</a>
+          </li>
+          <li>
+            <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
+          </li>
+        </ul>
       </li>
 
       <!-- Menu Layanan dengan Submenu -->
