@@ -3,7 +3,6 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
-from ckeditor.fields import RichTextField
 
 import uuid
 
@@ -12,6 +11,11 @@ import uuid
 GENDER = (
     ("M","Laki-Laki"),
     ("F", "Perempuan")
+)
+
+STATUS = (
+    ('Menunggu', "Sedang diproses"),
+    ('Selesai', 'Selesai diproses')
 )
 
 class UserManager(BaseUserManager):
@@ -36,7 +40,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     phonenumber = PhoneNumberField(blank=True)
     gender = models.CharField(max_length=1,choices=GENDER, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    date_joined = models.DateTimeField(default=datetime.now)
+    date_joined = models.DateTimeField(auto_now_add=True)
 
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -80,6 +84,25 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Report(models.Model):
+    nik = models.IntegerField(null=False, unique=False, blank=False, max_length=16)
+    name = models.CharField(null=False, blank=False, max_length=255)
+    email = models.EmailField(blank=False, null=False)
+    phonenumber = PhoneNumberField(blank=False)
+    title = models.CharField(blank=False, null=True,max_length=255)
+    description = models.TextField(blank=False)
+    status = models.CharField(choices=STATUS)
+    date = models.DateTimeField(auto_now_add=True)
+
+class Announcement(models.Model):
+    id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=255)
+    thumbnail = models.ImageField(upload_to="thumbnail/")
+    title = models.CharField(max_length=255)
+    description = models.CharField(blank=True, max_length=1000)
+    content = models.TextField(blank=False)
+    author = models.ForeignKey(Account, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
 
 class KTP(models.Model):
     nik = models.CharField(max_length=16,unique=True,validators=[RegexValidator(regex=r'^\d{16}$',message='NIK harus terdiri dari 16 digit angka.',code='invalid_nik')])
