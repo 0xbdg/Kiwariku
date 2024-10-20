@@ -29,7 +29,7 @@
                 <figcaption class="mt-2 text-center text-gray-600">Gambar ini menunjukkan contoh penggunaan Tailwind CSS dalam desain blog.</figcaption>
             </figure>
             
-            <p class="break-words">{{blog.content}}</p>
+            <p class="break-words">{{blog.content | safe}}</p>
         </div>
     </article>
 </main>

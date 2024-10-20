@@ -4,6 +4,7 @@ from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from .forms import *
+from superuser.models import *
 
 # Create your views here.
 
@@ -11,7 +12,20 @@ class IndexView(View):
     template_name = "pages/index.html"
     
     def get(self, request):
-        return render(request, self.template_name, context={})
+        article = Blog.objects.all()[:3]
+        activity = Activities.objects.all()[:3]
+        announcement = Announcement.objects.all()[:3]
+
+        if Blog.objects.count() <= 3:
+            article = Blog.objects.all()
+
+        if Activities.objects.count() <=3:
+            activity = Activities.objects.all()
+        
+        if Announcement.objects.count() <= 3:
+            announcement = Announcement.objects.all()
+
+        return render(request, self.template_name, context={"artikel":article, "kegiatan":activity, "pengumuman":announcement})
 
 class SignInView(View):
     form_class = LoginForm
@@ -30,22 +44,7 @@ class SignInView(View):
             return redirect("index")
         return render(request, self.template_name, context={"form":form})
 
-    
-class RegisterView(View):
-    template_name = "auth/signup.html"
-    form_class = RegisterForm
-    
-    def get(self, request):
-        form = self.form_class()
-        return render(request, self.template_name, context={'form':form})
-    
-    def post(self,request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("signin")
-        return render(request, self.template_name, context={'form':form})
-
+@login_required
 def signout(request):
     logout(request)
     return redirect("signin")

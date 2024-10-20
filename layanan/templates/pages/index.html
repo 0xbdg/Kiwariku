@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%} Home | Desa Situsari{% endblock %}
+
+{% block navbar %} {% include "components/navbar.html" %}{% endblock %}
+
+{% block contents%}
+<div class="w-full h-full bg-cover min-h-96 bg-opacity-50 bg-black" style="background-image: url({% static 'img/Background.png' %})">
+  <div class="text-md inset-0 flex flex-col items-center justify-center h-full">
+    <img alt="Logo" class="mb-4" height="100" src="{% static 'img/logo-desa.png'%}" width="100"/>
+    <h1 class="text-white text-3xl font-bold">SISTEM INFORMASI DESA SITUSARI</h1>
+    <p class="text-white mb-6">Kec. Cileungsi Kab. Bogor</p>
+  </div>
+</div>
+<div class="flex items-center justify-center flex-col">
+  <div class="w-full max-w-sm mx-auto overflow-hidden relative md:max-w-md lg:max-w-lg xl:max-w-3xl">
+    <div class="slides-container flex transition-transform duration-700 mt-10">
+      <div class="w-full flex-shrink-0">
+        <a href="#">
+          <img src="../asset/contoh.png" class="w-full" />
+          <p class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit</p>
+        </a>
+      </div>
+      <div class="w-full flex-shrink-0">
+        <a href="#">
+          <img src="../asset/contoh.png" class="w-full" />
+          <p class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit</p>
+        </a>
+      </div>
+      <div class="w-full flex-shrink-0">
+        <a href="#">
+          <img src="../asset/contoh.png" class="w-full" />
+          <p class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit</p>
+        </a>
+      </div>
+      <div class="w-full flex-shrink-0">
+        <a href="#">
+          <img src="../asset/contoh.png" class="w-full" />
+          <p class="absolute bottom-0 text-white font-semibold bg-slate-600 bg-opacity-70 text-sm text-center w-full md:text-xl lg:text-2xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center space-x-2 mt-4">
+    <button class="w-3 h-3 rounded-full bg-white" onclick="goToSlide(0)"></button>
+    <button class="w-3 h-3 rounded-full bg-white" onclick="goToSlide(1)"></button>
+    <button class="w-3 h-3 rounded-full bg-white" onclick="goToSlide(2)"></button>
+  </div>
+</div>
+
+<div id="info" class="flex justify-center items-center py-10">
+  <div class="bg-navbar flex flex-col-reverse justify-center items-center shadow-lg py-10 mx-5 gap-10 rounded-lg duration-200 md:flex-row md:px-10 lg:gap-20 lg:p-20">
+    <p class="text-center text-sm text-white font-semibold px-2 md:text-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br />Quis quas quam nemo, dolorum architecto sequi quod officiis <br />nostrum possimus nisi expedita accusantium quaerat fugiat atque<br />vero, odio perspiciatis ducimus quo?</p>
+
+    <img src="{% static 'img/logo.png'%}" class="w-40 h-40 float-right lg:w-56 lg:h-56 lg:ml-36"/>
+  </div>
+</div>
+
+<div class="container mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <!-- Berita Terkini Section -->
+   <div class="md:col-span-2">
+    <h2 class="text-xl font-bold text-white mb-2">
+     Berita
+     <span class="text-black">
+      Terkini
+     </span>
+     <i class="fas fa-chevron-right">
+     </i>
+    </h2>
+    <hr class="border-t-2 border-white mb-4">
+    {% for berita in artikel %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+      <div>
+        <img alt="Image of a notice" class="w-full h-auto mb-2" src="{{ berita.thumbnail.url}}"/>
+        <p class="text-sm text-white">{{ berita.upload_date}}</p>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="text-lg font-bold text-white break-words">{{ berita.title }}</h3>
+        <p class="text-sm text-white break-words">{{ berita.description}}<a class="text-black" href="{% url 'details' news_id=berita.id%}">Selengkapnya</a></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+   <!-- Pengumuman Section -->
+   <div>
+    <h2 class="text-xl font-bold text-white mb-2">
+     Pengumuman
+     <i class="fas fa-chevron-right">
+     </i>
+    </h2>
+    <hr class="border-t-2 border-white mb-4"/>
+    {% for announce in pengumuman %}
+    <div class="mb-4">
+     <a class="block bg-navbar text-white text-center py-2 rounded" href="#">
+      {{ announce.title}}
+     </a>
+    </div>
+    {% endfor %}
+    <!-- Agenda Kegiatan Section -->
+    <h2 class="text-xl font-bold text-white mb-2">
+     Agenda
+     <span class="text-black">
+      Kegiatan
+     </span>
+     <i class="fas fa-chevron-right">
+     </i>
+    </h2>
+    <hr class="border-t-2 border-white mb-4"/>
+    <div class="mb-4">
+      {% for activity in kegiatan %}
+      <div class="bg-gray-200 p-2 rounded mb-2">
+        <p class="text-sm text-black">{{ activity.activity_date}}</p>
+        <h3 class="text-sm font-bold text-black">{{ activity.title}}</h3>
+        <p class="text-sm text-gray-700">Lokasi: {{activity.location}}</p>
+      </div>
+      {% endfor %}
+    </div>
+   </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %} {% include "components/footer.html" %} {% endblock %}

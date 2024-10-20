@@ -2,7 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from datetime import datetime
-
+from django_ckeditor_5.fields import CKEditor5Field
 import uuid
 # Create your models here.
 
@@ -33,7 +33,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     phonenumber = PhoneNumberField(blank=True)
     gender = models.CharField(max_length=1,choices=GENDER, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    date_joined = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateTimeField(default=datetime.now())
 
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -72,7 +72,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=255, null=False, unique=True)
     description = models.CharField(max_length=255, null=False, unique=True, blank=False)
     author = models.ForeignKey(Account, on_delete=models.CASCADE)
-    content = models.TextField(unique=True, blank=False)
+    content = CKEditor5Field("Content", config_name="extends")
     upload_date = models.DateTimeField(auto_now_add=datetime.now(), editable=False)
 
     def __str__(self):
@@ -85,19 +85,19 @@ class Announcement(models.Model):
     description = models.CharField(blank=True, max_length=1000)
     content = models.TextField(blank=False)
     author = models.ForeignKey(Account, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=datetime.now())
 
     def __str__(self):
         return self.title
 
 class Activities(models.Model):
-    id = models.CharField(primary_key=True)
+    id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255)
     description = models.TextField(blank=False)
-    location = models.CharField(blank=False)
+    location = models.CharField(blank=False, max_length=255)
     activity_date = models.DateField()
-    upload_date = models.DateTimeField(auto_now_add=True)
+    upload_date = models.DateTimeField(auto_now_add=datetime.now())
 
     def __str__(self):
         return self.title
