@@ -4,10 +4,10 @@ from .views import *
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
-    path('account/login/', SignInView.as_view(), name="signin"),
-    path('account/logout/', logout, name="logout"),
-    path('account/profile', ProfilePage, name="profile"),
-    path('account/profile/change_password', ChangePasswordPage, name="change"),
+    path('layanan/account/login/', SignInView.as_view(), name="signin"),
+    path('layanan/account/logout/', logout, name="logout"),
+    path('layanan/account/profile', ProfilePage, name="profile"),
+    path('layanan/account/profile/change_password', ChangePasswordPage, name="change"),
     path('sejarah/', HistoryPage, name="sejarah"),
     path('struktur/', StructurePage, name="struktur"),
     path('berita/',NewsPage, name="berita"),

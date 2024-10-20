@@ -102,7 +102,7 @@ def LayananKtpPage(request):
             return redirect("index")
     else:
         form = KTPForm()
-    return render(request, "pages/layanan/ktp.html", context={'form':form})
+    return render(request, "pages/pengajuan/ktp.html", context={'form':form})
 
 @login_required
 def LayananDomisiliPage(request):
@@ -113,7 +113,7 @@ def LayananDomisiliPage(request):
             return redirect("index")
     else:
         form = DomicileForm()
-    return render(request, "pages/layanan/domisili.html", context={'form':form})
+    return render(request, "pages/pengajuan/domisili.html", context={'form':form})
 
 @login_required
 def LayananSuratCeraiPage(request):
@@ -124,7 +124,7 @@ def LayananSuratCeraiPage(request):
             return redirect('index')
     else:
         form=DivorceForm()
-    return render(request, "pages/layanan/surat_cerai.html", context={'form':form})
+    return render(request, "pages/pengajuan/surat_cerai.html", context={'form':form})
 
 @login_required
 def LayananSuratNikahPage(request):
@@ -135,4 +135,4 @@ def LayananSuratNikahPage(request):
             return redirect('index')
     else:
         form = MarriageForm()
-    return render(request, "pages/layanan/surat_nikah.html",context={'form':form})
+    return render(request, "pages/pengajuan/surat_nikah.html",context={'form':form})
