@@ -29,6 +29,9 @@
           <li>
             <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
           </li>
+          <li>
+            <a href="{% url 'pengaduan'%}" class="block px-4 py-2 hover:bg-gray-200">Pengaduan</a>
+          </li>
         </ul>
       </li>
 
@@ -42,10 +45,27 @@
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
           <li>
-            <a href="{% url 'pengumuman'%}" class="block px-4 py-2 hover:bg-gray-200">Pengumuman</a>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">PKH</a>
           </li>
           <li>
-            <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">BLT</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="relative group my-6 md:my-0">
+        <a
+          href="#"
+          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200 submenu-toggle"
+          >Lembaga</a
+        >
+        <!-- Submenu -->
+        <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
+          <li>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">PKK</a>
+          </li>
+          <li>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">LPPMD</a>
           </li>
         </ul>
       </li>
@@ -71,9 +91,6 @@
           <li>
             <a href="{% url 'cerai'%}" class="block px-4 py-2 hover:bg-gray-200">Surat Cerai</a>
           </li>
-          <li>
-            <a href="{% url 'pengaduan'%}" class="block px-4 py-2 hover:bg-gray-200">Pengaduan</a>
-          </li>
         </ul>
       </li>
 
@@ -92,6 +109,9 @@
           <li>
             <a href="{% url 'struktur'%}" class="block px-4 py-2 hover:bg-gray-200">Struktur Organisasi</a>
           </li>
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Visi & Misi</a>
+          </li>
         </ul>
       </li>
 
@@ -107,7 +127,7 @@
       <!-- Menu IDM -->
       <li class="my-6 md:my-0">
         <a
-          href="#"
+          href="{% url 'idm'%}"
           class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200"
           >IDM</a
         >

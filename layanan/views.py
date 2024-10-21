@@ -3,9 +3,11 @@ from django.views.generic import View
 from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.conf import settings
 from .forms import *
 from superuser.models import *
 
+import requests,datetime
 # Create your views here.
 
 class IndexView(View):
@@ -71,6 +73,25 @@ def ChangePasswordPage(request):
         form = PasswordChangeForm(user=request.user)
     return render(request, 'auth/change_password.html', context={'form':form})
     
+def IndexDesaMembangun(request):
+    magma_composition_data = [
+        {"label":"IKS","symbol":"O","y":46.6},
+        {"label":"IKE","symbol":"Si","y":27.7},
+        {"label":"IKL","symbol":"Al","y":13.9},
+    ]
+    api = f"http://idm.kemendesa.go.id/open/api/desa/rumusan/{settings.ID_DESA}/{datetime.datetime.now().year}"
+
+    req = requests.get(api)
+    data = req.json()
+    return render(request, "pages/idm.html", context={
+        'status':data["mapData"]["SUMMARIES"]["STATUS"], 
+        "skor":round(data["mapData"]["SUMMARIES"]["SKOR_SAAT_INI"],4), 
+        "target":data["mapData"]["SUMMARIES"]["TARGET_STATUS"], 
+        "minimal":data["mapData"]["SUMMARIES"]["SKOR_MINIMAL"],
+        "tahun":data["mapData"]["SUMMARIES"]["TAHUN"],
+        "magma_composition_data" : magma_composition_data 
+    })
+
 def HistoryPage(request):
     return render(request,"pages/sejarah.html")
 
@@ -85,7 +106,7 @@ def NewsDetailPage(request, news_id):
     return render(request, "pages/berita_detail.html", context={'blog':news})
 
 def ReportPage(request):
-    return render(request, "pages/layanan/pengaduan.html", context={})
+    return render(request, "pages/informasi/pengaduan.html", context={})
 
 def AnnouncementPage(request):
     return render(request, "pages/informasi/pengumuman.html", context={})

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Index Desa Membangun {% endblock %}
+
+{% block chartjs %}
+<script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
+<script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
+<script>
+    window.onload = function () {
+      var chart = new CanvasJS.Chart("chartContainer",{
+        theme: "light2",
+        animationEnabled: true,
+        exportEnabled: true,
+        title: {
+          text: "SKOR",
+          dockInsidePlotArea: true,
+          verticalAlign: "center",
+          maxWidth: 140,
+          fontSize: 22
+        },
+        data: [{
+          type: "doughnut",
+          indexLabel: "{label} - {y}",
+          yValueFormatString: "#,##0.0\"%\"",
+          startAngle: 90,
+          dataPoints: {{ magma_composition_data|safe }}
+        }]
+      });
+      chart.render();
+    }
+</script>
+{% endblock %}
+
+{% block navbar %} {% include "components/navbar.html" %}{% endblock %}
+
+{% block contents %}
+<div class="max-w-4xl mx-auto p-4">
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center mb-4">
+            <i class="fas fa-clock text-xl text-gray-600 mr-2"></i>
+            <h1 class="text-2xl font-semibold text-gray-800">Status IDM [{{tahun}}]</h1>
+        </div>
+        <hr class="border-t border-gray-300 mb-4">
+        <div class="bg-gray-100 p-4 rounded-lg mb-6">
+            <p class="text-gray-700">
+                Indeks Desa Membangun (IDM) merupakan indeks komposit yang dibentuk dari tiga indeks, yaitu Indeks Ketahanan Sosial, Indeks Ketahanan Ekonomi, dan Indeks Ketahanan Ekologi/Lingkungan. Nilai IDM yang semakin tinggi menunjukkan kondisi desa yang semakin baik dari segi sosial, ekonomi, dan ekologi. IDM dapat menentukan status desa berdasarkan nilai dari indeks-indeks tersebut.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-blue-500 text-white p-4 rounded-lg flex flex-col items-center justify-center">
+                <p class="text-2xl font-bold break-words">{{ skor }}</p>
+                <p class="text-sm">SKOR IDM SAAT INI</p>
+                <i class="fas fa-chart-line text-2xl mt-2"></i>
+            </div>
+            <div class="bg-yellow-500 text-white p-4 rounded-lg flex flex-col items-center justify-center">
+                <p class="text-2xl font-bold">{{ status }}</p>
+                <p class="text-sm">STATUS IDM</p>
+                <i class="fas fa-heartbeat text-2xl mt-2"></i>
+            </div>
+            <div class="bg-green-500 text-white p-4 rounded-lg flex flex-col items-center justify-center">
+                <p class="text-2xl font-bold">{{ target }}</p>
+                <p class="text-sm">TARGET STATUS</p>
+                <i class="fas fa-signal text-2xl mt-2"></i>
+            </div>
+            <div class="bg-red-500 text-white p-4 rounded-lg flex flex-col items-center justify-center">
+                <p class="text-2xl font-bold">{{minimal}}</p>
+                <p class="text-sm">SKOR MINIMAL</p>
+                <i class="fas fa-chart-pie text-2xl mt-2"></i>
+            </div>
+        </div>
+        <div id="chartContainer" style="width: 100%; height: 360px;"></div>
+    </div>
+</div>    
+{% endblock %}
+
+{% block footer %}{% include "components/footer.html" %}{% endblock %}
