@@ -101,3 +101,5 @@ class Activities(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Citizen(models.Model) : pass

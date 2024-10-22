@@ -1,0 +1,24 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Website Desa Situsari">
+        <meta name="keywords" content="Situsari, situsari, SituSari">
+        <meta charset="UTF-8">
+        <meta name="author" content="PT Tree Logika Dinamika">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
+        {% tailwind_css %}
+    </head>
+    <body class="bg-gray-100">
+        {% block login %}{% endblock %}
+        <div class="flex flex-col md:flex-row">
+            {% block navbar %}{% endblock %}
+            {% block contents %} {% endblock %}
+        </div>
+    </body>
+</html>

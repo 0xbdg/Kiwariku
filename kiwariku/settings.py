@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'superuser',
     'cctv',
+    'layanan',
     'app',
     "phonenumber_field",
     'django_ckeditor_5',
