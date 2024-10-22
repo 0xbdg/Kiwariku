@@ -5,7 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("layanan.urls")),
+    path('', include("app.urls")),
     path('cctv/', include('cctv.urls')),
     path("ckeditor/", include('django_ckeditor_5.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
