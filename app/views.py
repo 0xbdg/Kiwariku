@@ -11,14 +11,14 @@ class IndexView(View):
     
     def get(self, request):
         article = Blog.objects.all()[:3]
-        activity = Activities.objects.all()[:3]
+        activity = Activity.objects.all()[:3]
         announcement = Announcement.objects.all()[:3]
 
         if Blog.objects.count() <= 3:
             article = Blog.objects.all()
 
-        if Activities.objects.count() <=3:
-            activity = Activities.objects.all()
+        if Activity.objects.count() <=3:
+            activity = Activity.objects.all()
         
         if Announcement.objects.count() <= 3:
             announcement = Announcement.objects.all()
@@ -64,10 +64,10 @@ def IndexDesaMembangun(request):
     })
 
 def HistoryPage(request):
-    return render(request,"pages/sejarah.html")
+    return render(request,"pages/tentang/sejarah.html")
 
 def StructurePage(request):
-    return render(request, "pages/struktur.html")
+    return render(request, "pages/tentang/struktur.html")
 
 def NewsPage(request):
     return render(request, "pages/berita.html", context={'news':Blog.objects.all()})
@@ -84,3 +84,6 @@ def AnnouncementPage(request):
 
 def ActivitiesPage(request):
     return render(request, "pages/informasi/kegiatan.html", context={})
+
+def VisimisiPage(request):
+    return render(request, "pages/tentang/visimisi.html", context={})

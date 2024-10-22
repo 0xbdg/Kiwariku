@@ -5,8 +5,9 @@ from .views import *
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
     path("idm/", IndexDesaMembangun, name="idm"),
-    path('sejarah/', HistoryPage, name="sejarah"),
-    path('struktur/', StructurePage, name="struktur"),
+    path('tentang/sejarah/', HistoryPage, name="sejarah"),
+    path('tentang/struktur/', StructurePage, name="struktur"),
+    path('tentang/visi-misi-desa/', VisimisiPage, name="visimisi"),
     path('berita/',NewsPage, name="berita"),
     path('berita/<uuid:news_id>', NewsDetailPage, name="details"),
     path('informasi/pengaduan', ReportPage, name="pengaduan"),

@@ -7,3 +7,4 @@ django-ckeditor-5
 Pillow
 whitenoise 
 python-dotenv
+requests

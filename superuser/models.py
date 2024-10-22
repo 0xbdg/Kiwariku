@@ -90,7 +90,7 @@ class Announcement(models.Model):
     def __str__(self):
         return self.title
 
-class Activities(models.Model):
+class Activity(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255)
