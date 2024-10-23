@@ -20,7 +20,7 @@ class SignInView(View):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("index")
+            return redirect("profile")
         return render(request, self.template_name, context={"form":form})
 
 @login_required
@@ -38,3 +38,7 @@ def ChangePasswordPage(request):
 def signout(request):
     logout(request)
     return redirect("signin")
+
+@login_required
+def ProfilePage(request):
+    return render(request, "pages/profile.html", context={})

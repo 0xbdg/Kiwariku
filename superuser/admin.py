@@ -7,24 +7,36 @@ from superuser.models import *
 
 class CustomUserAdmin(UserAdmin):
     model = Account
-    list_display = ['username', 'email','is_staff', 'is_superuser']
+    list_display = ['username', 'is_staff', 'is_superuser']
     fieldsets = (
         ('Account', {'fields': ('email', 'username', 'password')}),
-        ('Personal Info', {'fields': ("photo",'first_name', 'last_name', 'phonenumber', 'gender', 'birth_date')}),
+        ('Personal Info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ( 'is_staff', 'is_superuser','is_active')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'password1', 'password2', 'first_name', 'last_name', 'phonenumber', 'gender','birth_date','is_staff', 'is_superuser')}
+            'fields': ('email', 'username', 'password1', 'password2', 'first_name', 'last_name','is_staff', 'is_superuser')}
         ),
     )
-    search_fields = ('email', 'username', 'firstname', 'lastname', 'phonenumber', 'gender', 'birth_date')
+    search_fields = ('email', 'username', 'first_name', 'last_name')
     ordering = ('email',)
+
+class CustomCitizen(admin.ModelAdmin):
+    list_display = ["nama_lengkap","akun_layanan","NIK", "jenis_kelamin", "agama", "pekerjaan"]
+
+    fieldsets = (
+        ('Data penting', {'fields': ('NIK', 'KK')}),
+        ('Informasi diri', {'fields': ('nama_lengkap', 'tempat_lahir', 'RT','RW','tanggal_lahir','alamat', 'jenis_kelamin', 'agama', 'pendidikan','pekerjaan')}),
+        ('Layanan Mandiri', {'fields': ('akun_layanan',)})
+    )
+
+    search_fields = ("NIK","nama_lengkap")
 
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
 admin.site.register(Blog)
 admin.site.register(Announcement)
 admin.site.register(Activity)
+admin.site.register(Citizen, CustomCitizen)

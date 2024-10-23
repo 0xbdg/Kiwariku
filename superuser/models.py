@@ -1,5 +1,4 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from datetime import datetime
 from django_ckeditor_5.fields import CKEditor5Field
@@ -7,8 +6,37 @@ import uuid
 # Create your models here.
 
 GENDER = (
-    ("M","Laki-Laki"),
-    ("F", "Perempuan")
+    ("M","Pria"),
+    ("F", "Wanita")
+)
+
+RELIGION = (
+    ("BUDDHA", "Buddha"),
+    ("KRISTEN", "Kristen"),
+    ("ISLAM", "Islam"),
+    ("KATOLIK", "Katolik"),
+    ("HINDU", "Hindu")
+)
+
+EDUCATION = (
+    ("TK","TK/Kelompok Bermain"),
+    ("SD","SD/Sederajat"),
+    ("SMP", "SMP/Sederajat"),
+    ("SMA", "SMA/Sederajat"),
+    ("SMK", "SMK/Sederajat"),
+    ("SLTP", "SLTP/Sederajat"),
+    ("SLTA", "SLTA/Sederajat"),
+    ("D1", "D-1/Sederajat"),
+    ("D2", "D-2/Sederajat"),
+    ("D3", "D-3/Sederajat"),
+    ("D4", "D-4/Sederajat"),
+    ("S1", "S-1/Sederajat"),
+    ("S2", "S-2/Sederajat"),
+)
+
+JOB = (
+    ("Penganggur", "Pengangguran"),
+    ("Karyawan", "Karyawan")
 )
 
 class UserManager(BaseUserManager):
@@ -25,14 +53,10 @@ class UserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 class Account(AbstractBaseUser, PermissionsMixin):
-    photo = models.ImageField(upload_to="profile/", blank=True)
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
-    phonenumber = PhoneNumberField(blank=True)
-    gender = models.CharField(max_length=1,choices=GENDER, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
     date_joined = models.DateTimeField(default=datetime.now())
 
     is_staff = models.BooleanField(default=False)
@@ -102,4 +126,20 @@ class Activity(models.Model):
     def __str__(self):
         return self.title
     
-class Citizen(models.Model) : pass
+class Citizen(models.Model):
+    NIK = models.CharField(max_length=16, null=False, blank=False, unique=True)
+    KK = models.CharField(max_length=16, null=False, blank=False, unique=True)
+    akun_layanan = models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
+    nama_lengkap = models.CharField(max_length=255, null=False, blank=False)
+    tempat_lahir = models.CharField(max_length=255, null=False, blank=False)
+    RT = models.IntegerField(null=False, blank=False)
+    RW = models.IntegerField(null=False, blank=False)
+    tanggal_lahir = models.DateField(null=False, blank=False)
+    alamat = models.CharField(max_length=500, null=False, blank=False)
+    agama = models.CharField(max_length=255,choices=RELIGION, null=False, blank=False)
+    jenis_kelamin = models.CharField(max_length=255, choices=GENDER, null=False,blank=False)
+    pendidikan = models.CharField(max_length=255,choices=EDUCATION, null=False, blank=False)
+    pekerjaan = models.CharField(max_length=255,choices=JOB, null=False, blank=False)
+
+    def __str__(self):
+        return self.nama_lengkap

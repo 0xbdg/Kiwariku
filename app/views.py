@@ -87,3 +87,6 @@ def ActivitiesPage(request):
 
 def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
+
+def DataPage(request):
+    return render(request, "pages/data.html", context={})

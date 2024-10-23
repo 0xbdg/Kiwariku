@@ -1,0 +1,41 @@
+{% extends "base_layanan.html" %}
+
+{% load static %}
+
+{% block navbar %}{% include "part/navbar.html" %}{% endblock %}
+
+{% block contents %}
+<div class="w-full md:w-3/4 p-4 md:p-8">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold mb-4 bg-navbar text-white p-2 rounded">PROFIL</h2>
+        <div class="p-4">
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold bg-gray-200 p-2">DATA DASAR</h2>
+                <div class="grid grid-cols-3 gap-4 p-2">
+                    <div class="col-span-1 font-semibold">NIK</div>
+                    <div class="col-span-2">: 5201144112726996</div>
+                    <div class="col-span-1 font-semibold">Nama</div>
+                    <div class="col-span-2">: MURNIATI SAGITA</div>
+                    <div class="col-span-1 font-semibold">Nomor Kartu Keluarga</div>
+                    <div class="col-span-2">: 5201140203136994</div>
+                    <div class="col-span-1 font-semibold">Jenis Kelamin</div>
+                    <div class="col-span-2">: PEREMPUAN</div>
+                    <div class="col-span-1 font-semibold">Agama</div>
+                    <div class="col-span-2">: ISLAM</div>
+                    <div class="col-span-1 font-semibold">Status Penduduk</div>
+                    <div class="col-span-2">: TETAP</div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold bg-gray-200 p-2">AKUN LAYANAN</h2>
+                <div class="grid grid-cols-3 gap-4 p-2">
+                    <div class="col-span-1 font-semibold">Username</div>
+                    <div class="col-span-2">: {{ user.get_username }}</div>
+                    <div class="col-span-1 font-semibold">Email</div>
+                    <div class="col-span-2">: test@mail.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

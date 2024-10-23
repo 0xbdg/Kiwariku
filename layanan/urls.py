@@ -3,6 +3,7 @@ from django.contrib.auth import views as reset_view
 from .views import *
 
 urlpatterns = [
+    path('profil/', ProfilePage, name="profile"),
     path('account/login/', SignInView.as_view(), name="signin"),
     path('account/logout/', logout, name="logout"),
     path('account/change_password', ChangePasswordPage, name="change"),
