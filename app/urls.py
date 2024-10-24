@@ -5,7 +5,7 @@ from .views import *
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
     path("idm/", IndexDesaMembangun, name="idm"),
-    path("data/", DataPage, name="data"),
+    path("informasi/data/", DataPage, name="data"),
     path('tentang/sejarah/', HistoryPage, name="sejarah"),
     path('tentang/struktur/', StructurePage, name="struktur"),
     path('tentang/visi-misi-desa/', VisimisiPage, name="visimisi"),

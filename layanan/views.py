@@ -1,13 +1,23 @@
-from django.shortcuts import redirect, render,  get_object_or_404
+from django.shortcuts import redirect, render
 from django.views.generic import View
 from django.contrib.auth import login,logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponseForbidden
 
 from superuser.models import Citizen, Account
 from .forms import LoginForm
 
 # Create your views here.
+
+def user_required(view_func):
+    @login_required
+    def _wrapped_view(request, *args, **kwargs):
+        if request.user.is_superuser:
+            return HttpResponseForbidden("Admin tidak berhak untuk mengakses halaman ini")
+        return view_func(request, *args, **kwargs)
+    return _wrapped_view
+
 class SignInView(View):
     form_class = LoginForm
     template_name = 'pages/signin.html'
@@ -30,7 +40,7 @@ class SignInView(View):
                 form.add_error(None, 'Username atau Password anda salah!, silahkan periksa kembali')
         return render(request, self.template_name, context={"form":form})
 
-@login_required
+@user_required
 def ChangePasswordPage(request):
     if request.method == 'POST':
         form = PasswordChangeForm(user=request.user, data=request.POST)
@@ -41,12 +51,12 @@ def ChangePasswordPage(request):
         form = PasswordChangeForm(user=request.user)
     return render(request, 'pages/change_password.html', context={'form':form})
 
-@login_required
+@user_required
 def signout(request):
     logout(request)
     return redirect("signin")
 
-@login_required
+@user_required
 def ProfilePage(request):
     account = Account.objects.get(username=request.user.get_username())
     penduduk = Citizen.objects.get(akun_layanan=account)

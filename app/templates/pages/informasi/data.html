@@ -1,11 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Data desa{% endblock %}
+
+{% block chartjs %}
+<script>
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+          exportEnabled: true,
+          animationEnabled: true,
+          title: {
+            text: "Pendidikan Terakhir"
+          },
+          data: [{
+            type: "pie",
+            legendText: "{label}",
+            yValueFormatString: "#,###\"%\"",
+            indexLabel: "{label} ({y})",
+            dataPoints: {{ monthly_expense_data|safe }}
+          }]
+        });
+        chart.render();
+      }
+</script>    
+{% endblock %}
+
 {% block navbar %}{% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
 <h1 class="text-2xl md:text-3xl font-bold text-center mb-4 text-white mt-10">DATA DESA</h1>
-<h2 class="text-lg md:text-2xl font-semibold text-center mb-6 text-white mt-5">Data Jumlah Penduduk dan Kepala Keluarga</h2>
+<h2 class="text-lg md:text-2xl font-semibold text-center mb-6 text-white mt-5">Data Jumlah Penduduk</h2>
       
        
         <div class="grid grid-cols-1 md:grid-cols-4  gap-4 justify-items-center mt-10">
@@ -14,19 +38,11 @@
             <h3 class="text-lg font-semibold ">TOTAL PENDUDUK</h3>
             <p class="text-sm mt-2">0000 Jiwa</p>
           </div>
-      
-          
-          <div class="bg-navbar rounded-lg p-6 w-80 h-36 text-white shadow-md">
-            <h3 class="text-lg font-semibold">KEPALA KELUARGA</h3>
-            <p class="text-sm mt-2">0000 Jiwa</p>
-          </div>
-      
         
           <div class="bg-navbar rounded-lg p-6 w-80 h-36 text-white shadow-md">
             <h3 class="text-lg font-semibold">PEREMPUAN</h3>
             <p class="text-sm mt-2">0000 Jiwa</p>
           </div>
-      
          
           <div class="bg-navbar rounded-lg p-6 w-80 h-36 text-white shadow-md">
             <h3 class="text-lg font-semibold">LAKI-LAKI</h3>
@@ -36,7 +52,7 @@
 
         <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-10  ">
           <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left text-white">Data Penduduk Berdasarkan Pendidikan</h1>
-          <img class="w-80 md:w-7/12 mt-3 mx-auto lg:mx-0" src="Graph.png" alt="Grafik Pendidikan">
+          <div id="chartContainer" style="width: 1000px; height: 360px;"></div>
         </div>
     
         

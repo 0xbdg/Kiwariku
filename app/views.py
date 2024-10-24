@@ -89,4 +89,12 @@ def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
 
 def DataPage(request):
-    return render(request, "pages/data.html", context={})
+    monthly_expense_data = [
+    { "label": "Accomodation", "y": 30 },
+    { "label": "Food & Groceries", "y": 25 },
+    { "label": "Utilities", "y": 5 },
+    { "label": "Entertainment & Fun", "y": 20 },
+    { "label": "Savings", "y": 10 },
+    { "label": "Cellphone & Internet", "y": 10 }
+  ]
+    return render(request, "pages/informasi/data.html", context={ "monthly_expense_data" : monthly_expense_data  })
