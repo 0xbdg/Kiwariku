@@ -6,8 +6,8 @@ import uuid
 # Create your models here.
 
 GENDER = (
-    ("M","Pria"),
-    ("F", "Wanita")
+    ("Pria","Pria"),
+    ("Wanita", "Wanita")
 )
 
 RELIGION = (
@@ -129,7 +129,7 @@ class Activity(models.Model):
 class Citizen(models.Model):
     NIK = models.CharField(max_length=16, null=False, blank=False, unique=True)
     KK = models.CharField(max_length=16, null=False, blank=False, unique=True)
-    akun_layanan = models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
+    akun_layanan = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True)
     nama_lengkap = models.CharField(max_length=255, null=False, blank=False)
     tempat_lahir = models.CharField(max_length=255, null=False, blank=False)
     RT = models.IntegerField(null=False, blank=False)

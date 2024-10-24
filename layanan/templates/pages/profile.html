@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %}Profil{% endblock %}
+
 {% block navbar %}{% include "part/navbar.html" %}{% endblock %}
 
 {% block contents %}
@@ -13,26 +15,38 @@
                 <h2 class="text-lg font-semibold bg-gray-200 p-2">DATA DASAR</h2>
                 <div class="grid grid-cols-3 gap-4 p-2">
                     <div class="col-span-1 font-semibold">NIK</div>
-                    <div class="col-span-2">: 5201144112726996</div>
+                    <div class="col-span-2">: {{ profil.NIK}}</div>
                     <div class="col-span-1 font-semibold">Nama</div>
-                    <div class="col-span-2">: MURNIATI SAGITA</div>
+                    <div class="col-span-2">: {{ profil.nama_lengkap}}</div>
                     <div class="col-span-1 font-semibold">Nomor Kartu Keluarga</div>
-                    <div class="col-span-2">: 5201140203136994</div>
+                    <div class="col-span-2">: {{ profil.KK}}</div>
+                    <div class="col-span-1 font-semibold">Tempat Lahir</div>
+                    <div class="col-span-2">: {{ profil.tempat_lahir}}</div>
+                    <div class="col-span-1 font-semibold">Tanggal Lahir</div>
+                    <div class="col-span-2">: {{ profil.tanggal_lahir}}</div>
+                    <div class="col-span-1 font-semibold">RT/RW</div>
+                    <div class="col-span-2">: {{profil.RT}}/{{ profil.RW}}</div>
                     <div class="col-span-1 font-semibold">Jenis Kelamin</div>
-                    <div class="col-span-2">: PEREMPUAN</div>
+                    <div class="col-span-2">: {{ profil.jenis_kelamin}}</div>
                     <div class="col-span-1 font-semibold">Agama</div>
-                    <div class="col-span-2">: ISLAM</div>
-                    <div class="col-span-1 font-semibold">Status Penduduk</div>
-                    <div class="col-span-2">: TETAP</div>
+                    <div class="col-span-2">: {{ profil.agama}}</div>
+                    <div class="col-span-1 font-semibold">Pendidikan Terakhir</div>
+                    <div class="col-span-2">: {{profil.pendidikan}}</div>
+                    <div class="col-span-1 font-semibold">Pekerjaan</div>
+                    <div class="col-span-2">: {{profil.pekerjaan}}</div>
                 </div>
             </div>
             <div>
                 <h2 class="text-lg font-semibold bg-gray-200 p-2">AKUN LAYANAN</h2>
                 <div class="grid grid-cols-3 gap-4 p-2">
                     <div class="col-span-1 font-semibold">Username</div>
-                    <div class="col-span-2">: {{ user.get_username }}</div>
+                    <div class="col-span-2">: {{ user.get_username}}</div>
                     <div class="col-span-1 font-semibold">Email</div>
-                    <div class="col-span-2">: test@mail.com</div>
+                    <div class="col-span-2">: {{ user.email}}</div>
+                    <div class="col-span-1 font-semibold">Nama Depan</div>
+                    <div class="col-span-2">: {{ user.first_name}}</div>
+                    <div class="col-span-1 font-semibold">Nama Belakang</div>
+                    <div class="col-span-2">: {{ user.last_name}}</div>
                 </div>
             </div>
         </div>

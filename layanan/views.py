@@ -1,8 +1,10 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,  get_object_or_404
 from django.views.generic import View
-from django.contrib.auth import login,logout
+from django.contrib.auth import login,logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+
+from superuser.models import Citizen, Account
 from .forms import LoginForm
 
 # Create your views here.
@@ -18,9 +20,14 @@ class SignInView(View):
         form = self.form_class(data=request.POST)
 
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("profile")
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if not(user.is_superuser or user.is_staff):
+                login(request, user)
+                return redirect('profile')  # Redirect to a success page.
+            else:
+                form.add_error(None, 'Username atau Password anda salah!, silahkan periksa kembali')
         return render(request, self.template_name, context={"form":form})
 
 @login_required
@@ -41,4 +48,7 @@ def signout(request):
 
 @login_required
 def ProfilePage(request):
-    return render(request, "pages/profile.html", context={})
+    account = Account.objects.get(username=request.user.get_username())
+    penduduk = Citizen.objects.get(akun_layanan=account)
+
+    return render(request, "pages/profile.html", context={"profil":penduduk})
