@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from datetime import datetime
 from django_ckeditor_5.fields import CKEditor5Field
 import uuid
+
 # Create your models here.
 
 GENDER = (
@@ -15,7 +16,8 @@ RELIGION = (
     ("KRISTEN", "Kristen"),
     ("ISLAM", "Islam"),
     ("KATOLIK", "Katolik"),
-    ("HINDU", "Hindu")
+    ("HINDU", "Hindu"),
+    ("KONGHUCU", "Konghucu")
 )
 
 EDUCATION = (
@@ -32,6 +34,7 @@ EDUCATION = (
     ("D-4", "D4"),
     ("S-1", "S1"),
     ("S-2", "S2"),
+    ("S-3", "S3")
 )
 
 JOB = (

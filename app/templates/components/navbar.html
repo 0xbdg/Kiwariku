@@ -24,9 +24,6 @@
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
           <li>
-            <a href="{% url 'data'%}" class="block px-4 py-2 hover:bg-gray-200">Data desa</a>
-          </li>
-          <li>
             <a href="{% url 'pengumuman'%}" class="block px-4 py-2 hover:bg-gray-200">Pengumuman</a>
           </li>
           <li>
@@ -65,13 +62,13 @@
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
           <li>
-            <a href="" class="block px-4 py-2 hover:bg-gray-200">Data pendidikan</a>
+            <a href="{% url 'pendidikan'%}" class="block px-4 py-2 hover:bg-gray-200">Data pendidikan</a>
           </li>
           <li>
-            <a href="" class="block px-4 py-2 hover:bg-gray-200">Data agama</a>
+            <a href="{% url 'agama' %}" class="block px-4 py-2 hover:bg-gray-200">Data agama</a>
           </li>
           <li>
-            <a href="" class="block px-4 py-2 hover:bg-gray-200">Data pekerjaan</a>
+            <a href="{% url 'pekerjaan' %}" class="block px-4 py-2 hover:bg-gray-200">Data pekerjaan</a>
           </li>
         </ul>
       </li>

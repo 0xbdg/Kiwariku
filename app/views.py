@@ -91,21 +91,38 @@ def ActivitiesPage(request):
 def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
 
-def DataPage(request):
+def DataPendidikanPage(request):
     data_pendidikan = [
-    { "label": "Accomodation", "y": 30 },
-    { "label": "Food & Groceries", "y": 25 },
-    { "label": "Utilities", "y": 5 },
-    { "label": "Entertainment & Fun", "y": 20 },
-    { "label": "Savings", "y": 10 },
-    { "label": "Cellphone & Internet", "y": 10 }
-  ]
+        { "label": "Accomodation", "y": 30 },
+        { "label": "Food & Groceries", "y": 25 },
+        { "label": "Utilities", "y": 5 },
+        { "label": "Entertainment & Fun", "y": 20 },
+        { "label": "Savings", "y": 10 },
+        { "label": "Cellphone & Internet", "y": 10 }
+    ]
+
+    return render(request, "pages/data/pendidikan.html", context={ "data_pendidikan" : data_pendidikan})
+
+def DataPekerjaanPage(request):
     data_pekerjaan = [
-    { "label": "Accomodation", "y": 30 },
-    { "label": "Food & Groceries", "y": 25 },
-    { "label": "Utilities", "y": 5 },
-    { "label": "Entertainment & Fun", "y": 20 },
-    { "label": "Savings", "y": 10 },
-    { "label": "Cellphone & Internet", "y": 10 }
-  ]
-    return render(request, "pages/informasi/data.html", context={ "data_pendidikan" : data_pendidikan, "data_pekerjaan":data_pekerjaan  })
+        { "label": "Accomodation", "y": 30 },
+        { "label": "Food & Groceries", "y": 25 },
+        { "label": "Utilities", "y": 5 },
+        { "label": "Entertainment & Fun", "y": 20 },
+        { "label": "Savings", "y": 10 },
+        { "label": "Cellphone & Internet", "y": 10 }
+    ]
+    
+    return render(request, "pages/data/pekerjaan.html", context={ "data_pekerjaan" : data_pekerjaan})
+
+def DataAgamaPage(request):
+    data_agama = [
+        { "label": "Buddha", "y": 30 },
+        { "label": "Hindu", "y": 25 },
+        { "label": "Islam", "y": 5 },
+        { "label": "Katolik", "y": 20 },
+        { "label": "Kristen", "y": 10 },
+        { "label": "Konghucu", "y": 10 }
+    ]
+    
+    return render(request, "pages/data/agama.html", context={ "data_agama" : data_agama})
