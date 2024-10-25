@@ -6,8 +6,8 @@ import uuid
 # Create your models here.
 
 GENDER = (
-    ("Pria","Pria"),
-    ("Wanita", "Wanita")
+    ("LAKI-LAKI","Laki-Laki"),
+    ("PEREMPUAN", "Perempuan")
 )
 
 RELIGION = (
@@ -19,19 +19,19 @@ RELIGION = (
 )
 
 EDUCATION = (
-    ("TK","TK/Kelompok Bermain"),
-    ("SD","SD/Sederajat"),
-    ("SMP", "SMP/Sederajat"),
-    ("SMA", "SMA/Sederajat"),
-    ("SMK", "SMK/Sederajat"),
-    ("SLTP", "SLTP/Sederajat"),
-    ("SLTA", "SLTA/Sederajat"),
-    ("D1", "D-1/Sederajat"),
-    ("D2", "D-2/Sederajat"),
-    ("D3", "D-3/Sederajat"),
-    ("D4", "D-4/Sederajat"),
-    ("S1", "S-1/Sederajat"),
-    ("S2", "S-2/Sederajat"),
+    ("TK","TK"),
+    ("SD","SD"),
+    ("SMP", "SMP"),
+    ("SMA", "SMA"),
+    ("SMK", "SMK"),
+    ("SLTP", "SLTP"),
+    ("SLTA", "SLTA"),
+    ("D-1", "D1"),
+    ("D-2", "D2"),
+    ("D-3", "D3"),
+    ("D-4", "D4"),
+    ("S-1", "S1"),
+    ("S-2", "S2"),
 )
 
 JOB = (

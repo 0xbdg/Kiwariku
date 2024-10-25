@@ -13,6 +13,9 @@ class IndexView(View):
         article = Blog.objects.all()[:3]
         activity = Activity.objects.all()[:3]
         announcement = Announcement.objects.all()[:3]
+        penduduk_perempuan = Citizen.objects.filter(jenis_kelamin="PEREMPUAN").count()
+        penduduk_laki = Citizen.objects.filter(jenis_kelamin="LAKI-LAKI").count()
+        penduduk_keseluruhan = penduduk_laki + penduduk_perempuan
 
         if Blog.objects.count() <= 3:
             article = Blog.objects.all()
@@ -23,7 +26,7 @@ class IndexView(View):
         if Announcement.objects.count() <= 3:
             announcement = Announcement.objects.all()
 
-        return render(request, self.template_name, context={"artikel":article, "kegiatan":activity, "pengumuman":announcement})
+        return render(request, self.template_name, context={"artikel":article, "kegiatan":activity, "pengumuman":announcement, "laki":penduduk_laki, "perempuan":penduduk_perempuan, "penduduk_semua":penduduk_keseluruhan})
     
 def IndexDesaMembangun(request):
     IKS = 0
@@ -89,7 +92,7 @@ def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
 
 def DataPage(request):
-    monthly_expense_data = [
+    data_pendidikan = [
     { "label": "Accomodation", "y": 30 },
     { "label": "Food & Groceries", "y": 25 },
     { "label": "Utilities", "y": 5 },
@@ -97,4 +100,12 @@ def DataPage(request):
     { "label": "Savings", "y": 10 },
     { "label": "Cellphone & Internet", "y": 10 }
   ]
-    return render(request, "pages/informasi/data.html", context={ "monthly_expense_data" : monthly_expense_data  })
+    data_pekerjaan = [
+    { "label": "Accomodation", "y": 30 },
+    { "label": "Food & Groceries", "y": 25 },
+    { "label": "Utilities", "y": 5 },
+    { "label": "Entertainment & Fun", "y": 20 },
+    { "label": "Savings", "y": 10 },
+    { "label": "Cellphone & Internet", "y": 10 }
+  ]
+    return render(request, "pages/informasi/data.html", context={ "data_pendidikan" : data_pendidikan, "data_pekerjaan":data_pekerjaan  })

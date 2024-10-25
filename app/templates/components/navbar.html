@@ -4,7 +4,7 @@
   <div class="flex justify-between items-center py-2 px-4">
       <a class="flex items-center text-white text-md md:text-lg lg:text-2xl" href="{% url 'index'%}">
         <img class="h-10 inline" src="{% static 'img/logo.png' %}" alt="Logo" />
-        <span class="ml-2">Desa Situsari</span>
+        <span class="ml-2">Selamat datang</span>
       </a>
       <!-- Icon Hamburger untuk Ponsel -->
       <span class="text-3xl cursor-pointer md:hidden block text-white" onclick="Menu(this)">
@@ -52,6 +52,26 @@
           </li>
           <li>
             <a href="" class="block px-4 py-2 hover:bg-gray-200">BLT</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="relative group my-6 md:my-0">
+        <a
+          href="#"
+          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200 submenu-toggle"
+          >Data Desa</a
+        >
+        <!-- Submenu -->
+        <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
+          <li>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">Data pendidikan</a>
+          </li>
+          <li>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">Data agama</a>
+          </li>
+          <li>
+            <a href="" class="block px-4 py-2 hover:bg-gray-200">Data pekerjaan</a>
           </li>
         </ul>
       </li>
