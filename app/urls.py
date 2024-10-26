@@ -10,6 +10,7 @@ urlpatterns = [
     path('berita/',NewsPage, name="berita"),
     path('berita/<uuid:news_id>', NewsDetailPage, name="details"),
     path('informasi/pengaduan', ReportPage, name="pengaduan"),
+    path('informasi/pemerintah-desa', PemerintahdesaPage, name="pemerintah"),
     path('informasi/pengumuman/', AnnouncementPage, name="pengumuman"),
     path('informasi/kegiatan/', ActivitiesPage, name="kegiatan"),
     path('data/pendidikan/', DataPendidikanPage, name="pendidikan"),

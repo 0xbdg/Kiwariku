@@ -38,8 +38,30 @@ EDUCATION = (
 )
 
 JOB = (
-    ("Penganggur", "Pengangguran"),
-    ("Karyawan", "Karyawan")
+    ("TIDAK BEKERJA", "Tidak Bekerja"),
+    ("KARYAWAN", "Karyawan"),
+    ("PENSIUNAN", "Pensiunan"),
+    ("PELAJAR/MAHASISWA", "Pelajar/Mahasiswa"),
+    ("MENGURUS RUMAH TANGGA", "Mengurus Rumah Tangga"),
+    ("ASISTEN RUMAH TANGGA", "Asisten Rumah Tangga"),
+    ("WIRASWASTA", "Wiraswasta"),
+    ("SATPAM/SECURITY", "Satpam/Security"),
+    ("BARBER", "Barber"),
+    ("MONTIR", "Montir"),
+    ("AHLI LAS/PANDAI BESI", "Ahli Las/Pandai Besi"),
+    ("BURUH", "Buruh"),
+    ("ABDI NEGARA", "Abdi Negara"),
+    ("PETUGAS KEBERSIHAN", "Petugas Kebersihan"),
+    ("NELAYAN", "Nelayan"),
+    ("PEMUKA AGAMA", "Pemuka Agama"),
+    ("WIRAUSAHA", "Wirausaha"),
+    ("SOPIR", "Sopir"),
+    ("PETERNAK", "Peternak"),
+    ("PENGRAJIN", "Pengrajin"),
+    ("DIGITALPRENEUR", "Digitalpreneur"),
+    ("ARSITEK", "Arsitek"),
+    ("PEKERJA KASAR", "Pekerja Kasar"),
+    ("TUKANG", "Tukang")
 )
 
 class UserManager(BaseUserManager):
@@ -92,6 +114,9 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
        return self.username
+    
+    class Meta:
+        verbose_name_plural = "Pengguna"
 
 class Blog(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
@@ -105,6 +130,9 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
     
+    class Meta:
+        verbose_name_plural = "Artikel"
+    
 class Announcement(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=255)
     thumbnail = models.ImageField(upload_to="thumbnail/")
@@ -116,6 +144,9 @@ class Announcement(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name_plural = "Pengumuman"
 
 class Activity(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
@@ -128,6 +159,9 @@ class Activity(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name_plural = "Kegiatan"
     
 class Citizen(models.Model):
     NIK = models.CharField(max_length=16, null=False, blank=False, unique=True)
@@ -146,3 +180,16 @@ class Citizen(models.Model):
 
     def __str__(self):
         return self.nama_lengkap
+    
+    class Meta:
+        verbose_name_plural = "Penduduk"
+
+class Goverment(models.Model):
+    nama_orang = models.CharField()
+    posisi = models.CharField()
+
+    def __str__(self):
+        return self.nama_orang
+    
+    class Meta:
+        verbose_name_plural = "Pemerintahan desa"

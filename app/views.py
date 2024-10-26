@@ -91,14 +91,25 @@ def ActivitiesPage(request):
 def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
 
+def PemerintahdesaPage(request):
+    return render(request,"pages/informasi/pemerintahan.html", context={})
+
 def DataPendidikanPage(request):
     data_pendidikan = [
-        { "label": "Accomodation", "y": 30 },
-        { "label": "Food & Groceries", "y": 25 },
-        { "label": "Utilities", "y": 5 },
-        { "label": "Entertainment & Fun", "y": 20 },
-        { "label": "Savings", "y": 10 },
-        { "label": "Cellphone & Internet", "y": 10 }
+        { "label": "TK", "y": 30 },
+        { "label": "SD", "y": 25 },
+        { "label": "SMP", "y": 5 },
+        { "label": "SMA", "y": 20 },
+        { "label": "SMK", "y": 10 },
+        { "label": "SLTP", "y": 10 },
+        { "label": "SLTA", "y": 10 },
+        { "label": "D-1", "y": 10 },
+        { "label": "D-2", "y": 10 },
+        { "label": "D-3", "y": 10 },
+        { "label": "D-4", "y": 10 },
+        { "label": "S-1", "y": 10 },
+        { "label": "S-2", "y": 10 },
+        { "label": "S-3", "y": 10 },
     ]
 
     return render(request, "pages/data/pendidikan.html", context={ "data_pendidikan" : data_pendidikan})
