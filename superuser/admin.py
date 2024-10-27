@@ -32,6 +32,8 @@ class CustomCitizen(admin.ModelAdmin):
         ('Layanan Mandiri', {'fields': ('akun_layanan',)})
     )
 
+    list_filter = ('agama', 'pekerjaan', 'pendidikan', 'jenis_kelamin')
+
     search_fields = ("NIK","nama_lengkap")
 
 admin.site.unregister(Group)
@@ -39,4 +41,5 @@ admin.site.register(Account, CustomUserAdmin)
 admin.site.register(Blog)
 admin.site.register(Announcement)
 admin.site.register(Activity)
+admin.site.register(Goverment)
 admin.site.register(Citizen, CustomCitizen)

@@ -293,3 +293,11 @@ CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
 # DESA
 
 ID_DESA = os.environ.get("ID_DESA_IDM")
+
+JAZZMIN_SETTINGS = {
+    "site_admin":"Kiwariku",
+    "site_header":"Panel SID",
+    "site_brand":"Kiwariku",
+    "welcome_sign": "Administrator panel",
+    "copyright": "Kiwariku",
+}

@@ -5,23 +5,19 @@
 
 {% block chartjs %}
 <script>
-    window.onload = function () {
-        var chart = new CanvasJS.Chart("chartPendidikan", {
-          exportEnabled: true,
-          animationEnabled: true,
-          title: {
-            text: "Pendidikan Terakhir"
-          },
-          data: [{
-            type: "pie",
-            legendText: "{label}",
-            yValueFormatString: "#,###\"%\"",
-            indexLabel: "{label} ({y})",
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartPendidikan", {
+        animationEnabled: true,
+        title:{
+            text: "Grafik pendidikan"
+        },
+        data: [{
+            type: "column",
             dataPoints: {{ data_pendidikan | safe }}
-          }]
-        });
-        chart.render();
-      }
+        }]
+    });
+    chart.render();
+}
 </script> 
 {% endblock %}
 
@@ -31,6 +27,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-8 text-white">
       <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left">Data Penduduk Berdasarkan Pendidikan</h1>
+      <div id="chartPendidikan" style="width: 1000px; height: 300px;"></div>
       <div class="md:w-11/12 w-80 border-2 rounded-md mt-5 mx-auto lg:mx-0">
         <table class="w-full border-collapse">
           <thead class="bg-nav_hover">
@@ -44,7 +41,7 @@
           <table class="w-full border-collapse">
             <tbody class="bg-navbar">
               <tr>
-                <td class="border-b-2 p-3 text-left">TK/Taman Kanak-Kanak</td>
+                <td class="border-b-2 p-3 text-left">Tidak Sekolah</td>
                 <td class="border-b-2 p-3 text-right pr-5">000</td> 
               </tr>
               <tr>
@@ -103,10 +100,6 @@
           </table>
         </div>
       </div>
-    </div>
-         
-    <div class="flex flex-col justify-center items-center mx-auto mt-10 md:items-start md:mx-0">
-      <div id="chartPendidikan" style="width: 100; height: 300px;"></div>
     </div>
 </div>  
 {% endblock %}

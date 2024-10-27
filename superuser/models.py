@@ -21,7 +21,7 @@ RELIGION = (
 )
 
 EDUCATION = (
-    ("TK","TK"),
+    ("TIDAK SEKOLAH","Tidak Sekolah"),
     ("SD","SD"),
     ("SMP", "SMP"),
     ("SMA", "SMA"),
@@ -185,8 +185,9 @@ class Citizen(models.Model):
         verbose_name_plural = "Penduduk"
 
 class Goverment(models.Model):
-    nama_orang = models.CharField()
-    posisi = models.CharField()
+    foto_pemerintah = models.ImageField(upload_to="foto_pemerintahan_desa/")
+    nama_orang = models.CharField(max_length=255)
+    jobdesk = models.CharField(max_length=255)
 
     def __str__(self):
         return self.nama_orang
