@@ -24,84 +24,92 @@
 {% block navbar %}{% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-8 text-white">
+<div class="flex flex-col md:flex-row items-center md:grid-cols-2 gap-10">
+          
+  <div class="md:w-3/6 w-80 lg:items-start lg:pl-10 mt-8 text-white">
       <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left">Data Penduduk Berdasarkan Pendidikan</h1>
-      <div id="chartPendidikan" style="width: 1000px; height: 300px;"></div>
-      <div class="md:w-11/12 w-80 border-2 rounded-md mt-5 mx-auto lg:mx-0">
-        <table class="w-full border-collapse">
-          <thead class="bg-nav_hover">
-            <tr>
-              <th class="border-b-2 text-left p-3">Tingkat Pendidikan</th>
-              <th class="border-b-2 p-3 text-right">Jumlah</th>
-            </tr>
-          </thead>
-        </table>
-        <div class="overflow-y-auto h-64 bg-white"> 
+      <div class="border-2 rounded-md mt-5 mx-auto lg:mx-0">
           <table class="w-full border-collapse">
-            <tbody class="bg-navbar">
-              <tr>
-                <td class="border-b-2 p-3 text-left">Tidak Sekolah</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td> 
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">SD/Sederajat</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">SMP/Sederajat</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">SMA/Sederajat</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">SMK/Sederajat</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">SLTP/Sederajat</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">SLTA/Sederajat</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Diploma 1</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Diploma 2</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Diploma 3</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Diploma 4</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Sarjana 1</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Sarjana 2</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Sarjana 3<td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-            </tbody>
+              <thead class="bg-nav_hover">
+                  <tr>
+                      <th class="border-b-2 text-left p-3">Jenis Pekerjaan</th>
+                      <th class="border-b-2 p-3 text-right">Jumlah</th>
+                  </tr>
+              </thead>
           </table>
-        </div>
+          <div class="overflow-y-auto h-64 bg-white"> 
+              <table class="w-full border-collapse">
+                  <tbody class="bg-navbar">
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Pelajar/Mahasiswa</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td> 
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Belum/Tidak Bekerja</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Mengurus Rumah Tangga</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Karyawan Swasta</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">ART(Asisten Rumah Tangga)</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Pegawai Negeri Sipil (PNS)</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Guru</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Wiraswasta</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Satpam/Security</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Tukang Cukur</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Montir</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Tukang Las/Pandai Besi</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Buruh Tani/Perkebunan</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Tukang Listrik</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                          <td class="border-b-2 p-3 text-left">Polisi/Tentara</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
       </div>
-    </div>
-</div>  
+  </div>
+    
+  <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-10 ">
+      <div id="chartPendidikan" class="w-full md:w-4/6 mt-3 mx-auto lg:mx-0 overflow-y-auto" style="height:360px; width:550px"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block footer %}{% include "components/footer.html" %}{% endblock %}

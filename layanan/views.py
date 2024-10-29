@@ -6,9 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponseForbidden
 
 from superuser.models import Citizen, Account
-from .forms import LoginForm
-
-# Create your views here.
+from .forms import *
 
 def user_required(view_func):
     @login_required
@@ -17,6 +15,8 @@ def user_required(view_func):
             return HttpResponseForbidden("Admin tidak berhak untuk mengakses halaman ini")
         return view_func(request, *args, **kwargs)
     return _wrapped_view
+
+# Create your views here.
 
 class SignInView(View):
     form_class = LoginForm
@@ -62,3 +62,20 @@ def ProfilePage(request):
     penduduk = Citizen.objects.get(akun_layanan=account)
 
     return render(request, "pages/profile.html", context={"profil":penduduk})
+
+@user_required
+def PengajuanPage(request):
+    if request.method == "POST":
+        form = PengajuanForm(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = PengajuanForm()
+
+    return render(request, "pages/pengajuan.html", context={'form':form})
+
+@user_required
+def PengaduanPage(request):
+    return render(request, "pages/pengaduan.html")

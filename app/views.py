@@ -203,3 +203,37 @@ def DataAgamaPage(request):
     ]
     
     return render(request, "pages/data/agama.html", context={ "data_agama" : data_agama})
+
+def DataDesaPage(request):
+    tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()
+    sd = Citizen.objects.filter(pendidikan="SD").count()
+    smp = Citizen.objects.filter(pendidikan="SMP").count()
+    sma = Citizen.objects.filter(pendidikan="SMA").count()
+    smk = Citizen.objects.filter(pendidikan="SMK").count()
+    sltp = Citizen.objects.filter(pendidikan="SLTP").count()
+    slta = Citizen.objects.filter(pendidikan="SLTA").count()
+    diploma1 = Citizen.objects.filter(pendidikan="D-1").count()
+    diploma2 = Citizen.objects.filter(pendidikan="D-2").count()
+    diploma3 = Citizen.objects.filter(pendidikan="D-3").count()
+    diploma4 = Citizen.objects.filter(pendidikan="D-4").count()
+    sarjana1 = Citizen.objects.filter(pendidikan="S-1").count()
+    sarjana2 = Citizen.objects.filter(pendidikan="S-2").count()
+    sarjana3 = Citizen.objects.filter(pendidikan="S-3").count()
+
+    data_pendidikan = [
+        { "label": "TS", "y": tidak_sekolah },
+        { "label": "SD", "y": sd },
+        { "label": "SMP", "y": smp },
+        { "label": "SMA", "y": sma },
+        { "label": "SMK", "y": smk },
+        { "label": "SLTP", "y": sltp },
+        { "label": "SLTA", "y": slta },
+        { "label": "D-1", "y": diploma1 },
+        { "label": "D-2", "y": diploma2 },
+        { "label": "D-3", "y": diploma3 },
+        { "label": "D-4", "y": diploma4 },
+        { "label": "S-1", "y": sarjana1 },
+        { "label": "S-2", "y": sarjana2 },
+        { "label": "S-3", "y": sarjana3 },
+    ]
+    return render(request, "pages/informasi/data.html", context={"data_pendidikan":data_pendidikan})

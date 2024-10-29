@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block chartjs %}
+<script>
+    window.onload = function () {
+      var chart = new CanvasJS.Chart("chartPendidikan", {
+          animationEnabled: true,
+          title:{
+              text: "Grafik pendidikan"
+          },
+          data: [{
+              type: "column",
+              dataPoints: {{ data_pendidikan | safe }}
+          }]
+        });
+        chart.render();
+    }
+</script> 
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block navbar %}{% include "components/navbar.html" %}{% endblock %}
+
+{% block contents %}
+<h1 class="text-2xl md:text-3xl font-bold text-center mb-4 text-white mt-10">DATA DESA</h1>
+<h2 class="text-lg md:text-2xl font-semibold text-center mb-6 text-white mt-5">Data Jumlah Penduduk dan Kepala Keluarga</h2>
+      
+<div class="grid grid-cols-1 md:grid-cols-3  gap-4 justify-items-center mt-10">
+    <div class="bg-navbar rounded-lg p-6 w-5/6 h-36 text-white shadow-md">
+        <h3 class="text-lg font-semibold ">TOTAL PENDUDUK</h3>
+        <p class="text-sm mt-2">0000 Jiwa</p>
+    </div>
+      
+        
+    <div class="bg-navbar rounded-lg p-6 w-5/6 h-36 text-white shadow-md">
+        <h3 class="text-lg font-semibold">PEREMPUAN</h3>
+        <p class="text-sm mt-2">0000 Jiwa</p>
+    </div>
+      
+         
+    <div class="bg-navbar rounded-lg p-6 w-5/6 h-36 text-white shadow-md">
+        <h3 class="text-lg font-semibold">LAKI-LAKI</h3>
+        <p class="text-sm mt-2">0000 Jiwa</p>
+    </div>
+</div>
+
+<div class="flex flex-col md:flex-row items-center md:grid-cols-2 gap-10">
+          
+    <div class="md:w-3/6 w-80 lg:items-start lg:pl-10 mt-8 text-white">
+        <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left">Data Penduduk Berdasarkan Pendidikan</h1>
+        <div class="border-2 rounded-md mt-5 mx-auto lg:mx-0">
+            <table class="w-full border-collapse">
+                <thead class="bg-nav_hover">
+                    <tr>
+                        <th class="border-b-2 text-left p-3">Jenis Pekerjaan</th>
+                        <th class="border-b-2 p-3 text-right">Jumlah</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="overflow-y-auto h-64 bg-white"> 
+                <table class="w-full border-collapse">
+                    <tbody class="bg-navbar">
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Pelajar/Mahasiswa</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td> 
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Belum/Tidak Bekerja</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Mengurus Rumah Tangga</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Karyawan Swasta</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">ART(Asisten Rumah Tangga)</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Pegawai Negeri Sipil (PNS)</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Guru</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Wiraswasta</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Satpam/Security</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Tukang Cukur</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Montir</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Tukang Las/Pandai Besi</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Buruh Tani/Perkebunan</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Tukang Listrik</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b-2 p-3 text-left">Polisi/Tentara</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+      
+    <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-10 ">
+        <div id="chartPendidikan" class="w-full md:w-4/6 mt-3 mx-auto lg:mx-0 overflow-y-auto" style="height:360px; width:550px"></div>
+    </div>
+</div>
+    
+        
+        
+        <div class="flex flex-col md:flex-row items-center md:grid-cols-2 gap-10">
+          
+          <div class="md:w-3/6 w-80 lg:items-start lg:pl-10 mt-8 text-white">
+              <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left">Data Penduduk Berdasarkan Pekerjaan</h1>
+              <div class="border-2 rounded-md mt-5 mx-auto lg:mx-0">
+                  <table class="w-full border-collapse">
+                      <thead class="bg-nav_hover">
+                          <tr>
+                              <th class="border-b-2 text-left p-3">Jenis Pekerjaan</th>
+                              <th class="border-b-2 p-3 text-right">Jumlah</th>
+                          </tr>
+                      </thead>
+                  </table>
+                  <div class="overflow-y-auto h-64 bg-white"> 
+                    <table class="w-full border-collapse">
+                        <tbody class="bg-navbar">
+                            <tr>
+                                <td class="border-b-2 p-3 text-left">Pelajar/Mahasiswa</td>
+                                <td class="border-b-2 p-3 text-right pr-5">000</td> 
+                            </tr>
+                            <tr>
+                                <td class="border-b-2 p-3 text-left">Belum/Tidak Bekerja</td>
+                                <td class="border-b-2 p-3 text-right pr-5">000</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b-2 p-3 text-left">Mengurus Rumah Tangga</td>
+                                <td class="border-b-2 p-3 text-right pr-5">000</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b-2 p-3 text-left">Karyawan Swasta</td>
+                                <td class="border-b-2 p-3 text-right pr-5">000</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b-2 p-3 text-left">ART(Asisten Rumah Tangga)</td>
+                                <td class="border-b-2 p-3 text-right pr-5">000</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b-2 p-3 text-left">Pegawai Negeri Sipil (PNS)</td>
+                                <td class="border-b-2 p-3 text-right pr-5">000</td>
+                            </tr>
+                            <tr>
+                              <td class="border-b-2 p-3 text-left">Guru</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td>
+                          </tr>
+                          <tr>
+                            <td class="border-b-2 p-3 text-left">Wiraswasta</td>
+                            <td class="border-b-2 p-3 text-right pr-5">000</td>
+                        </tr>
+                        <tr>
+                          <td class="border-b-2 p-3 text-left">Satpam/Security</td>
+                          <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                        <td class="border-b-2 p-3 text-left">Tukang Cukur</td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td>
+                    </tr>
+                    <tr>
+                      <td class="border-b-2 p-3 text-left">Montir</td>
+                      <td class="border-b-2 p-3 text-right pr-5">000</td>
+                  </tr>
+                  <tr>
+                    <td class="border-b-2 p-3 text-left">Tukang Las/Pandai Besi</td>
+                    <td class="border-b-2 p-3 text-right pr-5">000</td>
+                </tr>
+                <tr>
+                  <td class="border-b-2 p-3 text-left">Buruh Tani/Perkebunan</td>
+                  <td class="border-b-2 p-3 text-right pr-5">000</td>
+              </tr>
+              <tr>
+                <td class="border-b-2 p-3 text-left">Tukang Listrik</td>
+                <td class="border-b-2 p-3 text-right pr-5">000</td>
+            </tr>
+            <tr>
+              <td class="border-b-2 p-3 text-left">Polisi/Tentara</td>
+              <td class="border-b-2 p-3 text-right pr-5">000</td>
+          </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+          </div>
+      
+         
+            <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-10 ">
+              <img class="w-80 md:w-4/6 mt-3 mx-auto lg:mx-0" src="Graph.png" alt="Grafik Pendidikan">
+            </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center md:grid-cols-2 gap-10">
+          
+        <div class="md:w-3/6 w-80 lg:pl-10 mt-8 text-white">
+            <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left">Data Penduduk Berdasarkan Agama</h1>
+            <div class="border-2 rounded-md mt-5 mx-auto lg:mx-0">
+                <table class="w-full border-collapse">
+                    <thead class="bg-nav_hover">
+                        <tr>
+                            <th class="border-b-2 text-left p-3">Agama</th>
+                            <th class="border-b-2 p-3 text-right">Jumlah</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="overflow-y-auto h-64 bg-white"> 
+                  <table class="w-full border-collapse">
+                      <tbody class="bg-navbar">
+                          <tr>
+                              <td class="border-b-2 p-3 text-left">Islam</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td> 
+                          </tr>
+                          <tr>
+                              <td class="border-b-2 p-3 text-left">Kristen Protestan</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td>
+                          </tr>
+                          <tr>
+                              <td class="border-b-2 p-3 text-left">Kristen Katolik</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td>
+                          </tr>
+                          <tr>
+                              <td class="border-b-2 p-3 text-left">Hindu</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td>
+                          </tr>
+                          <tr>
+                              <td class="border-b-2 p-3 text-left">Buddha</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td>
+                          </tr>
+                          <tr>
+                              <td class="border-b-2 p-3 text-left">Konghucu</td>
+                              <td class="border-b-2 p-3 text-right pr-5">000</td>
+                          </tr>
+                          
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+    
+       
+        <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-10  ">
+          <img class="w-80 md:w-4/6 mt-3 mx-auto lg:mx-0" src="Graph.png" alt="Grafik Pendidikan">
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% include "components/footer.html" %}{% endblock %}

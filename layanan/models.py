@@ -4,12 +4,19 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 STATUS = (
-    ('Menunggu', "Sedang diproses"),
-    ('Selesai', 'Selesai diproses')
+    ('Sedang Diproses', "Sedang diproses"),
+    ('Selesai Diproses', 'Selesai diproses')
+)
+
+SURAT = (
+    ("SKP","Surat Keterangan Pindah"),
+    ("SKN","Surat Keterangan Menikah"),
+    ("SKTM","Surat Keterangan Tidak Mampu"),
+    ('SKU',"Surat Keterangan Usaha"),
+    ('SKM',"Surat Keterangan Meninggal")
 )
     
 class Report(models.Model):
-    nik = models.IntegerField(null=False, unique=False, blank=False)
     name = models.CharField(null=False, blank=False, max_length=255)
     email = models.EmailField(blank=False, null=False)
     phonenumber = PhoneNumberField(blank=False)
@@ -20,3 +27,13 @@ class Report(models.Model):
 
     class Meta:
         verbose_name_plural = "Pengaduan"
+
+class PengajuanSurat(models.Model):
+    jenis = models.CharField(max_length=255,choices=SURAT)
+    keterangan = models.TextField(null=False, blank=False)
+    telefon = PhoneNumberField(region="ID")
+    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+
+    class Meta:
+        verbose_name_plural = "Pengajuan Surat"

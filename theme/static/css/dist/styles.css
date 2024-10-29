@@ -1357,6 +1357,10 @@ select {
   float: right;
 }
 
+.m-5 {
+  margin: 1.25rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -1443,6 +1447,10 @@ select {
   margin-top: 0.5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -1489,6 +1497,10 @@ select {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .h-4 {
@@ -1547,12 +1559,20 @@ select {
   width: 10rem;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .w-80 {
   width: 20rem;
 }
 
 .w-full {
   width: 100%;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .max-w-4xl {
@@ -1629,6 +1649,10 @@ select {
   justify-content: space-between;
 }
 
+.justify-items-center {
+  justify-items: center;
+}
+
 .gap-10 {
   gap: 2.5rem;
 }
@@ -1639,6 +1663,10 @@ select {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
@@ -1717,6 +1745,10 @@ select {
 
 .border-t-2 {
   border-top-width: 2px;
+}
+
+.border-none {
+  border-style: none;
 }
 
 .border-gray-300 {
@@ -1941,6 +1973,11 @@ select {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .pl-7 {
@@ -2729,6 +2766,11 @@ select {
   background-color: rgb(51 111 108 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-teal-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 118 110 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-400:hover {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -2912,11 +2954,6 @@ select {
     grid-column: span 2 / span 2;
   }
 
-  .md\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
   .md\:my-0 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -2966,6 +3003,14 @@ select {
     width: 75%;
   }
 
+  .md\:w-3\/6 {
+    width: 50%;
+  }
+
+  .md\:w-4\/6 {
+    width: 66.666667%;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -2986,10 +3031,6 @@ select {
     flex-direction: row;
   }
 
-  .md\:items-start {
-    align-items: flex-start;
-  }
-
   .md\:items-center {
     align-items: center;
   }
@@ -3006,6 +3047,16 @@ select {
 
   .md\:bg-transparent {
     background-color: transparent;
+  }
+
+  .md\:bg-nav_hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(51 111 108 / var(--tw-bg-opacity));
+  }
+
+  .md\:bg-navbar {
+    --tw-bg-opacity: 1;
+    background-color: rgb(105 188 184 / var(--tw-bg-opacity));
   }
 
   .md\:p-8 {
