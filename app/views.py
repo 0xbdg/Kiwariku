@@ -86,7 +86,10 @@ def AnnouncementPage(request):
     return render(request, "pages/informasi/pengumuman.html", context={})
 
 def ActivitiesPage(request):
-    return render(request, "pages/informasi/kegiatan.html", context={})
+    return render(request, "pages/berita/kegiatan.html", context={})
+
+def GalleryPage(request):
+    return render(request, "pages/berita/galeri.html", context={})
 
 def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
