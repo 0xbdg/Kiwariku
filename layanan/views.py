@@ -75,7 +75,3 @@ def PengajuanPage(request):
         form = PengajuanForm()
 
     return render(request, "pages/pengajuan.html", context={'form':form})
-
-@user_required
-def PengaduanPage(request):
-    return render(request, "pages/pengaduan.html")
