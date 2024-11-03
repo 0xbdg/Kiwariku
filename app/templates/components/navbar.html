@@ -24,13 +24,7 @@
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
           <li>
-            <a href="{% url 'pemerintah'%}" class="block px-4 py-2 hover:bg-gray-200">Pemerintah desa</a>
-          </li>
-          <li>
             <a href="{% url 'pengumuman'%}" class="block px-4 py-2 hover:bg-gray-200">Pengumuman</a>
-          </li>
-          <li>
-            <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
           </li>
           <li>
             <a href="{% url 'pengaduan'%}" class="block px-4 py-2 hover:bg-gray-200">Pengaduan</a>
@@ -94,10 +88,10 @@
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
           <li>
-            <a href="{% url 'sejarah'%}" class="block px-4 py-2 hover:bg-gray-200">Sejarah Desa</a>
+            <a href="{% url 'pemerintah'%}" class="block px-4 py-2 hover:bg-gray-200">Pemerintah desa</a>
           </li>
           <li>
-            <a href="{% url 'struktur'%}" class="block px-4 py-2 hover:bg-gray-200">Struktur Organisasi</a>
+            <a href="{% url 'sejarah'%}" class="block px-4 py-2 hover:bg-gray-200">Sejarah Desa</a>
           </li>
           <li>
             <a href="{% url 'visimisi'%}" class="block px-4 py-2 hover:bg-gray-200">Visi & Misi</a>
@@ -119,6 +113,9 @@
           </li>
           <li>
             <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
+          </li>
+          <li>
+            <a href="{% url 'berita'%}" class="block px-4 py-2 hover:bg-gray-200">Artikel Desa</a>
           </li>
         </ul>
       </li>

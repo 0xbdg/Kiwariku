@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.conf import settings
 from superuser.models import *
+from layanan.models import Report
 
 import requests,datetime
 # Create your views here.
@@ -69,33 +70,35 @@ def IndexDesaMembangun(request):
 def HistoryPage(request):
     return render(request,"pages/tentang/sejarah.html")
 
-def StructurePage(request):
-    return render(request, "pages/tentang/struktur.html")
-
 def NewsPage(request):
-    return render(request, "pages/berita.html", context={'news':Blog.objects.all()})
+    return render(request, "pages/berita/artikel.html", context={'news':Blog.objects.all()})
 
 def NewsDetailPage(request, news_id):
     news = Blog.objects.get(id=news_id)
-    return render(request, "pages/berita_detail.html", context={'blog':news})
+    return render(request, "pages/berita/artikel_detail.html", context={'blog':news})
 
 def ReportPage(request):
-    return render(request, "pages/informasi/pengaduan.html", context={})
+    pengaduan = Report.objects.all()
+    return render(request, "pages/informasi/pengaduan.html", context={"aduan":pengaduan})
 
 def AnnouncementPage(request):
-    return render(request, "pages/informasi/pengumuman.html", context={})
+    pengumuman = Announcement.objects.all()
+    return render(request, "pages/informasi/pengumuman.html", context={"pengumuman":pengumuman})
 
 def ActivitiesPage(request):
-    return render(request, "pages/berita/kegiatan.html", context={})
+    kegiatan = Activity.objects.all()
+    return render(request, "pages/berita/kegiatan.html", context={"kegiatan":kegiatan})
 
 def GalleryPage(request):
-    return render(request, "pages/berita/galeri.html", context={})
+    galeri = Gallery.objects.all()
+    return render(request, "pages/berita/galeri.html", context={"galeri":galeri})
 
 def VisimisiPage(request):
     return render(request, "pages/tentang/visimisi.html", context={})
 
 def PemerintahdesaPage(request):
-    return render(request,"pages/informasi/pemerintahan.html", context={})
+    pemerintah = Aparatur.objects.all()
+    return render(request,"pages/tentang/pemerintahan.html", context={'pemerintah':pemerintah})
 
 def DataPendidikanPage(request):
     tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()
@@ -194,8 +197,6 @@ def DataAgamaPage(request):
     penduduk_katolik = Citizen.objects.filter(agama="KATOLIK").count()
     penduduk_konghucu = Citizen.objects.filter(agama="KONGHUCU").count()
 
-    jumlah_semua = (penduduk_buddha+penduduk_hindu+penduduk_islam+penduduk_katolik+penduduk_kristen+penduduk_konghucu)
-
     data_agama = [
         { "label": "Buddha", "y": penduduk_buddha},
         { "label": "Hindu", "y": penduduk_hindu},
@@ -206,37 +207,3 @@ def DataAgamaPage(request):
     ]
     
     return render(request, "pages/data/agama.html", context={ "data_agama" : data_agama})
-
-def DataDesaPage(request):
-    tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()
-    sd = Citizen.objects.filter(pendidikan="SD").count()
-    smp = Citizen.objects.filter(pendidikan="SMP").count()
-    sma = Citizen.objects.filter(pendidikan="SMA").count()
-    smk = Citizen.objects.filter(pendidikan="SMK").count()
-    sltp = Citizen.objects.filter(pendidikan="SLTP").count()
-    slta = Citizen.objects.filter(pendidikan="SLTA").count()
-    diploma1 = Citizen.objects.filter(pendidikan="D-1").count()
-    diploma2 = Citizen.objects.filter(pendidikan="D-2").count()
-    diploma3 = Citizen.objects.filter(pendidikan="D-3").count()
-    diploma4 = Citizen.objects.filter(pendidikan="D-4").count()
-    sarjana1 = Citizen.objects.filter(pendidikan="S-1").count()
-    sarjana2 = Citizen.objects.filter(pendidikan="S-2").count()
-    sarjana3 = Citizen.objects.filter(pendidikan="S-3").count()
-
-    data_pendidikan = [
-        { "label": "TS", "y": tidak_sekolah },
-        { "label": "SD", "y": sd },
-        { "label": "SMP", "y": smp },
-        { "label": "SMA", "y": sma },
-        { "label": "SMK", "y": smk },
-        { "label": "SLTP", "y": sltp },
-        { "label": "SLTA", "y": slta },
-        { "label": "D-1", "y": diploma1 },
-        { "label": "D-2", "y": diploma2 },
-        { "label": "D-3", "y": diploma3 },
-        { "label": "D-4", "y": diploma4 },
-        { "label": "S-1", "y": sarjana1 },
-        { "label": "S-2", "y": sarjana2 },
-        { "label": "S-3", "y": sarjana3 },
-    ]
-    return render(request, "pages/informasi/data.html", context={"data_pendidikan":data_pendidikan})

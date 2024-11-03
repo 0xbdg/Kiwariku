@@ -64,6 +64,16 @@ JOB = (
     ("TUKANG", "Tukang")
 )
 
+JOBDESK_APARATUR = (
+    ("KEPALA DESA", "Kepala Desa"),
+    ("SEKRETARIS DESA", "Sekretaris Desa"),
+    ("BENDAHARA DESA", "Bendahara Desa"),
+    ("KEPALA URUSAN", "Kepala Urusan"),
+    ("LURAH", "Lurah"),
+    ("STAF ADMINISTRASI", "Staf Administratif"),
+    ("DUKUH", "Dukuh")
+)
+
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
         email = self.normalize_email(email)
@@ -116,7 +126,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
        return self.username
     
     class Meta:
-        verbose_name_plural = "Pengguna"
+        verbose_name_plural = "Akun"
 
 class Blog(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
@@ -131,7 +141,8 @@ class Blog(models.Model):
         return self.title
     
     class Meta:
-        verbose_name_plural = "Artikel"
+        verbose_name = "Artikel"
+        verbose_name_plural = "Artikel Desa"
     
 class Announcement(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=255)
@@ -139,14 +150,14 @@ class Announcement(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(blank=True, max_length=1000)
     content = models.TextField(blank=False)
-    author = models.ForeignKey(Account, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=datetime.now())
 
     def __str__(self):
         return self.title
     
     class Meta:
-        verbose_name_plural = "Pengumuman"
+        verbose_name = "Pengumuman"
+        verbose_name_plural = "Pengumuman Desa"
 
 class Activity(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
@@ -161,7 +172,8 @@ class Activity(models.Model):
         return self.title
     
     class Meta:
-        verbose_name_plural = "Kegiatan"
+        verbose_name = "Kegiatan"
+        verbose_name_plural = "Kegiatan Desa"
     
 class Citizen(models.Model):
     NIK = models.CharField(max_length=16, null=False, blank=False, unique=True)
@@ -182,15 +194,29 @@ class Citizen(models.Model):
         return self.nama_lengkap
     
     class Meta:
-        verbose_name_plural = "Penduduk"
+        verbose_name = "Penduduk"
+        verbose_name_plural = "Penduduk Desa"
 
-class Goverment(models.Model):
+class Aparatur(models.Model):
     foto_pemerintah = models.ImageField(upload_to="foto_pemerintahan_desa/")
     nama_orang = models.CharField(max_length=255)
-    jobdesk = models.CharField(max_length=255)
+    jobdesk = models.CharField(max_length=255, choices=JOBDESK_APARATUR)
 
     def __str__(self):
         return self.nama_orang
     
     class Meta:
-        verbose_name_plural = "Pemerintahan desa"
+        verbose_name = "Aparatur"
+        verbose_name_plural = "Aparatur Desa"
+
+class Gallery(models.Model):
+    image = models.ImageField(upload_to="galeri/")
+    title = models.CharField(max_length=255, null=False, blank=False)
+    description = models.CharField(max_length=255, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name="Galeri"
+        verbose_name_plural = "Galeri Desa"

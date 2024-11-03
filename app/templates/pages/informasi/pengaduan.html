@@ -19,59 +19,23 @@
         <button class="bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center mr-2">
             <i class="fas fa-plus mr-2"></i> Ajukan Pengaduan
         </button>        
-        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">
-            Semua Status
-        </button>
+        <select class="bg-gray-100 text-gray-700 px-5 py-2 rounded-lg">
+            <option>Menunggu Diproses</option>
+            <option>Selesai Diproses</option>
+        </select>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {% for adu in aduan %}
         <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-bold mb-2">SKPWNI</h2>
+            <h2 class="text-lg font-bold mb-2">{{ adu.title}}</h2>
             <div class="text-gray-500 text-sm mb-2 flex items-center">
-                <i class="fas fa-calendar-alt mr-2"></i> 2023-10-02 13:25:54
-                <i class="fas fa-user ml-4 mr-2"></i> Suprianto
-                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-auto">Menunggu Diproses</span>
+                <i class="fas fa-calendar-alt mr-2"></i> {{ adu.date }}
+                <i class="fas fa-user ml-4 mr-2"></i> {{ adu.name}}
+                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-auto">{{ adu.status}}</span>
             </div>
-            <p class="mb-2">Minta bantu SKPWNI</p>
-            <div class="text-teal-600 text-sm flex items-center">
-                <i class="fas fa-comments mr-2"></i> 0 Tanggapan
-            </div>
+            <p class="mb-2">{{ adu.description}}</p>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-bold mb-2">pengadan tester</h2>
-            <div class="text-gray-500 text-sm mb-2 flex items-center">
-                <i class="fas fa-calendar-alt mr-2"></i> 2023-06-02 18:09:39
-                <i class="fas fa-user ml-4 mr-2"></i> heri
-                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-auto">Menunggu Diproses</span>
-            </div>
-            <p class="mb-2">pengadan tester</p>
-            <div class="text-teal-600 text-sm flex items-center">
-                <i class="fas fa-comments mr-2"></i> 0 Tanggapan
-            </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-bold mb-2">Pengaduan Coba</h2>
-            <div class="text-gray-500 text-sm mb-2 flex items-center">
-                <i class="fas fa-calendar-alt mr-2"></i> 2023-02-09 19:47:37
-                <i class="fas fa-user ml-4 mr-2"></i> Jonathan
-                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-auto">Menunggu Diproses</span>
-            </div>
-            <p class="mb-2">Iyaa coba pengaduan</p>
-            <div class="text-teal-600 text-sm flex items-center">
-                <i class="fas fa-comments mr-2"></i> 0 Tanggapan
-            </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg font-bold mb-2">TESTING</h2>
-            <div class="text-gray-500 text-sm mb-2 flex items-center">
-                <i class="fas fa-calendar-alt mr-2"></i> 2022-10-04 06:02:49
-                <i class="fas fa-user ml-4 mr-2"></i> DANENDRA
-                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-auto">Menunggu Diproses</span>
-            </div>
-            <p class="mb-2">COBA PENGADUAN</p>
-            <div class="text-teal-600 text-sm flex items-center">
-                <i class="fas fa-comments mr-2"></i> 0 Tanggapan
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 </div>

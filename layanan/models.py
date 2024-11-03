@@ -8,14 +8,6 @@ STATUS = (
     ('Selesai Diproses', 'Selesai diproses')
 )
 
-SURAT = (
-    ("SKP","Surat Keterangan Pindah"),
-    ("SKN","Surat Keterangan Menikah"),
-    ("SKTM","Surat Keterangan Tidak Mampu"),
-    ('SKU',"Surat Keterangan Usaha"),
-    ('SKM',"Surat Keterangan Meninggal")
-)
-    
 class Report(models.Model):
     name = models.CharField(null=False, blank=False, max_length=255)
     email = models.EmailField(blank=False, null=False)
@@ -26,14 +18,51 @@ class Report(models.Model):
     date = models.DateTimeField(auto_now_add=datetime.now())
 
     class Meta:
-        verbose_name_plural = "Pengaduan"
+        verbose_name="Pengaduan"
+        verbose_name_plural = "Pengaduan Warga"
 
-class PengajuanSurat(models.Model):
-    jenis = models.CharField(max_length=255,choices=SURAT)
+class SuratNikah(models.Model):
     keterangan = models.TextField(null=False, blank=False)
     telefon = PhoneNumberField(region="ID")
     fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
     surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
 
     class Meta:
-        verbose_name_plural = "Pengajuan Surat"
+        verbose_name_plural = "Surat Nikah"
+
+class SuratKematian(models.Model):
+    keterangan = models.TextField(null=False, blank=False)
+    telefon = PhoneNumberField(region="ID")
+    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+    surat_rumahsakit = models.FileField(upload_to="surat_rumahsakit/", null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "Surat Kematian"
+
+class SuratTidakMampu(models.Model):
+    keterangan = models.TextField(null=False, blank=False)
+    telefon = PhoneNumberField(region="ID")
+    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+
+    class Meta:
+        verbose_name_plural = "Surat Keterangan Tidak Mampu"
+
+class SuratUsaha(models.Model):
+    keterangan = models.TextField(null=False, blank=False)
+    telefon = PhoneNumberField(region="ID")
+    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+
+    class Meta:
+        verbose_name_plural = "Surat Usaha"
+
+class SuratPindah(models.Model):
+    keterangan = models.TextField(null=False, blank=False)
+    telefon = PhoneNumberField(region="ID")
+    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+
+    class Meta:
+        verbose_name_plural = "Surat Pindah"

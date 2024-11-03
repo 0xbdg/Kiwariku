@@ -24,51 +24,54 @@
 {% block navbar %}{% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-screen">
-    <div class="flex flex-col items-center lg:items-start lg:pl-10 mt-8 text-white">
-      <h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left">Data Penduduk Berdasarkan Agama</h1>
-      <div id="chartAgama" style="width: 1000px; height: 300px;"></div>
-      <div class="md:w-11/12 w-80 border-2 rounded-md mt-5 mx-auto lg:mx-0">
-        <table class="w-full border-collapse">
-          <thead class="bg-nav_hover">
-            <tr>
-              <th class="border-b-2 text-left p-3">Jenis Agama</th>
-              <th class="border-b-2 p-3 text-right">Jumlah</th>
-            </tr>
-          </thead>
-        </table>
-        <div class="overflow-y-auto h-64 bg-white"> 
+<h1 class="text-lg md:text-2xl font-bold mt-5 text-center lg:text-left ml-10 text-white">Data Penduduk Berdasarkan Agama</h1>
+<div class="flex flex-col md:flex-row items-center md:grid-cols-2 gap-10">     
+  <div class="md:w-3/6 w-96 lg:items-start lg:pl-10 mt-5 text-white">
+      <div class="border-2 rounded-md mt-5 mx-auto lg:mx-0">
           <table class="w-full border-collapse">
-            <tbody class="bg-navbar">
-              <tr>
-                <td class="border-b-2 p-3 text-left">Buddha</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td> 
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Hindu</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Islam</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Kristen</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Katolik</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-              <tr>
-                <td class="border-b-2 p-3 text-left">Konghucu</td>
-                <td class="border-b-2 p-3 text-right pr-5">000</td>
-              </tr>
-            </tbody>
+              <thead class="bg-nav_hover">
+                  <tr>
+                      <th class="border-b-2 text-left p-3">Jenis Agama</th>
+                      <th class="border-b-2 p-3 text-right">Jumlah</th>
+                  </tr>
+              </thead>
           </table>
-        </div>
+          <div class="overflow-y-auto h-64 bg-white"> 
+              <table class="w-full border-collapse">
+                  <tbody class="bg-navbar">
+                    <tr>
+                        <td class="border-b-2 p-3 text-left">Buddha</td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td> 
+                      </tr>
+                      <tr>
+                        <td class="border-b-2 p-3 text-left">Hindu</td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                        <td class="border-b-2 p-3 text-left">Islam<td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                        <td class="border-b-2 p-3 text-left">Kristen</td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                        <td class="border-b-2 p-3 text-left">Katolik</td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                      <tr>
+                        <td class="border-b-2 p-3 text-left">Konghucu</td>
+                        <td class="border-b-2 p-3 text-right pr-5">000</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
       </div>
-    </div>
+  </div>
+    
+  <div class="flex flex-col items-center lg:items-start lg:pl-10">
+      <div id="chartAgama" class=" mt-3 mx-auto lg:mx-0 mr-5 p-3" style="height:320px; width:400px"></div>
+  </div>
 </div>  
 {% endblock %}
 
