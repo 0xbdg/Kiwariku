@@ -7,6 +7,10 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
+
+<div>
+  <h1 class="mt-5 text-white text-3xl text-center font-semibold">Artikel Desa</h1>
+</div>
 <section class="flex flex-col justify-center max-w-6xl min-h-screen px-4 py-10 mx-auto sm:px-6">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {% for berita in news %}
