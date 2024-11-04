@@ -133,7 +133,23 @@ def DataPendidikanPage(request):
         { "label": "S-3", "y": sarjana3 },
     ]
 
-    return render(request, "pages/data/pendidikan.html", context={ "data_pendidikan" : data_pendidikan})
+    return render(request, "pages/data/pendidikan.html", context={ 
+        "data_pendidikan" : data_pendidikan,
+        "tidaksekolah": tidak_sekolah,
+        "sd": sd,
+        "smp": smp,
+        "sma": sma,
+        "smk": smk,
+        "sltp":sltp,
+        "slta": slta,
+        "diploma1":diploma1,
+        "diploma2":diploma2,
+        "diploma3":diploma3,
+        "diploma4":diploma4,
+        "sarjana1":sarjana1,
+        "sarjana2":sarjana2,
+        "sarjana3":sarjana3
+        })
 
 def DataPekerjaanPage(request):
     tidak_bekerja = Citizen.objects.filter(pekerjaan="TIDAK BEKERJA").count()
@@ -187,7 +203,33 @@ def DataPekerjaanPage(request):
         { "label": "Tukang", "y": tukang },
     ]
     
-    return render(request, "pages/data/pekerjaan.html", context={ "data_pekerjaan" : data_pekerjaan})
+    return render(request, "pages/data/pekerjaan.html", context={ 
+        "data_pekerjaan" : data_pekerjaan,
+        "tidakbekerja":tidak_bekerja,
+        "karyawan":karyawan,
+        "pensiunan":pensiunan,
+        "pelajar":pelajar,
+        "art":art,
+        "mrt":mrt,
+        "wiraswasta":wiraswasta,
+        "satpam":satpam,
+        "barber":barber,
+        "montir":montir,
+        "ahlilas":ahli_las,
+        "buruh":buruh,
+        "abdinegara":abdi_negara,
+        "petugaskebersihan":petugas_kebersihan,
+        "nelayan":nelayan,
+        "pemukaagama":pemuka_agama,
+        "wirausaha":wirausaha,
+        "sopir":sopir,
+        "peternak":peternak,
+        "pengrajin":pengrajin,
+        "digitalpreneur":digitalpreneur,
+        "arsitek":arsitek,
+        "pekerjakasar":pekerja_kasar,
+        "tukang":tukang
+        })
 
 def DataAgamaPage(request):
     penduduk_buddha = Citizen.objects.filter(agama="BUDDHA").count()
@@ -206,4 +248,12 @@ def DataAgamaPage(request):
         { "label": "Konghucu", "y": penduduk_konghucu}
     ]
     
-    return render(request, "pages/data/agama.html", context={ "data_agama" : data_agama})
+    return render(request, "pages/data/agama.html", context={ 
+        "data_agama" : data_agama,
+        "buddha":penduduk_buddha,
+        "hindu":penduduk_hindu,
+        "islam":penduduk_islam,
+        "kristen":penduduk_kristen,
+        "katolik":penduduk_katolik,
+        "konghucu":penduduk_konghucu
+        })
