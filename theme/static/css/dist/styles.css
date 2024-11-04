@@ -1353,8 +1353,12 @@ select {
   grid-column: span 2 / span 2;
 }
 
-.float-right {
-  float: right;
+.float-left {
+  float: left;
+}
+
+.m-3 {
+  margin: 0.75rem;
 }
 
 .mx-4 {
@@ -1507,12 +1511,12 @@ select {
   height: 3rem;
 }
 
-.h-4 {
-  height: 1rem;
+.h-24 {
+  height: 6rem;
 }
 
-.h-40 {
-  height: 10rem;
+.h-4 {
+  height: 1rem;
 }
 
 .h-48 {
@@ -1551,16 +1555,16 @@ select {
   width: 3rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-3\/4 {
   width: 75%;
 }
 
 .w-4 {
   width: 1rem;
-}
-
-.w-40 {
-  width: 10rem;
 }
 
 .w-5\/6 {
@@ -1603,6 +1607,31 @@ select {
   border-collapse: collapse;
 }
 
+@keyframes typing {
+  0% {
+    width: 0%;
+    visibility: hidden;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+
+  100% {
+    border-color: white;
+  }
+}
+
+.animate-typing {
+  animation: typing 4s steps(30) infinite alternate, blink .7s infinite;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -1627,10 +1656,6 @@ select {
 
 .flex-col {
   flex-direction: column;
-}
-
-.flex-col-reverse {
-  flex-direction: column-reverse;
 }
 
 .items-start {
@@ -1699,6 +1724,10 @@ select {
   overflow-y: auto;
 }
 
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 .break-words {
   overflow-wrap: break-word;
 }
@@ -1739,6 +1768,10 @@ select {
   border-bottom-width: 2px;
 }
 
+.border-r-4 {
+  border-right-width: 4px;
+}
+
 .border-t {
   border-top-width: 1px;
 }
@@ -1765,6 +1798,11 @@ select {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-r-white {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -2918,6 +2956,10 @@ select {
     width: 50%;
   }
 
+  .md\:w-4\/6 {
+    width: 66.666667%;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -3023,10 +3065,6 @@ select {
     margin-bottom: 0px;
   }
 
-  .lg\:ml-36 {
-    margin-left: 9rem;
-  }
-
   .lg\:mr-4 {
     margin-right: 1rem;
   }
@@ -3067,8 +3105,8 @@ select {
     align-items: flex-start;
   }
 
-  .lg\:gap-20 {
-    gap: 5rem;
+  .lg\:gap-10 {
+    gap: 2.5rem;
   }
 
   .lg\:p-20 {
@@ -3086,11 +3124,6 @@ select {
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  .lg\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 
   .lg\:text-xl {

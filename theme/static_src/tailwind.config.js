@@ -51,6 +51,30 @@ module.exports = {
                 navbar: '#69BCB8',
                 button_hover: '#468585',
             },
+
+            keyframes: {
+                typing: {
+                  "0%": {
+                    width: "0%",
+                    visibility: "hidden"
+                  },
+                  "100%": {
+                    width: "100%"
+                  }
+                },
+                blink: {
+                  "50%": {
+                    borderColor: "transparent"
+                  },
+                  "100%": {
+                    borderColor: "white"
+                  }
+                }
+              },
+              animation: {
+                typing: "typing 4s steps(30) infinite alternate, blink .7s infinite"
+              }
+      
         },
     },
     plugins: [
