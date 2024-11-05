@@ -144,8 +144,8 @@
       {% for activity in kegiatan %}
       <div class="bg-gray-200 p-2 rounded mb-2">
         <p class="text-sm text-black">{{ activity.activity_date}}</p>
-        <h3 class="text-sm font-bold text-black">{{ activity.title}}</h3>
-        <p class="text-sm text-gray-700">Lokasi: {{activity.location}}</p>
+        <h3 class="text-sm font-bold text-black break-words">{{ activity.title}}</h3>
+        <p class="text-sm text-gray-700 break-words">Lokasi: {{activity.location}}</p>
       </div>
       {% endfor %}
     </div>

@@ -10,7 +10,6 @@ STATUS = (
 
 class Report(models.Model):
     name = models.CharField(null=False, blank=False, max_length=255)
-    email = models.EmailField(blank=False, null=False)
     phonenumber = PhoneNumberField(blank=False)
     title = models.CharField(blank=False, null=True,max_length=255)
     description = models.TextField(blank=False)
