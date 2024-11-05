@@ -165,7 +165,8 @@ class Activity(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=False)
     location = models.CharField(blank=False, max_length=255)
-    activity_date = models.DateField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     upload_date = models.DateTimeField(auto_now_add=datetime.now())
 
     def __str__(self):
