@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from django.conf import settings
+from django.contrib import messages
 from superuser.models import *
 from layanan.models import Report
+from .forms import ReportForm
 
 import requests,datetime
 # Create your views here.
@@ -79,7 +81,26 @@ def NewsDetailPage(request, news_id):
 
 def ReportPage(request):
     pengaduan = Report.objects.all()
-    return render(request, "pages/informasi/pengaduan.html", context={"aduan":pengaduan})
+
+    if request.method == "POST":
+        form = ReportForm(data=request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            phonenumber = form.cleaned_data["phonenumber"]
+            title = form.cleaned_data["title"]
+            description = form.cleaned_data["description"]
+
+            report = Report(name=name,phonenumber=phonenumber,title=title, description=description, status="Sedang Diproses", date=datetime.datetime.now())
+            report.save()
+
+            return redirect("pengaduan")
+        
+        else:
+            messages.error(request, "Terjadi kesalahan")
+    else:
+        form = ReportForm()
+
+    return render(request, "pages/informasi/pengaduan.html", context={"aduan":pengaduan,"form":form})
 
 def AnnouncementPage(request):
     pengumuman = Announcement.objects.all()

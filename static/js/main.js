@@ -4,7 +4,12 @@ const submenu = document.getElementById("submenu");
 let currentIndex = 0;
 const intervalTime = 5000;
 
-
+function toggleModal(modalID){
+  document.getElementById(modalID).classList.toggle("hidden");
+  document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+  document.getElementById(modalID).classList.toggle("flex");
+  document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+}
 
 const words = ["Hello, World!", "Welcome to my website!", "This is a typewriter effect."];
 let i = 0;

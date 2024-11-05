@@ -17,6 +17,9 @@ class Report(models.Model):
     status = models.CharField(choices=STATUS, max_length=255)
     date = models.DateTimeField(auto_now_add=datetime.now())
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name="Pengaduan"
         verbose_name_plural = "Pengaduan Warga"

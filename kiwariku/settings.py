@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     "phonenumber_field",
     'django_ckeditor_5',
+    'captcha',
     "tailwind",
     "theme",
     'django_browser_reload',

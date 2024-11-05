@@ -6,6 +6,7 @@ django-tailwind
 django-browser-reload
 django-jazzmin
 django-ckeditor-5
+django-simple-captcha
 Pillow
 whitenoise 
 python-dotenv

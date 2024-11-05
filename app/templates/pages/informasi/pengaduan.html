@@ -8,19 +8,15 @@
 
 {% block contents %}
 <div class="flex justify-center items-center min-h-screen">
-<div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl">
-    <h1 class="text-2xl font-bold mb-4 flex items-center">
-        <i class="fas fa-envelope mr-2"></i> Pengaduan
-    </h1>
-    <p class="mb-6 text-gray-600">
-        Layanan Pengaduan bagi warga yang ingin menyampaikan keluhan dan laporan terkait penyelenggaraan pemerintahan desa dan pelaksanaan pembangunan.
-    </p>
+<div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl mt-5">
+    <h1 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-envelope mr-2"></i> Pengaduan</h1>
+    <p class="mb-6 text-gray-600">Layanan Pengaduan bagi warga yang ingin menyampaikan keluhan dan laporan terkait penyelenggaraan pemerintahan desa dan pelaksanaan pembangunan.</p>
     <div class="flex mb-6">
-        <button class="bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center mr-2">
+        <button class="bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center mr-2" type="button" onclick="toggleModal('modal-id')">
             <i class="fas fa-plus mr-2"></i> Ajukan Pengaduan
         </button>        
-        <select class="bg-gray-100 text-gray-700 px-5 py-2 rounded-lg">
-            <option>Menunggu Diproses</option>
+        <select class="bg-gray-100 text-gray-700 py-2 rounded-lg" name="status">
+            <option>Sedang Diproses</option>
             <option>Selesai Diproses</option>
         </select>
     </div>
@@ -33,12 +29,56 @@
                 <i class="fas fa-user ml-4 mr-2"></i> {{ adu.name}}
                 <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-auto">{{ adu.status}}</span>
             </div>
-            <p class="mb-2">{{ adu.description}}</p>
+            <p class="mb-2 break-words">{{ adu.description}}</p>
         </div>
         {% endfor %}
     </div>
 </div>
 </div>
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+    <div class="relative w-auto my-6 mx-auto max-w-3xl">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+          <h3 class="text-3xl font-semibold">
+            Ajukan Pengaduan
+          </h3>
+          <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
+            <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+              ×
+            </span>
+          </button>
+        </div>
+        <!--body-->
+        <form method="POST" action="{% url 'pengaduan'%}">
+            {% csrf_token %}
+            <div class="relative p-6 flex-auto">
+                <label class="block text-lg mb-2" for="nama">Nama Panggilan</label>
+                {{ form.name}}
+            
+                <label class="block text-lg mb-2" for="phone">Nomor Telepon</label>
+                {{ form.phonenumber}}
+
+                <label class="block text-lg mb-2" for="title">Judul Pengajuan</label>
+                {{ form.title }}
+
+                <label class="block text-lg mb-2" for="keterangan">Keterangan</label>
+                {{ form.description}}
+
+                <label class="block text-lg mb-2" for="captcha">Verifikasi</label>
+                {{ form.captcha}}
+            </div>
+          <!--footer-->
+            <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">Tutup</button>
+                <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">Kirim</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 {% endblock %}
 
 {% block footer %}{% include "components/footer.html" %}{% endblock %}
