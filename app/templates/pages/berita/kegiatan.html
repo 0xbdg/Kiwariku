@@ -33,15 +33,17 @@
             <div class="bg-white p-4 shadow-md">
                 <h2 class="text-xl font-bold text-gray-800 mb-4">AGENDA TERAKHIR</h2>
                 <ul>
+                    {% for activity in kegiatan %}
                     <li class="mb-4">
-                        <a class="text-blue-600" href="#">Koordinasi Dengan Panwaslu Ke...</a>
+                        <a class="text-blue-600" href="#">{{activity.title}}</a>
                         <p class="text-gray-600">
-                            <i class="fas fa-calendar-alt"></i>Oct 16, 2024
+                            <i class="fas fa-calendar-alt"></i>{{ activity.upload_date}}
                         </p>
                         <p class="text-gray-600">
-                            <i class="fas fa-map-marker-alt"></i>Kantor Desa
+                            <i class="fas fa-map-marker-alt"></i>{{ activity.location}}
                         </p>
                     </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

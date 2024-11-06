@@ -29,7 +29,7 @@ class IndexView(View):
         if Announcement.objects.count() <= 3:
             announcement = Announcement.objects.all()
 
-        return render(request, self.template_name, context={"artikel":article, "kegiatan":activity, "pengumuman":announcement, "laki":penduduk_laki, "perempuan":penduduk_perempuan, "penduduk_semua":penduduk_keseluruhan})
+        return render(request, self.template_name, context={"artikel":article, "kegiatan":activity, "pengumuman":announcement, "laki":penduduk_laki, "perempuan":penduduk_perempuan, "penduduk_semua":penduduk_keseluruhan, "tahun":datetime.datetime.now().year})
     
 def IndexDesaMembangun(request):
     IKS = 0

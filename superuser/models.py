@@ -126,6 +126,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
        return self.username
     
     class Meta:
+        verbose_name = "Akun"
         verbose_name_plural = "Akun"
 
 class Blog(models.Model):

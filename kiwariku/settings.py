@@ -305,4 +305,20 @@ JAZZMIN_SETTINGS = {
     "site_brand":"Kiwariku",
     "welcome_sign": "Administrator panel",
     "copyright": "Kiwariku",
+
+    "icons":{
+       "layanan.Report":"fas fa-scroll",
+       "layanan.SuratNikah":"fas fa-children",
+       "layanan.SuratKematian":"fas fa-skull",
+       "layanan.SuratPindah":"fas fa-person-walking-luggage",
+       "layanan.SuratTidakMampu":"fas fa-person-praying",
+       "layanan.SuratUsaha":"fas fa-sign",
+       "superuser.Account":"fas fa-id-card",
+       "superuser.Aparatur":"fas fa-user-tie",
+       "superuser.Announcement":"fas fa-bullhorn",
+       "superuser.Citizen":"fas fa-users",
+       "superuser.Blog":"fas fa-newspaper",
+       "superuser.Gallery":"fas fa-images",
+       "superuser.Activity":"fas fa-calendar-alt"
+    }
 }
