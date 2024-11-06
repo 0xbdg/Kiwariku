@@ -80,6 +80,7 @@ def NewsDetailPage(request, news_id):
     return render(request, "pages/berita/artikel_detail.html", context={'blog':news})
 
 def ReportPage(request):
+    error=None
     pengaduan = Report.objects.all()
 
     if request.method == "POST":
@@ -96,11 +97,11 @@ def ReportPage(request):
             return redirect("pengaduan")
         
         else:
-            messages.error(request, "Terjadi kesalahan")
+            error = "Terjadi Kesalahan, silahkan coba lagi"
     else:
         form = ReportForm()
 
-    return render(request, "pages/informasi/pengaduan.html", context={"aduan":pengaduan,"form":form})
+    return render(request, "pages/informasi/pengaduan.html", context={"aduan":pengaduan,"form":form,"error":error})
 
 def AnnouncementPage(request):
     pengumuman = Announcement.objects.all()
