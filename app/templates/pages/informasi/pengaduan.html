@@ -7,12 +7,12 @@
 {% block navbar %}{% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<div class="flex justify-center items-center min-h-screen">
+<div class="flex justify-center items-center min-h-8">
 <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl mt-5">
     <h1 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-envelope mr-2"></i> Pengaduan</h1>
     <p class="mb-6 text-gray-600">Layanan Pengaduan bagi warga yang ingin menyampaikan keluhan dan laporan terkait penyelenggaraan pemerintahan desa dan pelaksanaan pembangunan.</p>
     <div class="flex mb-6">
-        <button class="bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center mr-2" type="button" onclick="toggleModal('modal-id')">
+        <button id="modalID" class="bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center mr-2" type="button" onclick="toggleModal('modal-id')">
             <i class="fas fa-plus mr-2"></i> Ajukan Pengaduan
         </button>        
         <select class="bg-gray-100 text-gray-700 py-2 rounded-lg" name="status">
@@ -54,6 +54,10 @@
         <form method="POST" action="{% url 'pengaduan'%}">
             {% csrf_token %}
             <div class="relative p-6 flex-auto">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                  <strong class="font-bold">Eror</strong>
+                  <span class="block sm:inline">{{error}}</span>
+                </div>
                 <label class="block text-lg mb-2" for="nama">Nama Panggilan</label>
                 {{ form.name}}
             
@@ -69,7 +73,7 @@
                 <label class="block text-lg mb-2" for="captcha">Verifikasi</label>
                 {{ form.captcha}}
             </div>
-          <!--footer-->
+             <!--footer-->
             <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                 <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">Tutup</button>
                 <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">Kirim</button>
