@@ -146,11 +146,9 @@ class Blog(models.Model):
         verbose_name_plural = "Artikel Desa"
     
 class Announcement(models.Model):
-    id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=255)
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255)
-    description = models.CharField(blank=True, max_length=1000)
-    content = models.TextField(blank=False)
+    description = models.TextField(blank=False)
     date = models.DateTimeField(auto_now_add=datetime.now())
 
     def __str__(self):
@@ -161,7 +159,6 @@ class Announcement(models.Model):
         verbose_name_plural = "Pengumuman Desa"
 
 class Activity(models.Model):
-    id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
     thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255)
     description = models.TextField(blank=False)
