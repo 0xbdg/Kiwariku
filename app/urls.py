@@ -15,5 +15,7 @@ urlpatterns = [
     path('informasi/pengumuman/', AnnouncementPage, name="pengumuman"),
     path('data/pendidikan/', DataPendidikanPage, name="pendidikan"),
     path('data/pekerjaan/', DataPekerjaanPage, name="pekerjaan"),
-    path('data/agama/', DataAgamaPage, name="agama")
+    path('data/agama/', DataAgamaPage, name="agama"),
+    path('bantuan/blt/', BantuanBLT, name="blt"),
+    path('bantuan/pkh/', BantuanPKH, name="pkh"),
 ]

@@ -9,22 +9,22 @@
 {% block contents %}
 
 <div>
-  <h1 class="mt-5 text-white text-3xl text-center font-semibold">Artikel Desa</h1>
+  <h1 class="mt-5 text-white text-3xl text-center font-bold">Artikel Desa</h1>
 </div>
-<section class="flex flex-col justify-center max-w-6xl min-h-screen px-4 py-10 mx-auto sm:px-6">
+<section class="flex flex-col justify-center  px-4 py-10 mx-auto sm:px-6">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {% for berita in news %}
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-navbar rounded-lg shadow-md overflow-hidden ">
         <img alt="Colorful abstract image with various shapes" class="w-full h-48 object-cover" height="400" src="{{ berita.thumbnail.url }}" width="600"/>
         <div class="p-6">
-          <h2 class="text-xl font-semibold mb-2 break-words">{{ berita.title}}</h2>
+          <h2 class="text-xl font-semibold mb-2 break-words text-white">{{ berita.title}}</h2>
           <div class="flex items-center text-gray-500 text-sm mb-4">
             <i class="far fa-calendar-alt mr-2"></i>
             <span>{{ berita.upload_date}}</span>
             <i class="fas fa-user ml-4 mr-2"></i>
             <span>{{ berita.author}}</span>
           </div>
-          <p class="text-gray-700 mb-4 break-words">{{berita.description}}</p>
+          <p class="text-white mb-4 break-words">{{berita.description}}</p>
           <a class="text-blue-500 hover:underline" href="{% url 'details' news_id=berita.id %}">Selengkapnya</a>
         </div>
       </div>
