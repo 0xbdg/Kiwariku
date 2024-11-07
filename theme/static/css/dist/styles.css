@@ -1571,10 +1571,6 @@ select {
   height: 100vh;
 }
 
-.h-72 {
-  height: 18rem;
-}
-
 .min-h-8 {
   min-height: 2rem;
 }

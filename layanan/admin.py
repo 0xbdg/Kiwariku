@@ -11,8 +11,10 @@ class ReportAdmin(admin.ModelAdmin):
     readonly_fields = ["name", "title", "phonenumber", "description"]
 
 admin.site.register(Report, ReportAdmin)
+"""
 admin.site.register(SuratKematian)
 admin.site.register(SuratTidakMampu)
 admin.site.register(SuratNikah)
 admin.site.register(SuratUsaha)
 admin.site.register(SuratPindah)
+"""
