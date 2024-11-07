@@ -94,7 +94,7 @@ if os.environ.get('DATABASES') == 'sqlite':
 elif os.environ.get('DATABASES') == 'postgres':
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE':'django.db.backends.postgresql',
             'NAME': os.environ.get("POSTGRES_DB_NAME"),                      
             'USER': os.environ.get("POSTGRES_DB_USER"),
             'PASSWORD': os.environ.get("POSTGRES_DB_PASS"),

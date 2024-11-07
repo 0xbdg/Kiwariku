@@ -7,6 +7,8 @@ django-browser-reload
 django-jazzmin
 django-ckeditor-5
 django-simple-captcha
+psycopg2-binary
+psycopg-binary
 Pillow
 whitenoise 
 python-dotenv
