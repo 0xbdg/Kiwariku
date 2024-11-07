@@ -7,7 +7,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3  gap-4 justify-items-center mt-10 min-h-screen">
     {% for gallery in galeri%}
     <div class="bg-navbar  w-5/6 h-full text-white shadow-md rounded-md mt-5 ">
-      <img class="w-full h-72 rounded-md" src="{{ gallery.image.url}}">
+      <img class="w-full h-60 rounded-md" src="{{ gallery.image.url}}">
       <h1 class="ml-5 mt-3 text-lg">{{ gallery.title}}</h1>
       <p class="ml-5 text-stringformat ">{{ gallery.description}}</p>
     </div>

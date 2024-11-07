@@ -6,13 +6,19 @@ from .serializers import *
 # Create your views here.
 
 @api_view(['GET'])
-def GetActivity(request):
+def Kegiatan(request):
     kegiatan = Activity.objects.all()
     s = ActivitySerializer(kegiatan, many=True)
     return Response(s.data)
 
 @api_view(['GET'])
-def GetAnnouncement(request):
+def Pengumuman(request):
     pengumuman = Announcement.objects.all()
     s = AnnouncementSerializer(pengumuman, many=True)
+    return Response(s.data)
+
+@api_view(['GET'])
+def Galeri(request):
+    galeri = Gallery.objects.all()
+    s = AnnouncementSerializer(galeri, many=True)
     return Response(s.data)

@@ -6,6 +6,8 @@ from superuser.models import *
 from layanan.models import Report
 from .forms import ReportForm
 
+from bantuan.models import *
+
 import requests,datetime
 # Create your views here.
 
@@ -121,6 +123,14 @@ def VisimisiPage(request):
 def PemerintahdesaPage(request):
     pemerintah = Aparatur.objects.all()
     return render(request,"pages/tentang/pemerintahan.html", context={'pemerintah':pemerintah})
+
+def BantuanBLT(request):
+    blt = BLT.objects.all()
+    return render(request, "pages/bantuan/bantuan_blt.html", context={"blt":blt})
+
+def BantuanPKH(request):
+    pkh = PKH.objects.all()
+    return render(request, "pages/bantuan/bantuan_pkh.html", context={"bantuan":pkh})
 
 def DataPendidikanPage(request):
     tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()
