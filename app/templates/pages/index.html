@@ -5,18 +5,20 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents%}
-<div class="w-full h-60 bg-cover relative md:min-h-screen" style="background-image: url({% static 'img/background1.png' %})">
-  <!-- Overlay dengan opacity -->
-  <div class="absolute inset-0 bg-black opacity-50"></div>
+<div class="relative w-full mx-auto bg-center bg-contain bg-no-repeat">
+  <img src="{% static 'img/background1.png'%}"class="w-full h-auto">
 
-  <!-- Konten teks di atas gambar -->
-  <div class="relative text-md inset-0 flex flex-col items-center justify-center h-full">
-    <div class="flex items-center justify-center">
+  <!-- Overlay with opacity -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+
+    <!-- Text content over the image -->
+    <div class="text-center text-md flex flex-col items-center justify-center h-full px-4">
       <h1 class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white md:text-3xl lg:text-2xl text-xl text-white font-bold">
         SISTEM INFORMASI DESA SITUSARI..
       </h1>
+      <p class="text-white mb-6">Kec. Cileungsi Kab. Bogor</p>
     </div>
-    <p class="text-white mb-6">Kec. Cileungsi Kab. Bogor</p>
+
   </div>
 </div>
 
