@@ -4,38 +4,38 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<h1 class="text-center text-white text-3xl md:text-xl font-bold mt-10 ">DAFTAR NAMA-NAMA PENERIMAN BLT DESA SITUSARI KECAMATAN CILEUNGSI KABUPATEN BOGOR</h1>
+<h1 class="text-center text-white text-base md:text-3xl  font-bold mt-10 ">DAFTAR NAMA-NAMA PENERIMAN PKH DESA SITUSARI KECAMATAN CILEUNGSI KABUPATEN BOGOR</h1>
 
 <div class="overflow-x-auto mt-10 m-3">
-    <table class="min-w-full border-collapse border-2 bg-nav_hover text-white">
+    <table class="md:min-w-full  border-collapse border-2 bg-nav_hover text-white">
       <thead>
         <tr class="bg-navbar text-left">
           <th class="px-4 py-2 border border-gray-200 text-center">No</th>
-          <th class="px-4 py-2 border border-gray-200 text-center">Nama</th>
-          <th class="px-4 py-2 border border-gray-200 text-center">Alamat</th>
-          <th class="px-4 py-2 border border-gray-200 text-center">RT</th>
-      
+          <th class="px-4 py-2 border border-gray-200 text-center">Nama Bantuan</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Nilai</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Jumlah</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Total</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Bulan</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Tahun</th>
         </tr>
       </thead>
       <tbody>
         {% for bantuan in pkh %}
+        {% if bantuan.jenis_bantuan == "PKH" %}
         <tr class="text-center">
           <td class="px-4 py-2 border border-gray-200">{{ bantuan.id}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nama}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.alamat}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.rt}}</td>
-    
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nama_bantuan}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nilai}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.jumlah}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.total}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.bulan}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.tahun}}</td>
         </tr>
+        {% endif %}
         {% endfor %}
       </tbody>
     </table>
   </div>
-  
-
-
-
-
-
 
 {% endblock %}
 

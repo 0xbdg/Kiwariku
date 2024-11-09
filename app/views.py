@@ -6,8 +6,6 @@ from superuser.models import *
 from layanan.models import Report
 from .forms import ReportForm
 
-from bantuan.models import *
-
 import requests,datetime
 # Create your views here.
 
@@ -125,11 +123,11 @@ def PemerintahdesaPage(request):
     return render(request,"pages/tentang/pemerintahan.html", context={'pemerintah':pemerintah})
 
 def BantuanBLT(request):
-    blt = BLT.objects.all()
+    blt = Bantuan.objects.all()
     return render(request, "pages/bantuan/bantuan_blt.html", context={"blt":blt})
 
 def BantuanPKH(request):
-    pkh = PKH.objects.all()
+    pkh = Bantuan.objects.all()
     return render(request, "pages/bantuan/bantuan_pkh.html", context={"bantuan":pkh})
 
 def DataPendidikanPage(request):

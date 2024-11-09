@@ -11,21 +11,27 @@
       <thead>
         <tr class="bg-navbar text-left">
           <th class="px-4 py-2 border border-gray-200 text-center">No</th>
-          <th class="px-4 py-2 border border-gray-200 text-center">Nama</th>
-          <th class="px-4 py-2 border border-gray-200 text-center">Alamat</th>
-          <th class="px-4 py-2 border border-gray-200 text-center">Memenuhi Syarat</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Nama Bantuan</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Nilai</th>
           <th class="px-4 py-2 border border-gray-200 text-center">Jumlah</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Total</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Bulan</th>
+          <th class="px-4 py-2 border border-gray-200 text-center">Tahun</th>
         </tr>
       </thead>
       <tbody>
         {% for bantuan in blt %}
+        {% if bantuan.jenis_bantuan == "BLT" %}
         <tr class="text-center">
           <td class="px-4 py-2 border border-gray-200">{{ bantuan.id}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nama_penerima}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.alamat}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.memenuhi_syarat}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.rupiah | safe}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nama_bantuan}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nilai}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.jumlah}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.total}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.bulan}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ bantuan.tahun}}</td>
         </tr>
+        {% endif %}
         {% endfor %}
       </tbody>
     </table>

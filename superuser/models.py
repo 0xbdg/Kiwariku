@@ -219,3 +219,47 @@ class Gallery(models.Model):
     class Meta:
         verbose_name="Galeri"
         verbose_name_plural = "Galeri Desa"
+
+class Bantuan(models.Model):
+    JENIS_BANTUAN = (
+        ("BLT", "BLT"),
+        ("PKH", "PKH"),
+    )
+
+    bulan = (
+        ("01", "01"),
+        ("02", "02"),
+        ("03", "03"),
+        ("04", "04"),
+        ("05", "05"),
+        ("06", "06"),
+        ("07", "07"),
+        ("08", "08"),
+        ("09", "09"),
+        ("10", "10"),
+        ("11", "11"),
+        ("12", "12"),
+    )
+
+    tahun = (
+        ("2024", "2024"),
+        ("2025", "2025"),
+        ("2026", "2026"),
+        ("2027", "2027"),
+        ("2028", "2028"),
+    )
+    jenis_bantuan = models.CharField(choices=JENIS_BANTUAN, max_length=10)    
+    nama_bantuan = models.CharField(max_length=1000)
+    nilai = models.DecimalField(max_digits=30, decimal_places=2)
+    jumlah = models.DecimalField(max_digits=30, decimal_places=0)
+    total = models.DecimalField(max_digits=30, decimal_places=2)
+    bulan = models.CharField(choices=bulan,max_length=2)
+    tahun = models.CharField(choices=tahun, max_length=4)
+    tanggal_input = models.DateField()
+
+    def __str__(self):
+        return self.nama_bantuan
+    
+    class Meta:
+        verbose_name = "Bantuan"
+        verbose_name_plural = "Bantuan Desa"

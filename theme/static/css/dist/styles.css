@@ -1615,14 +1615,6 @@ select {
   width: 100%;
 }
 
-.w-4\/6 {
-  width: 66.666667%;
-}
-
-.min-w-full {
-  min-width: 100%;
-}
-
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -2004,10 +1996,6 @@ select {
   --tw-bg-opacity: 0.5;
 }
 
-.bg-cover {
-  background-size: cover;
-}
-
 .bg-contain {
   background-size: contain;
 }
@@ -2306,10 +2294,6 @@ select {
 
 .opacity-5 {
   opacity: 0.05;
-}
-
-.opacity-50 {
-  opacity: 0.5;
 }
 
 .shadow {
@@ -2840,10 +2824,6 @@ select {
     display: none;
   }
 
-  .md\:min-h-screen {
-    min-height: 100vh;
-  }
-
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -2960,11 +2940,6 @@ select {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 
   .md\:opacity-100 {

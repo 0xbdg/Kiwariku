@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'layanan',
     'app',
     'api',
-    'bantuan',
     'rest_framework',
     'corsheaders',
     "phonenumber_field",
@@ -319,6 +318,7 @@ JAZZMIN_SETTINGS = {
        "superuser.Citizen":"fas fa-users",
        "superuser.Blog":"fas fa-newspaper",
        "superuser.Gallery":"fas fa-images",
-       "superuser.Activity":"fas fa-calendar-alt"
+       "superuser.Activity":"fas fa-calendar-alt",
+       "superuser.Bantuan":"fas fa-people-carry-box"
     }
 }
