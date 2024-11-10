@@ -8,16 +8,14 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
-
+# SECURITY WARNING: don't run wenv('DEBUG')ith debug turned on in production!
+DEBUG = os.environ.get('DEBUG')
 ALLOWED_HOSTS = ['*']
 
 
@@ -42,7 +40,6 @@ INSTALLED_APPS = [
     'captcha',
     "tailwind",
     "theme",
-    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'kiwariku.urls'
@@ -139,8 +135,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-if not DEBUG:
-  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -165,9 +161,6 @@ PHONENUMBER_DEFAULT_REGION = 'ID'
 
 #auth
 AUTH_USER_MODEL = 'superuser.Account'
-LOGIN_REDIRECT_URL = 'profile'
-LOGIN_URL = 'signin'
-LOGOUT_REDIRECT_URL = "index"
 
 #SESSION_COOKIE_AGE = 86400
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -175,6 +168,10 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # security
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# settings.py
+
+# SECURE_SSL_REDIRECT = True
 
 SECURE_HSTS_SECONDS = 86400
 SECURE_HSTS_PRELOAD = True
@@ -186,6 +183,12 @@ SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
+
+CORS_ALLOWED_ORIGINS = [
+    'https://example.com',
+]
+
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #email 
 
