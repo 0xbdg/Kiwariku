@@ -4,6 +4,7 @@
   <div class="flex justify-between items-center py-2 px-4">
       <a class="flex items-center text-white text-md md:text-lg lg:text-2xl" href="{% url 'index'%}">
         <img class="h-10 inline" src="{% static 'img/logo.png' %}" alt="Logo" />
+        <img class="h-10 inline" src="{% static 'img/logo-desa.png' %}" alt="Logo" />
         <span class="ml-2">Desa Situsari</span>
       </a>
       <!-- Icon Hamburger untuk Ponsel -->
@@ -29,6 +30,9 @@
           <li>
             <a href="{% url 'pengaduan'%}" class="block px-4 py-2 hover:bg-gray-200">Pengaduan</a>
           </li>
+          <li>
+            <a href="{% url 'galeri'%}" class="block px-4 py-2 hover:bg-gray-200">Galeri</a>
+          </li>
         </ul>
       </li>
 
@@ -46,6 +50,18 @@
           </li>
           <li>
             <a href="{% url 'blt'%}" class="block px-4 py-2 hover:bg-gray-200">BLT</a>
+          </li>
+          <li>
+            <a href="{% url 'bpnt'%}" class="block px-4 py-2 hover:bg-gray-200">BPNT</a>
+          </li>
+          <li>
+            <a href="{% url 'stunting'%}" class="block px-4 py-2 hover:bg-gray-200">STUNTING</a>
+          </li>
+          <li>
+            <a href="{% url 'bansos'%}" class="block px-4 py-2 hover:bg-gray-200">BANSOS</a>
+          </li>
+          <li>
+            <a href="{% url 'bpjs'%}" class="block px-4 py-2 hover:bg-gray-200">BPJS</a>
           </li>
         </ul>
       </li>
@@ -75,7 +91,7 @@
         <a
           href="#"
           class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200 submenu-toggle"
-          >Tentang</a
+          >Identitas</a
         >
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
@@ -101,13 +117,27 @@
         <!-- Submenu -->
         <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
           <li>
-            <a href="{% url 'galeri'%}" class="block px-4 py-2 hover:bg-gray-200">Galeri</a>
-          </li>
-          <li>
             <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
           </li>
           <li>
             <a href="{% url 'berita'%}" class="block px-4 py-2 hover:bg-gray-200">Artikel Desa</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="relative group my-6 md:my-0">
+        <a
+          href="#"
+          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200 submenu-toggle"
+          >Lembaga</a
+        >
+        <!-- Submenu -->
+        <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
+          <li>
+            <a href="{% url 'PKK'%}" class="block px-4 py-2 hover:bg-gray-200">PKK</a>
+          </li>
+          <li>
+            <a href="{% url 'posyandu'%}" class="block px-4 py-2 hover:bg-gray-200">Posyandu</a>
           </li>
         </ul>
       </li>

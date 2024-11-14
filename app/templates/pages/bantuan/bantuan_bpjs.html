@@ -4,7 +4,7 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock %}
 
 {% block contents %}
-<h1 class="text-center text-white text-base md:text-3xl  font-bold mt-10 ">DAFTAR NAMA-NAMA PENERIMAN BLT DESA SITUSARI KECAMATAN CILEUNGSI KABUPATEN BOGOR</h1>
+<h1 class="text-center text-white text-base md:text-3xl  font-bold mt-10 ">DAFTAR NAMA-NAMA PENERIMAN BPJS DESA SITUSARI KECAMATAN CILEUNGSI KABUPATEN BOGOR</h1>
 
 <div class="overflow-x-auto mt-10 m-3">
     <table class="md:min-w-full  border-collapse border-2 bg-nav_hover text-white">
@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         {% for b in bantuan %}
-        {% if b.jenis_bantuan == "BLT" %}
+        {% if b.jenis_bantuan == "BPJS" %}
         <tr class="text-center">
           <td class="px-4 py-2 border border-gray-200">{{ b.id}}</td>
           <td class="px-4 py-2 border border-gray-200">{{ b.nama_bantuan}}</td>

@@ -123,12 +123,34 @@ def PemerintahdesaPage(request):
     return render(request,"pages/tentang/pemerintahan.html", context={'pemerintah':pemerintah})
 
 def BantuanBLT(request):
-    blt = Bantuan.objects.all()
-    return render(request, "pages/bantuan/bantuan_blt.html", context={"blt":blt})
+    bantuan = Bantuan.objects.all()
+    return render(request, "pages/bantuan/bantuan_blt.html", context={"blt":bantuan})
 
 def BantuanPKH(request):
-    pkh = Bantuan.objects.all()
-    return render(request, "pages/bantuan/bantuan_pkh.html", context={"bantuan":pkh})
+    bantuan = Bantuan.objects.all()
+    return render(request, "pages/bantuan/bantuan_pkh.html", context={"bantuan":bantuan})
+
+def BantuanBansos(request):
+    bantuan = Bantuan.objects.all()
+    return render(request, "pages/bantuan/bantuan_bansos.html", context={"bantuan":bantuan})
+
+def BantuanStunting(request):
+    bantuan = Bantuan.objects.all()
+    return render(request, "pages/bantuan/bantuan_stunting.html", context={"bantuan":bantuan})
+
+def BantuanBPNT(request):
+    bantuan = Bantuan.objects.all()
+    return render(request, "pages/bantuan/bantuan_bpnt.html", context={"bantuan":bantuan})
+
+def BantuanBPJS(request):
+    bantuan = Bantuan.objects.all()
+    return render(request, "pages/bantuan/bantuan_bpjs.html", context={"bantuan":bantuan})
+
+def PKK(request):
+    return render(request,"pages/lembaga/PKK.html", context={})
+
+def Posyandu(request):
+    return render(request, "pages/lembaga/posyandu.html", context={})
 
 def DataPendidikanPage(request):
     tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()

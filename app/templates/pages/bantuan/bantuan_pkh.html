@@ -20,16 +20,16 @@
         </tr>
       </thead>
       <tbody>
-        {% for bantuan in pkh %}
-        {% if bantuan.jenis_bantuan == "PKH" %}
+        {% for b in bantuan %}
+        {% if b.jenis_bantuan == "PKH" %}
         <tr class="text-center">
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.id}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nama_bantuan}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.nilai}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.jumlah}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.total}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.bulan}}</td>
-          <td class="px-4 py-2 border border-gray-200">{{ bantuan.tahun}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.id}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.nama_bantuan}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.nilai}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.jumlah}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.total}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.bulan}}</td>
+          <td class="px-4 py-2 border border-gray-200">{{ b.tahun}}</td>
         </tr>
         {% endif %}
         {% endfor %}

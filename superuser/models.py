@@ -224,6 +224,10 @@ class Bantuan(models.Model):
     JENIS_BANTUAN = (
         ("BLT", "BLT"),
         ("PKH", "PKH"),
+        ("STUNTING", "STUNTING"),
+        ("BPJS", "BPJS"),
+        ("BPNT", "BPNT"),
+        ("BANSOS", "BANSOS")
     )
 
     bulan = (
