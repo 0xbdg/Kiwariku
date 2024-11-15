@@ -13,19 +13,19 @@
               <tr class="bg-navbar text-left">
                 <th class="px-4 py-2 border border-gray-200 text-center">No</th>
                 <th class="px-4 py-2 border border-gray-200 text-center">Nama</th>
-                <th class="px-4 py-2 border border-gray-200 text-center">Tempat tanggal lahir</th>
                 <th class="px-4 py-2 border border-gray-200 text-center">Jenis Kelamin</th>
-                <th class="px-4 py-2 border border-gray-200 text-center">ALAMAT</th>
+                <th class="px-4 py-2 border border-gray-200 text-center">Alamat</th>
               </tr>
             </thead>
             <tbody>
+              {% for posyandu in lembaga %}
               <tr class="text-center">
-                <td class="px-4 py-2 border border-gray-200">1</td>
-                <td class="px-4 py-2 border border-gray-200">wqndbwqudnqwu</td>
-                <td class="px-4 py-2 border border-gray-200">wqndbwqudnqwu</td>
-                <td class="px-4 py-2 border border-gray-200">fqwfnqwfnqw</td>
-                <td class="px-4 py-2 border border-gray-200">fqwfjnwqfob</td>
+                <td class="px-4 py-2 border border-gray-200">{{ posyandu.id}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{ posyandu.nama }}</td>
+                <td class="px-4 py-2 border border-gray-200">{{ posyandu.jenis_kelamin}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{ posyandu.alamat}}</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

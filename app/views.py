@@ -147,10 +147,12 @@ def BantuanBPJS(request):
     return render(request, "pages/bantuan/bantuan_bpjs.html", context={"bantuan":bantuan})
 
 def PKK(request):
-    return render(request,"pages/lembaga/PKK.html", context={})
+    lembaga = Lembaga.objects.all()
+    return render(request,"pages/lembaga/PKK.html", context={"lembaga":lembaga})
 
 def Posyandu(request):
-    return render(request, "pages/lembaga/posyandu.html", context={})
+    lembaga = Lembaga.objects.all()
+    return render(request, "pages/lembaga/posyandu.html", context={"lembaga":lembaga})
 
 def DataPendidikanPage(request):
     tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()

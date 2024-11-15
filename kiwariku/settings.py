@@ -322,6 +322,7 @@ JAZZMIN_SETTINGS = {
        "superuser.Blog":"fas fa-newspaper",
        "superuser.Gallery":"fas fa-images",
        "superuser.Activity":"fas fa-calendar-alt",
-       "superuser.Bantuan":"fas fa-people-carry-box"
+       "superuser.Bantuan":"fas fa-people-carry-box",
+       "superuser.Lembaga":"fa-solid fa-building-columns",
     }
 }

@@ -199,7 +199,7 @@ class Citizen(models.Model):
 class Aparatur(models.Model):
     foto_pemerintah = models.ImageField(upload_to="foto_pemerintahan_desa/")
     nama_orang = models.CharField(max_length=255)
-    jobdesk = models.CharField(max_length=255, choices=JOBDESK_APARATUR)
+    jabatan = models.CharField(max_length=255, choices=JOBDESK_APARATUR)
 
     def __str__(self):
         return self.nama_orang
@@ -267,3 +267,18 @@ class Bantuan(models.Model):
     class Meta:
         verbose_name = "Bantuan"
         verbose_name_plural = "Bantuan Desa"
+
+class Lembaga(models.Model):
+    LEMBAGA = (
+        ("PKK", "PKK"),
+        ("POSYANDU", "POSYANDU")
+    )
+
+    jenis_lembaga = models.CharField(choices=LEMBAGA, max_length=255)
+    nama = models.CharField(max_length=255, null=False, blank=False)
+    alamat = models.CharField(max_length=255, null=False, blank=False)
+    jenis_kelamin = models.CharField(max_length=255,choices=GENDER, null=False, blank=False)
+
+    class Meta:
+        verbose_name = "Lembaga"
+        verbose_name_plural = "Lembaga Desa"

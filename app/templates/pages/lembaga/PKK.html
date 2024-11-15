@@ -7,26 +7,6 @@
 {% block contents %}
 
 <div class="flex flex-col">
-    <div class="container mx-auto px-4 py-8 max-w-screen-md min-h-screen">
-        <!-- Title Section -->
-        <h1 class="text-xl md:text-2xl text-white font-bold text-center mb-6">
-          PKK Desa Situsari
-        </h1>
-    
-        <!-- Image Section -->
-        <div class="flex justify-center mb-6">
-          <img class="w-full"src="{% static 'img/Background.png'%}"alt="Sejarah Desa"/>
-        </div>
-    
-        <!-- Description Section -->
-        <p class="text-white text-justify text-sm sm:text-base leading-relaxed">
-          Pada masa penjajahan desa Situsari belum terbentuk menjadi sebuah Pemerintahan seperti sekarang, cikal bakal terbentuknya Desa Situsari dimulai dari kepemimpinan yang disebut Mandor dan pada saat itu Situsari masi menginduk pada kewilayahan Situsari.
-      Kemandoran Situsari kemudian berkembang menjadi Pemerintahan Desa dimana Situsari saat itu masi bergabung pada Pemerintahan Desa Situsari yang hanya merupakan sebuah Dusun yang terbagi menjadi dua Dusun. 
-      Seiring berjalanya waktu kemudian Masyarakat setempat mengadakan musyawarah adat untuk mengajukan Pemisahan Pemerintahan dari Desa Induk yaitu Desa Situsari, sehingga kemudian terbentuklah sebuah Pemerintahan tingkat Desa baru bernama Desa Situsari pada tahun 1980 han sehingga terpilihlah Kepala Desa yang Pertama bernama M. IPANG.
-      Dengan berbagai kendala yang dihadapi saat itu dimana Kantor Desa pun belum ada, disisi lain kondisi politik yang belum stabil seorang M. Ipang selaku kepala Desa Situsari Pertama dengan kesabaranya tetap bertekad untuk menjadikan Desa Situsari yang Maju dan Sejahtera. Terbentuknya Desa Situsari luas wilayahnya sekitar ± 627,697 HA dengan Koordinat Bujur 107.002602 Dan Koordinat Lintang -6.446587.
-    
-        </p>
-    </div>
     <h1 class="text-center text-white text-xl md:text-2xl font-bold ">DAFTAR NAMA PENGURUS PKK DESA SITUSARI KECAMATAN CILEUNGSI KABUPATEN BOGOR MASA JABATAN (tahunnya).</h1>
     
     <div class="flex justify-center items-center overflow-x-auto m-3">
@@ -35,18 +15,20 @@
             <thead>
               <tr class="bg-navbar text-left">
                 <th class="px-4 py-2 border border-gray-200 text-center">No</th>
-                <th class="px-4 py-2 border border-gray-200 text-center">JABATAN</th>
-                <th class="px-4 py-2 border border-gray-200 text-center">NAMA PENGURUS</th>
-                <th class="px-4 py-2 border border-gray-200 text-center">ALAMAT</th>
+                <th class="px-4 py-2 border border-gray-200 text-center">Nama Pengurus</th>
+                <th class="px-4 py-2 border border-gray-200 text-center">Jenis Kelamin</th>
+                <th class="px-4 py-2 border border-gray-200 text-center">Alamat</th>
               </tr>
             </thead>
             <tbody>
+              {% for pkk in lembaga %}
               <tr class="text-center">
-                <td class="px-4 py-2 border border-gray-200">1</td>
-                <td class="px-4 py-2 border border-gray-200">wqndbwqudnqwu</td>
-                <td class="px-4 py-2 border border-gray-200">fqwfnqwfnqw</td>
-                <td class="px-4 py-2 border border-gray-200">fqwfjnwqfob</td>
+                <td class="px-4 py-2 border border-gray-200">{{pkk.id}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{pkk.nama}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{pkk.jenis_kelamin}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{pkk.alamat}}</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
