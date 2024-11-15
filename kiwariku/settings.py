@@ -15,8 +15,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run wenv('DEBUG')ith debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['situsari.desa.id', 'www.situsari.desa.id', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'superuser',
     'layanan',
+    'lembaga',
     'app',
     'api',
     'rest_framework',
@@ -171,7 +172,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # settings.py
 
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 
 SECURE_HSTS_SECONDS = 86400
 SECURE_HSTS_PRELOAD = True
@@ -185,10 +186,10 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 
 CORS_ALLOWED_ORIGINS = [
-    'https://example.com',
+    'https://situsari.desa.id',
 ]
 
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #email 
 
@@ -323,6 +324,5 @@ JAZZMIN_SETTINGS = {
        "superuser.Gallery":"fas fa-images",
        "superuser.Activity":"fas fa-calendar-alt",
        "superuser.Bantuan":"fas fa-people-carry-box",
-       "superuser.Lembaga":"fa-solid fa-building-columns",
     }
 }

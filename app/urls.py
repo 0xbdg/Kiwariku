@@ -22,6 +22,7 @@ urlpatterns = [
     path('bantuan/stunting/', BantuanStunting, name="stunting"),
     path('bantuan/bpjs/', BantuanBPJS, name="bpjs"),
     path('bantuan/bansos/', BantuanBansos, name="bansos"),
-    path('lembaga/pkk', PKK, name="PKK"),
-    path('lembaga/posyandu', Posyandu, name="posyandu"),
+    path('lembaga/pkk', pkk, name="pkk"),
+    path('lembaga/posyandu', posyandu, name="posyandu"),
+    path('lembaga/bumdes', bumdes, name="bumdes"),
 ]

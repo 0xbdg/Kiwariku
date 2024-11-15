@@ -3,6 +3,7 @@ from django.views.generic import View
 from django.conf import settings
 from django.contrib import messages
 from superuser.models import *
+from lembaga.models import *
 from layanan.models import Report
 from .forms import ReportForm
 
@@ -146,13 +147,17 @@ def BantuanBPJS(request):
     bantuan = Bantuan.objects.all()
     return render(request, "pages/bantuan/bantuan_bpjs.html", context={"bantuan":bantuan})
 
-def PKK(request):
-    lembaga = Lembaga.objects.all()
+def pkk(request):
+    lembaga = PKK.objects.all()
     return render(request,"pages/lembaga/PKK.html", context={"lembaga":lembaga})
 
-def Posyandu(request):
-    lembaga = Lembaga.objects.all()
+def posyandu(request):
+    lembaga = Posyandu.objects.all()
     return render(request, "pages/lembaga/posyandu.html", context={"lembaga":lembaga})
+
+def bumdes(request):
+    lembaga = BUMDES.objects.all()
+    return render(request, "pages/lembaga/bumdes.html", context={"lembaga":lembaga})
 
 def DataPendidikanPage(request):
     tidak_sekolah = Citizen.objects.filter(pendidikan="TIDAK SEKOLAH").count()

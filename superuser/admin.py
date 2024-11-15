@@ -38,7 +38,6 @@ class CustomCitizen(admin.ModelAdmin):
 
 admin.site.unregister(Group)
 admin.site.register(Account, CustomUserAdmin)
-admin.site.register(Lembaga)
 admin.site.register(Blog)
 admin.site.register(Announcement)
 admin.site.register(Activity)
