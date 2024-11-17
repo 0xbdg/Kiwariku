@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run wenv('DEBUG')ith debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['situsari.desa.id', 'www.situsari.desa.id', '127.0.0.1', 'localhost']
 
 
@@ -172,7 +172,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # settings.py
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 SECURE_HSTS_SECONDS = 86400
 SECURE_HSTS_PRELOAD = True
@@ -185,11 +185,12 @@ SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 
+"""
 CORS_ALLOWED_ORIGINS = [
     'https://situsari.desa.id',
 ]
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+"""
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #email 
 
