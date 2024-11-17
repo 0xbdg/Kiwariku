@@ -2,9 +2,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("desa/kegiatan/",Kegiatan),
-    path("desa/pengumuman/",Pengumuman),
-    path("desa/galeri/", Galeri),
+    path("desa/kegiatan/",KegiatanView.as_view()),
+    path("desa/pengumuman/",PengumumanView.as_view()),
     path("desa/layanan/pengajuan/surat-kematian", SuratKematianUploadView.as_view()),
     path("desa/layanan/pengajuan/surat-nikah", SuratNikahUploadView.as_view()),
     path("desa/layanan/pengajuan/surat-usaha", SuratUsahaUploadView.as_view()),

@@ -53,20 +53,16 @@ class SuratTidakMampuUploadView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
-def Kegiatan(request):
-    kegiatan = Activity.objects.all()
-    s = ActivitySerializer(kegiatan, many=True)
-    return Response(s.data)
+class KegiatanView(APIView):
+    renderer_classes = [JSONRenderer]
+    def get(self, request):
+        kegiatan = Activity.objects.all()
+        s = ActivitySerializer(kegiatan, many=True)
+        return Response(s.data)
 
-@api_view(['GET'])
-def Pengumuman(request):
-    pengumuman = Announcement.objects.all()
-    s = AnnouncementSerializer(pengumuman, many=True)
-    return Response(s.data)
-
-@api_view(['GET'])
-def Galeri(request):
-    galeri = Gallery.objects.all()
-    s = AnnouncementSerializer(galeri, many=True)
-    return Response(s.data)
+class PengumumanView(APIView):
+    renderer_classes = [JSONRenderer]
+    def get(self, request):
+        pengumuman = Announcement.objects.all()
+        s = ActivitySerializer(pengumuman, many=True)
+        return Response(s.data)
