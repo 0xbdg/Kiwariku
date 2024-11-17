@@ -1,7 +1,22 @@
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 
 from superuser.models import Activity,Announcement, Gallery
 from layanan.models import SuratKematian,SuratNikah,SuratTidakMampu,SuratPindah,SuratUsaha
+
+
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, attrs):
+        user = authenticate(**attrs)
+        if user is None:
+            raise serializers.ValidationError('Invalid Credentials')
+
+        attrs['user'] = user
+        return attrs
 
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:

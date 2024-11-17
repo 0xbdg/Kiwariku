@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'app',
     'api',
     'rest_framework',
+    "rest_framework.authtoken",
     'corsheaders',
     "phonenumber_field",
     'django_ckeditor_5',
