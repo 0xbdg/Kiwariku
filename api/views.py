@@ -80,5 +80,5 @@ class PengumumanView(APIView):
     renderer_classes = [JSONRenderer]
     def get(self, request):
         pengumuman = Announcement.objects.all()
-        s = ActivitySerializer(pengumuman, many=True)
+        s = AnnouncementSerializer(pengumuman, many=True)
         return Response(s.data)
