@@ -328,3 +328,9 @@ JAZZMIN_SETTINGS = {
        "superuser.Bantuan":"fas fa-people-carry-box",
     }
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}

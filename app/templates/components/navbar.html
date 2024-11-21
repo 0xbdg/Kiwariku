@@ -33,6 +33,9 @@
           <li>
             <a href="{% url 'galeri'%}" class="block px-4 py-2 hover:bg-gray-200">Galeri</a>
           </li>
+          <li>
+            <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
+          </li>
         </ul>
       </li>
 
@@ -108,21 +111,12 @@
       </li>
 
       <!-- Menu Berita -->
-      <li class="relative group my-6 md:my-0">
+      <li class="my-6 md:my-0">
         <a
-          href="#"
-          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200 submenu-toggle"
-          >Berita</a
+          href="{% url 'berita'%}"
+          class="text-white block md:inline-block md:text-sm lg:text-xl md:px-4 md:py-5 hover:bg-nav_hover rounded-md duration-200"
+          >Artikel</a
         >
-        <!-- Submenu -->
-        <ul class="submenu absolute left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 ease-in-out">
-          <li>
-            <a href="{% url 'kegiatan'%}" class="block px-4 py-2 hover:bg-gray-200">Kegiatan</a>
-          </li>
-          <li>
-            <a href="{% url 'berita'%}" class="block px-4 py-2 hover:bg-gray-200">Artikel Desa</a>
-          </li>
-        </ul>
       </li>
 
       <li class="relative group my-6 md:my-0">

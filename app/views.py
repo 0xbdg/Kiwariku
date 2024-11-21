@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from django.conf import settings
 from django.contrib import messages
+from django.http import JsonResponse
 from superuser.models import *
 from lembaga.models import *
 from layanan.models import Report
@@ -14,21 +15,21 @@ class IndexView(View):
     template_name = "pages/index.html"
     
     def get(self, request):
-        article = Blog.objects.all()[:3]
-        activity = Activity.objects.all()[:3]
-        announcement = Announcement.objects.all()[:3]
+        article = Blog.objects.all()
+        activity = Activity.objects.all()
+        announcement = Announcement.objects.all()
         penduduk_perempuan = Citizen.objects.filter(jenis_kelamin="PEREMPUAN").count()
         penduduk_laki = Citizen.objects.filter(jenis_kelamin="LAKI-LAKI").count()
         penduduk_keseluruhan = penduduk_laki + penduduk_perempuan
 
         if Blog.objects.count() <= 3:
-            article = Blog.objects.all()
+            article = Blog.objects.all()[::-1]
 
         if Activity.objects.count() <=3:
-            activity = Activity.objects.all()
+            activity = Activity.objects.all()[::-1]
         
         if Announcement.objects.count() <= 3:
-            announcement = Announcement.objects.all()
+            announcement = Announcement.objects.all()[::-1]
 
         return render(request, self.template_name, context={"artikel":article, "kegiatan":activity, "pengumuman":announcement, "laki":penduduk_laki, "perempuan":penduduk_perempuan, "penduduk_semua":penduduk_keseluruhan, "tahun":datetime.datetime.now().year})
     
@@ -110,7 +111,7 @@ def AnnouncementPage(request):
 
 def ActivitiesPage(request):
     kegiatan = Activity.objects.all()
-    return render(request, "pages/berita/kegiatan.html", context={"kegiatan":kegiatan})
+    return render(request, "pages/informasi/kegiatan.html", context={"kegiatan":kegiatan})
 
 def GalleryPage(request):
     galeri = Gallery.objects.all()
@@ -316,3 +317,27 @@ def DataAgamaPage(request):
         "katolik":penduduk_katolik,
         "konghucu":penduduk_konghucu
         })
+
+def activity_detail(request, activity_id):
+    kegiatan = Activity.objects.get(id=activity_id)
+
+    return JsonResponse(
+        {
+            'title':kegiatan.title,
+            'description':kegiatan.description,
+            'location':kegiatan.location,
+            'start':kegiatan.start_date,
+            'end':kegiatan.end_date
+        }
+    )
+
+def announcement_detail(request, announcement_id):
+    pengumuman = Announcement.objects.get(id=announcement_id)
+
+    return JsonResponse(
+        {
+            "title":pengumuman.title,
+            "description":pengumuman.description
+        }
+    )
+

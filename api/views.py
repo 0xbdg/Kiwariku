@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.renderers import JSONRenderer
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import *
 
@@ -19,6 +20,7 @@ class LoginView(APIView):
         return Response({'token': token.key}, status=status.HTTP_200_OK)
 
 class SuratKematianUploadView(APIView):
+    permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         serializer = SuratKematianSerializer(data=request.data)
@@ -28,6 +30,7 @@ class SuratKematianUploadView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class SuratNikahUploadView(APIView):
+    permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         serializer = SuratNikahSerializer(data=request.data)
@@ -37,6 +40,7 @@ class SuratNikahUploadView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class SuratPindahUploadView(APIView):
+    permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         serializer = SuratPindahSerializer(data=request.data)
@@ -46,6 +50,7 @@ class SuratPindahUploadView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class SuratUsahaUploadView(APIView):
+    permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         serializer = SuratUsahaSerializer(data=request.data)
@@ -55,6 +60,7 @@ class SuratUsahaUploadView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SuratTidakMampuUploadView(APIView):
+    permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         serializer = SuratKeteranganTidakMampuSerializer(data=request.data)

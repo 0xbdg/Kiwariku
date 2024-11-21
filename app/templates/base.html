@@ -17,12 +17,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700display=swap" rel="stylesheet"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+        
 
         <script src="{% static 'js/main.js'%}"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
         <script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         {% block chartjs %}{% endblock %}
 
@@ -34,5 +36,70 @@
         {% block contents %} {% endblock %}
         
         {% block footer %} {% endblock%}
+        <script>
+            $(document).ready(function() {
+                // Handle modal open
+                $('.openModal').click(function() {
+                    var activityId = $(this).data('activity-id');
+              
+                    // Fetch article details via AJAX
+                    $.ajax({
+                        url: '/informasi/kegiatan/' + activityId + '/',
+                        method: 'GET',
+                        success: function(response) {
+                            // Populate modal with article details
+                            $('#modalTitle').text(response.title);
+                            $('#modalContent').text(response.description);
+                            $('#modalLocation').text(response.location);
+                            $('#modalStartdate').text(response.start);
+                            $('#modalEnddate').text(response.end);
+                            $('#modal').removeClass('hidden');
+                        }
+                    });
+                });
+              
+                // Handle modal close
+                $('#closeModal').click(function() {
+                    $('#modal').addClass('hidden');
+                });
+              
+                // Close modal when clicking outside
+                $('#modal').click(function(event) {
+                    if ($(event.target).is('#modal')) {
+                        $('#modal').addClass('hidden');
+                    }
+                });
+            });
+            $(document).ready(function() {
+                // Handle modal open
+                $('.openModal').click(function() {
+                    var announcementId = $(this).data('announcement-id');
+              
+                    // Fetch article details via AJAX
+                    $.ajax({
+                        url: '/informasi/pengumuman/' + announcementId + '/',
+                        method: 'GET',
+                        success: function(response) {
+                            // Populate modal with article details
+                            $('#modalTitle').text(response.title);
+                            $('#modalContent').text(response.description);
+                            $('#modal').removeClass('hidden');
+                        }
+                    });
+                });
+              
+                // Handle modal close
+                $('#closeModal').click(function() {
+                    $('#modal').addClass('hidden');
+                });
+              
+                // Close modal when clicking outside
+                $('#modal').click(function(event) {
+                    if ($(event.target).is('#modal')) {
+                        $('#modal').addClass('hidden');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

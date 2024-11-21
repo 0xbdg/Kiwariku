@@ -7,7 +7,7 @@ urlpatterns = [
     path('tentang/sejarah/', HistoryPage, name="sejarah"),
     path('tentang/visi-misi-desa/', VisimisiPage, name="visimisi"),
     path('berita/artikel',NewsPage, name="berita"),
-    path('berita/kegiatan/', ActivitiesPage, name="kegiatan"),
+    path('informasi/kegiatan/', ActivitiesPage, name="kegiatan"),
     path('informasi/galeri/', GalleryPage, name="galeri"),
     path('berita/artikel/<uuid:news_id>', NewsDetailPage, name="details"),
     path('informasi/pengaduan', ReportPage, name="pengaduan"),
@@ -25,4 +25,6 @@ urlpatterns = [
     path('lembaga/pkk', pkk, name="pkk"),
     path('lembaga/posyandu', posyandu, name="posyandu"),
     path('lembaga/bumdes', bumdes, name="bumdes"),
+    path('informasi/kegiatan/<int:activity_id>/', activity_detail, name="activity_detail"),
+    path('informasi/pengumuman/<int:announcement_id>/', announcement_detail, name="announcement_detail")
 ]
