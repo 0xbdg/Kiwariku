@@ -136,7 +136,6 @@ class Blog(models.Model):
         verbose_name_plural = "Artikel Desa"
     
 class Announcement(models.Model):
-    thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255)
     description = models.TextField(blank=False)
     date = models.DateTimeField(auto_now_add=datetime.now())
@@ -149,7 +148,6 @@ class Announcement(models.Model):
         verbose_name_plural = "Pengumuman Desa"
 
 class Activity(models.Model):
-    thumbnail = models.ImageField(upload_to="thumbnail/")
     title = models.CharField(max_length=255)
     description = models.TextField(blank=False)
     location = models.CharField(blank=False, max_length=255)

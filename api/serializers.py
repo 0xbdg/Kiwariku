@@ -4,8 +4,6 @@ from django.contrib.auth import authenticate
 from superuser.models import Activity,Announcement, Gallery
 from layanan.models import SuratKematian,SuratNikah,SuratTidakMampu,SuratPindah,SuratUsaha
 
-
-
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
