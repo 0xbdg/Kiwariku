@@ -152,6 +152,14 @@ def pkk(request):
     lembaga = PKK.objects.all()
     return render(request,"pages/lembaga/PKK.html", context={"lembaga":lembaga})
 
+def bpd(request):
+    lembaga = BPD.objects.all()
+    return render(request,"pages/lembaga/bpd.html", context={"lembaga":lembaga})
+
+def karangtaruna(request):
+    lembaga = KarangTaruna.objects.all()
+    return render(request,"pages/lembaga/karangtaruna.html", context={"lembaga":lembaga})
+
 def posyandu(request):
     lembaga = Posyandu.objects.all()
     return render(request, "pages/lembaga/posyandu.html", context={"lembaga":lembaga})

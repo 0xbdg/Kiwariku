@@ -25,6 +25,8 @@ urlpatterns = [
     path('lembaga/pkk', pkk, name="pkk"),
     path('lembaga/posyandu', posyandu, name="posyandu"),
     path('lembaga/bumdes', bumdes, name="bumdes"),
+    path('lembaga/bpd', bpd, name="bpd"),
+    path('lembaga/karangtaruna', karangtaruna, name="karangtaruna"),
     path('informasi/kegiatan/<int:activity_id>/', activity_detail, name="activity_detail"),
     path('informasi/pengumuman/<int:announcement_id>/', announcement_detail, name="announcement_detail")
 ]

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block navbar %}{% include "components/navbar.html" %}{% endblock  %}
+
+{% block contents %}
+
+<div class="flex flex-col">
+    <h1 class="text-center text-white text-xl md:text-2xl font-bold ">DAFTAR NAMA PENGURUS KARANG TARUNA DESA SITUSARI KECAMATAN CILEUNGSI KABUPATEN BOGOR MASA JABATAN (tahunnya).</h1>
+    
+    <div class="flex justify-center items-center overflow-x-auto m-3">
+        <div class="min-w-full md:w-5/6 overflow-x-auto">
+          <table class="w-full border-collapse border-2 bg-nav_hover text-white mt-3">
+            <thead>
+              <tr class="bg-navbar text-left">
+                <th class="px-4 py-2 border border-gray-200 text-center">No</th>
+                <th class="px-4 py-2 border border-gray-200 text-center">Nama Pengurus</th>
+                <th class="px-4 py-2 border border-gray-200 text-center">Jabatan</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for kt in lembaga %}
+              <tr class="text-center">
+                <td class="px-4 py-2 border border-gray-200">{{forloop.counter}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{kt.nama}}</td>
+                <td class="px-4 py-2 border border-gray-200">{{kt.jabatan}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+{% endblock  %}
+{% block footer %}{% include "components/footer.html" %}{% endblock %}
