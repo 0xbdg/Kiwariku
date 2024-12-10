@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
+from protected_media.models import ProtectedFileField
 
 # Create your models here.
 STATUS = (
@@ -26,8 +27,8 @@ class Report(models.Model):
 class SuratNikah(models.Model):
     keterangan = models.TextField(null=False, blank=False)
     telefon = PhoneNumberField(region="ID")
-    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
-    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+    fotokopi_kartu_keluarga = ProtectedFileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = ProtectedFileField(upload_to="surat_pengantar/")
 
     class Meta:
         verbose_name_plural = "Surat Nikah"
@@ -35,9 +36,9 @@ class SuratNikah(models.Model):
 class SuratKematian(models.Model):
     keterangan = models.TextField(null=False, blank=False)
     telefon = PhoneNumberField(region="ID")
-    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
-    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
-    surat_rumahsakit = models.FileField(upload_to="surat_rumahsakit/", null=True, blank=True)
+    fotokopi_kartu_keluarga = ProtectedFileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = ProtectedFileField(upload_to="surat_pengantar/")
+    surat_rumahsakit = ProtectedFileField(upload_to="surat_rumahsakit/", null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Surat Kematian"
@@ -45,8 +46,8 @@ class SuratKematian(models.Model):
 class SuratTidakMampu(models.Model):
     keterangan = models.TextField(null=False, blank=False)
     telefon = PhoneNumberField(region="ID")
-    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
-    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+    fotokopi_kartu_keluarga = ProtectedFileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = ProtectedFileField(upload_to="surat_pengantar/")
 
     class Meta:
         verbose_name_plural = "Surat Keterangan Tidak Mampu"
@@ -54,8 +55,8 @@ class SuratTidakMampu(models.Model):
 class SuratUsaha(models.Model):
     keterangan = models.TextField(null=False, blank=False)
     telefon = PhoneNumberField(region="ID")
-    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
-    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+    fotokopi_kartu_keluarga = ProtectedFileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = ProtectedFileField(upload_to="surat_pengantar/")
 
     class Meta:
         verbose_name_plural = "Surat Usaha"
@@ -63,8 +64,8 @@ class SuratUsaha(models.Model):
 class SuratPindah(models.Model):
     keterangan = models.TextField(null=False, blank=False)
     telefon = PhoneNumberField(region="ID")
-    fotokopi_kartu_keluarga = models.FileField(upload_to="kartu_keluarga/")
-    surat_pengantar_rt_rw = models.FileField(upload_to="surat_pengantar/")
+    fotokopi_kartu_keluarga = ProtectedFileField(upload_to="kartu_keluarga/")
+    surat_pengantar_rt_rw = ProtectedFileField(upload_to="surat_pengantar/")
 
     class Meta:
         verbose_name_plural = "Surat Pindah"

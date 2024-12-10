@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'corsheaders',
     "phonenumber_field",
     'django_ckeditor_5',
+    'protected_media.apps.ProtectedMediaConfig',
     'captcha',
     "tailwind",
     "theme",
@@ -175,6 +176,12 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # security
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+PROTECTED_MEDIA_ROOT = "%s/protected/" % BASE_DIR
+PROTECTED_MEDIA_URL = "/protected"
+PROTECTED_MEDIA_SERVER = "nginx"  # Defaults to "django"
+PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
+PROTECTED_MEDIA_AS_DOWNLOADS = False  # Controls inclusion of a Content-Disposition header
 
 # settings.py
 

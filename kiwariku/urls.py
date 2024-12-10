@@ -10,9 +10,9 @@ urlpatterns = [
     #path('layanan/', include("layanan.urls")),
     path('captcha/', include('captcha.urls')),
     path("ckeditor/", include('django_ckeditor_5.urls')),
+    path('protected/', include('protected_media.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
-    #*static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
