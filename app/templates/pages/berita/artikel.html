@@ -15,7 +15,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {% for berita in news %}
       <div class="bg-navbar rounded-lg shadow-md overflow-hidden ">
-        <img alt="Colorful abstract image with various shapes" class="w-full h-48 object-fill" height="400" src="{{ berita.thumbnail.url }}" width="600"/>
+        <img alt="thumbnail" class="w-full h-48 object-fill" height="400" src="{{ berita.thumbnail.url }}" width="600"/>
         <div class="p-6">
           <h2 class="text-xl font-semibold mb-2 break-words text-white">{{ berita.title}}</h2>
           <div class="flex items-center text-gray-500 text-sm mb-4">
